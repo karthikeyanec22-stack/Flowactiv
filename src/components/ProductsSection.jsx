@@ -20,12 +20,12 @@ export default function ProductsSection() {
     setActiveIndex((prev) => (prev - 1 + totalCards) % totalCards);
   };
 
-  // Auto-rotate desktop 3D stage every 5 seconds (5,000ms)
+  // Auto-rotate desktop 3D stage every 1 second (1,000ms)
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       nextCard();
-    }, 5000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [activeIndex, isPaused]);
@@ -148,10 +148,8 @@ export default function ProductsSection() {
                     zIndex: zIndexVal,
                   }}
                   transition={{
-                    type: 'spring',
-                    stiffness: 180,
-                    damping: 24,
-                    mass: 0.8,
+                    duration: 0.5,
+                    ease: [0.25, 0.1, 0.25, 1],
                   }}
                   style={{
                     position: 'absolute',
