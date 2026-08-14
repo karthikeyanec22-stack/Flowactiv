@@ -227,27 +227,27 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[#02050e] text-white flex items-center justify-center">
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#02050e] text-white flex items-center justify-center pt-24 sm:pt-28 pb-12 sm:pb-16">
       {/* 3D MOVING SCI-FI CYAN TUNNEL BACKGROUND */}
       <SciFiCyanTunnelBackground />
 
       {/* MAIN HERO CONTENT CONTAINER */}
-      <div className="max-w-4xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
         <div className="relative z-10 flex flex-col items-center">
 
 
           {/* Heading H1 */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-6 leading-[1.12] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-4 sm:mb-6 leading-[1.15] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
             Building Scalable Digital Products for Modern Businesses.
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-lg text-slate-200 font-medium max-w-2xl mb-10 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+          <p className="text-sm sm:text-lg text-slate-200 font-medium max-w-2xl mb-6 sm:mb-10 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
             We design, develop, and launch powerful web and mobile applications that help startups and enterprises grow faster.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-5 items-center w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-5 items-center w-full sm:w-auto">
             {/* Primary Button */}
             <Button href="#contact">
               START YOUR PROJECT
@@ -269,7 +269,7 @@ export default function HeroSection() {
       {/* ============================================================== */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-3 sm:p-6 pt-16 sm:pt-6 overflow-y-auto">
             {/* Backdrop Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -285,14 +285,14 @@ export default function HeroSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="relative w-full max-w-lg bg-[#0c102b] border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl text-left z-10 overflow-hidden"
+              className="relative w-full max-w-lg bg-white text-slate-950 border border-slate-200 rounded-3xl p-5 sm:p-8 shadow-2xl text-left z-10 overflow-y-auto max-h-[85vh] sm:max-h-[90vh]"
             >
               {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
                 suppressHydrationWarning
-                className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                className="absolute top-5 right-5 p-2 rounded-full text-slate-500 hover:text-slate-950 hover:bg-slate-100 transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -302,20 +302,20 @@ export default function HeroSection() {
               {!isSubmitted ? (
                 <>
                   <div className="mb-6">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-cyan-500/40 bg-cyan-950/50 text-cyan-300 text-[10px] font-extrabold tracking-widest uppercase mb-3 shadow-sm">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-cyan-500/40 bg-cyan-50 text-cyan-700 text-[10px] font-extrabold tracking-widest uppercase mb-3 shadow-sm">
                       FREE CONSULTATION
                     </div>
-                    <h3 className="text-2xl font-black text-white tracking-tight">
+                    <h3 className="text-2xl font-black text-slate-950 tracking-tight">
                       Schedule a Discovery Call
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-400 mt-1 font-medium">
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
                       Pick a time with our technical team to discuss your project requirements.
                     </p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-300 mb-1.5">
+                      <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
                         Your Name
                       </label>
                       <div className="relative">
@@ -328,13 +328,13 @@ export default function HeroSection() {
                           onChange={handleInputChange}
                           placeholder="e.g. Alex Morgan"
                           suppressHydrationWarning
-                          className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cyan-500 transition-colors font-medium"
+                          className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium placeholder:text-slate-400"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-300 mb-1.5">
+                      <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
                         Work Email
                       </label>
                       <div className="relative">
@@ -347,14 +347,14 @@ export default function HeroSection() {
                           onChange={handleInputChange}
                           placeholder="alex@company.com"
                           suppressHydrationWarning
-                          className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cyan-500 transition-colors font-medium"
+                          className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium placeholder:text-slate-400"
                         />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-300 mb-1.5">
+                        <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
                           Preferred Date
                         </label>
                         <div className="relative">
@@ -366,13 +366,13 @@ export default function HeroSection() {
                             value={formData.date}
                             onChange={handleInputChange}
                             suppressHydrationWarning
-                            className="w-full pl-10 pr-3 py-3 text-xs rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cyan-500 transition-colors font-medium"
+                            className="w-full pl-10 pr-3 py-3 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-300 mb-1.5">
+                        <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
                           Preferred Time
                         </label>
                         <div className="relative">
@@ -384,14 +384,14 @@ export default function HeroSection() {
                             value={formData.time}
                             onChange={handleInputChange}
                             suppressHydrationWarning
-                            className="w-full pl-10 pr-3 py-3 text-xs rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cyan-500 transition-colors font-medium"
+                            className="w-full pl-10 pr-3 py-3 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium"
                           />
                         </div>
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-300 mb-1.5">
+                      <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
                         Project Overview / Topic
                       </label>
                       <div className="relative">
@@ -403,7 +403,7 @@ export default function HeroSection() {
                           onChange={handleInputChange}
                           placeholder="Tell us briefly about what you're building..."
                           suppressHydrationWarning
-                          className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cyan-500 transition-colors font-medium resize-none"
+                          className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium resize-none placeholder:text-slate-400"
                         />
                       </div>
                     </div>
@@ -426,12 +426,12 @@ export default function HeroSection() {
                   className="py-12 text-center flex flex-col items-center"
                 >
                   <div className="w-16 h-16 rounded-full bg-cyan-500/20 border border-cyan-400 flex items-center justify-center mb-4">
-                    <CheckCircle2 className="w-8 h-8 text-cyan-400 animate-bounce" />
+                    <CheckCircle2 className="w-8 h-8 text-cyan-600 animate-bounce" />
                   </div>
-                  <h3 className="text-xl font-extrabold text-white mb-2">
+                  <h3 className="text-xl font-extrabold text-slate-950 mb-2">
                     Discovery Call Requested!
                   </h3>
-                  <p className="text-xs text-slate-300 max-w-xs font-medium">
+                  <p className="text-xs text-slate-600 max-w-xs font-medium">
                     Our engineering team will review your project details and send a calendar invitation to {formData.email}.
                   </p>
                 </motion.div>

@@ -33,7 +33,7 @@ export default function ProductsSection() {
   return (
     <section
       id="products"
-      className="scroll-mt-16 sm:scroll-mt-20 pt-6 sm:pt-10 pb-16 sm:pb-20 relative w-full bg-[#f8fafc] dark:bg-[#02050e] overflow-hidden transition-colors duration-500"
+      className="scroll-mt-16 sm:scroll-mt-20 pt-4 sm:pt-10 pb-8 sm:pb-20 relative w-full bg-[#f8fafc] dark:bg-[#02050e] overflow-hidden transition-colors duration-500"
     >
       {/* ============================================================== */}
       {/* 1. ANIMATED AMBIENT BACKGROUND ORBS & GLOW CURVES              */}
@@ -81,7 +81,7 @@ export default function ProductsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '200px 0px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center mb-10 sm:mb-16"
+          className="text-center mb-6 sm:mb-16"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             OUR ECOSYSTEM
@@ -94,7 +94,7 @@ export default function ProductsSection() {
         {/* ============================================================== */}
         {/* MOBILE VIEW (ONE BY ONE STACKED CARDS - NO AUTO ROTATION)       */}
         {/* ============================================================== */}
-        <div className="block md:hidden flex flex-col gap-10 sm:gap-12 w-full max-w-lg mx-auto pt-2 pb-6 px-1">
+        <div className="block md:hidden flex flex-col gap-6 sm:gap-12 w-full max-w-lg mx-auto pt-1 pb-2 px-1">
           {productsData.map((product) => (
             <motion.div
               key={product.id}
@@ -351,14 +351,14 @@ function ProductCard({ product, isActive, isMobileLayout = false }) {
           </p>
         </div>
 
-        {/* Blue CTA Pill Button */}
+        {/* Black CTA Pill Button */}
         <div className="relative z-20 w-full sm:w-auto">
           <Button
             href={product.link}
             target="_blank"
             rel="noopener noreferrer"
             icon={ExternalLink}
-            className="bg-[#1e56d8] hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white font-extrabold text-xs sm:text-sm px-5 sm:px-7 py-2.5 sm:py-3 rounded-full border border-blue-400/40 shadow-lg shadow-blue-500/30"
+            className="bg-black text-white hover:bg-cyan-500 hover:text-slate-950 border border-slate-800 dark:border-white/20 shadow-md"
           >
             CHECK WEBSITE
           </Button>

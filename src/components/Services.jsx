@@ -7,8 +7,6 @@ import { motion } from 'framer-motion';
 
 export default function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [viewMode, setViewMode] = useState('focus'); // 'focus' | 'stagger' | 'collapse'
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
   const services = [
@@ -58,47 +56,23 @@ export default function ServicesSection() {
 
   const totalCards = services.length;
 
-  // Smooth 4-Phase Transition Sequence Engine
-  const triggerTransitionSequence = (targetIdx) => {
-    if (targetIdx === activeIndex || isTransitioning) return;
-    setIsTransitioning(true);
-
-    // Phase 2: Diagonal Stagger Fan-Out
-    setViewMode('stagger');
-
-    setTimeout(() => {
-      // Phase 3: Horizontal Strip Collapse & Target Card Switch
-      setViewMode('collapse');
-      setActiveIndex(targetIdx);
-
-      setTimeout(() => {
-        // Phase 4: Target Card Focus Expansion
-        setViewMode('focus');
-        setIsTransitioning(false);
-      }, 100);
-    }, 100);
-  };
-
   const nextService = () => {
-    const targetIdx = (activeIndex + 1) % totalCards;
-    triggerTransitionSequence(targetIdx);
+    setActiveIndex((prev) => (prev + 1) % totalCards);
   };
 
   const prevService = () => {
-    const targetIdx = (activeIndex - 1 + totalCards) % totalCards;
-    triggerTransitionSequence(targetIdx);
+    setActiveIndex((prev) => (prev - 1 + totalCards) % totalCards);
   };
 
-  // Relaxed Auto-Scroll Interval: 4,500ms (4.5s) per card for smooth reading and zero jumpiness
+  // 1.0s show time per card auto-scroll
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
-      const targetIdx = (activeIndex + 1) % totalCards;
-      triggerTransitionSequence(targetIdx);
-    }, 4500);
+      setActiveIndex((prev) => (prev + 1) % totalCards);
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, [activeIndex, isPaused, isTransitioning]);
+  }, [isPaused, totalCards]);
 
   const [touchStartX, setTouchStartX] = useState(null);
 
@@ -121,7 +95,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="scroll-mt-16 sm:scroll-mt-20 pt-6 sm:pt-10 pb-16 sm:pb-20 relative w-full bg-[#f4f6fa] dark:bg-[#02050e] text-slate-900 dark:text-white overflow-hidden transition-colors duration-500"
+      className="scroll-mt-16 sm:scroll-mt-20 pt-4 sm:pt-10 pb-8 sm:pb-20 relative w-full bg-[#f4f6fa] dark:bg-[#02050e] text-slate-900 dark:text-white overflow-hidden transition-colors duration-500"
     >
       {/* AMBIENT BACKGROUND GLOW ORBS */}
       <motion.div
@@ -149,7 +123,7 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '200px 0px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center mb-10 sm:mb-16"
+          className="text-center mb-6 sm:mb-16"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             OUR SERVICES
@@ -162,7 +136,7 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* UNIFIED 4-PHASE SMOOTH ANIMATED CAROUSEL STAGE FOR MOBILE & DESKTOP */}
+        {/* UNIFIED SMOOTH CONTINUOUS SLIDING CAROUSEL STAGE FOR MOBILE & DESKTOP */}
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -174,7 +148,10 @@ export default function ServicesSection() {
             const Icon = service.icon;
             let offset = index - activeIndex;
 
-            // Smooth 4-Phase calculations adapted for mobile and desktop screens
+            // Handle shortest circular wrapping distance
+            if (offset > totalCards / 2) offset -= totalCards;
+            if (offset < -totalCards / 2) offset += totalCards;
+
             let xVal = 0;
             let yVal = 0;
             let scaleVal = 1;
@@ -182,52 +159,29 @@ export default function ServicesSection() {
             let rotateZVal = 0;
             let zIndexVal = 10;
 
-            if (viewMode === 'focus') {
-              if (index === activeIndex) {
-                xVal = 0;
-                yVal = 0;
-                scaleVal = 1.0;
-                opacityVal = 1.0;
-                rotateZVal = 0;
-                zIndexVal = 30;
-              } else {
-                xVal = offset * 260;
-                yVal = Math.abs(offset) * 12;
-                scaleVal = 0.78;
-                opacityVal = 0.3;
-                rotateZVal = offset * -2;
-                zIndexVal = 20 - Math.abs(offset);
-              }
-            } else if (viewMode === 'stagger') {
-              xVal = offset * 100;
-              yVal = offset * 24;
-              scaleVal = 0.72;
-              opacityVal = 0.75;
-              rotateZVal = -3;
-              zIndexVal = 20 - Math.abs(offset);
-            } else if (viewMode === 'collapse') {
-              xVal = offset * 75;
+            if (index === activeIndex) {
+              xVal = 0;
               yVal = 0;
-              scaleVal = 0.68;
-              opacityVal = 0.65;
+              scaleVal = 1.0;
+              opacityVal = 1.0;
               rotateZVal = 0;
+              zIndexVal = 30;
+            } else {
+              xVal = offset * 260;
+              yVal = Math.abs(offset) * 12;
+              scaleVal = Math.max(0.72, 1 - Math.abs(offset) * 0.22);
+              opacityVal = Math.abs(offset) === 1 ? 0.35 : 0;
+              rotateZVal = offset * -2;
               zIndexVal = 20 - Math.abs(offset);
             }
 
             return (
               <motion.div
                 key={index}
-                onMouseEnter={() => {
-                  if (index === activeIndex) {
-                    setIsPaused(true);
-                  } else {
-                    triggerTransitionSequence(index);
-                    setIsPaused(true);
-                  }
-                }}
+                onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
                 onClick={() => {
-                  triggerTransitionSequence(index);
+                  setActiveIndex(index);
                   setIsPaused(true);
                 }}
                 animate={{
@@ -239,9 +193,8 @@ export default function ServicesSection() {
                   zIndex: zIndexVal,
                 }}
                 transition={{
-                  type: 'spring',
-                  stiffness: 300,
-                  damping: 26,
+                  duration: 0.5,
+                  ease: [0.25, 0.1, 0.25, 1],
                 }}
                 style={{
                   position: 'absolute',

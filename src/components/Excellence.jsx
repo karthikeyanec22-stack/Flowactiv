@@ -120,7 +120,7 @@ export default function Excellence() {
   return (
     <section
       id="excellence"
-      className="scroll-mt-16 sm:scroll-mt-20 pt-6 sm:pt-8 pb-14 sm:pb-20 relative w-full bg-[#f8fafc] dark:bg-[#02050e] text-slate-950 dark:text-white transition-colors duration-500 overflow-hidden flex flex-col justify-center"
+      className="scroll-mt-16 sm:scroll-mt-20 pt-4 sm:pt-8 pb-8 sm:pb-20 relative w-full bg-[#f8fafc] dark:bg-[#02050e] text-slate-950 dark:text-white transition-colors duration-500 overflow-hidden flex flex-col justify-center"
     >
       {/* Background Ambient Glow Orb */}
       <motion.div

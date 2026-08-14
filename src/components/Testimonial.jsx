@@ -118,7 +118,7 @@ export default function Testimonial() {
   return (
     <section
       id="testimonials"
-      className="scroll-mt-16 sm:scroll-mt-20 pt-6 sm:pt-10 pb-16 sm:pb-20 relative w-full bg-[#f8fafc] dark:bg-[#02050e] text-slate-950 dark:text-white overflow-hidden transition-colors duration-500"
+      className="scroll-mt-16 sm:scroll-mt-20 pt-4 sm:pt-10 pb-8 sm:pb-20 relative w-full bg-[#f8fafc] dark:bg-[#02050e] text-slate-950 dark:text-white overflow-hidden transition-colors duration-500"
     >
       {/* ============================================================== */}
       {/* AMBIENT BACKGROUND GLOW ORBS                                   */}
@@ -142,7 +142,7 @@ export default function Testimonial() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '200px 0px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center mb-10 sm:mb-16"
+          className="text-center mb-6 sm:mb-16"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             TESTIMONIALS

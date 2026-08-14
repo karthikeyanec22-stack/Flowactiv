@@ -47,16 +47,28 @@ export default function Button({
     </>
   );
 
+  // Filter display/layout classes for outer motion wrapper so background styling applies ONLY to the button element
+  const outerDisplayClasses = className
+    .split(' ')
+    .filter((c) => c.includes('hidden') || c.includes('block') || c.includes('flex') || c.includes('grid'))
+    .join(' ');
+
+  const hasCustomBg = className.includes('bg-');
+  const activeVariant = variants[variant] || variants.primary;
+  const finalVariant = hasCustomBg
+    ? activeVariant.replace(/bg-\[[^\]]+\]|bg-[a-z0-9\/-]+/gi, '').trim()
+    : activeVariant;
+
   if (href) {
     return (
-      <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className={`inline-block ${className}`}>
+      <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className={`inline-block ${outerDisplayClasses}`.trim()}>
         <Link
           href={href}
           onClick={onClick}
           target={target}
           rel={rel}
           suppressHydrationWarning
-          className={`${baseStyles} ${sizeStyles} ${variants[variant] || variants.primary} ${className}`}
+          className={`${baseStyles} ${sizeStyles} ${finalVariant} ${className}`}
         >
           {content}
         </Link>
@@ -65,13 +77,13 @@ export default function Button({
   }
 
   return (
-    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className={`inline-block ${className}`}>
+    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className={`inline-block ${outerDisplayClasses}`.trim()}>
       <button
         type={type}
         onClick={onClick}
         disabled={disabled}
         suppressHydrationWarning
-        className={`${baseStyles} ${sizeStyles} ${variants[variant] || variants.primary} ${className}`}
+        className={`${baseStyles} ${sizeStyles} ${finalVariant} ${className}`}
       >
         {content}
       </button>

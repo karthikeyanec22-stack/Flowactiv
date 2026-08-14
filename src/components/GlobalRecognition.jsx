@@ -39,7 +39,7 @@ export default function GlobalRecognition() {
   return (
     <section
       id="recognition"
-      className="scroll-mt-16 sm:scroll-mt-20 pt-10 sm:pt-14 pb-16 sm:pb-24 relative w-full bg-[#f8fafc] dark:bg-[#181a20] text-slate-950 dark:text-white transition-colors duration-500 overflow-hidden flex flex-col items-center justify-center"
+      className="scroll-mt-16 sm:scroll-mt-20 pt-4 sm:pt-14 pb-8 sm:pb-24 relative w-full bg-[#f8fafc] dark:bg-[#181a20] text-slate-950 dark:text-white transition-colors duration-500 overflow-hidden flex flex-col items-center justify-center"
     >
       {/* Background Ambient Light Beams */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-blue-400/15 via-cyan-400/10 to-transparent dark:from-white/10 dark:via-cyan-500/10 blur-[120px] pointer-events-none" />
@@ -53,7 +53,7 @@ export default function GlobalRecognition() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="text-center mb-6 sm:mb-8 relative z-20 flex flex-col items-center"
+          className="text-center mb-4 sm:mb-8 relative z-20 flex flex-col items-center"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             GLOBAL RECOGNITION
@@ -64,11 +64,12 @@ export default function GlobalRecognition() {
         </motion.div>
 
         {/* ============================================================== */}
+        {/* ============================================================== */}
         {/* MOBILE RESPONSIVE LAYOUT (CARDS FIXED ABOVE & BELOW GLOBE, NO OVERLAP) */}
         {/* ============================================================== */}
-        <div className="w-full sm:hidden flex flex-col items-center my-4 relative">
-          {/* 1. TOP CARDS ROW (ABOVE GLOBE) */}
-          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full z-20 mb-3">
+        <div className="w-full sm:hidden flex flex-col items-center my-1 relative">
+          {/* 1. TOP CARDS ROW (SLIGHTLY OVERLAPPING / TIGHT TO GLOBE TOP) */}
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full z-20 -mb-3">
             {/* Card 1: 100+ Projects Delivered */}
             <motion.div
               initial={{ opacity: 0, y: -15 }}
@@ -115,10 +116,10 @@ export default function GlobalRecognition() {
           </div>
 
           {/* 2. CENTER GLOBE WITH ORBIT RINGS */}
-          <div className="relative w-52 h-52 flex items-center justify-center my-2 z-10">
+          <div className="relative w-48 h-48 flex items-center justify-center my-0 z-10">
             {/* Primary Orbit Ring */}
             <div
-              className="absolute w-[250px] h-[250px] pointer-events-none z-[5]"
+              className="absolute w-[240px] h-[240px] pointer-events-none z-[5]"
               style={{
                 transform: 'perspective(1000px) rotateX(74deg) rotateZ(-15deg)',
               }}
@@ -139,7 +140,7 @@ export default function GlobalRecognition() {
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="relative w-44 h-44 rounded-full z-10"
+              className="relative w-40 h-40 rounded-full z-10"
             >
               <div className="absolute -inset-1 rounded-full border-2 border-cyan-500/60 dark:border-cyan-400/60 shadow-[0_0_35px_rgba(6,182,212,0.4)] z-20 pointer-events-none" />
               <div className="absolute inset-0 rounded-full bg-cyan-400/20 dark:bg-cyan-400/25 blur-xl pointer-events-none" />
@@ -155,8 +156,8 @@ export default function GlobalRecognition() {
             </motion.div>
           </div>
 
-          {/* 3. BOTTOM CARDS ROW (BELOW GLOBE) */}
-          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full z-20 mt-3">
+          {/* 3. BOTTOM CARDS ROW (SLIGHTLY OVERLAPPING / TIGHT TO GLOBE BOTTOM) */}
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full z-20 -mt-3">
             {/* Card 3: 20+ Industries Served */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
