@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* 👈 REQUIRED FOR TAILWIND v4: Enables class-based dark mode (.dark) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background: #f4f6fa;
+  --foreground: #0b0e1e;
+  --glow-opacity: 0.18;
+}
+
+.dark {
+  --background: #02050e;
+  --foreground: #ffffff;
+  --glow-opacity: 0.35;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: var(--font-plus-jakarta), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.glow-arc {
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 165, 233, var(--glow-opacity)), transparent 70%);
+}
+
+.card-glow {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 100%);
+  border: 1px solid rgba(11, 14, 30, 0.08);
+}
+
+.dark .card-glow {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* In globals.css (if needed for custom 3D depth) */
+.perspective-1000 {
+  perspective: 1000px;
+}
