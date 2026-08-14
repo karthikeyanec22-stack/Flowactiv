@@ -200,16 +200,16 @@ export default function ServicesSection() {
                   position: 'absolute',
                   transformStyle: 'preserve-3d',
                 }}
-                className={`w-[280px] sm:w-[340px] md:w-[360px] h-[350px] sm:h-[380px] md:h-[400px] group relative overflow-visible transition-all duration-300 ${
+                className={`w-[280px] sm:w-[340px] md:w-[360px] h-[350px] sm:h-[380px] md:h-[400px] group relative overflow-visible transform-gpu ${
                   index === activeIndex
                     ? 'pointer-events-auto cursor-default'
-                    : 'pointer-events-auto cursor-pointer hover:opacity-90'
+                    : 'pointer-events-auto cursor-pointer'
                 }`}
               >
                 {/* Speech Bubble SVG Frame */}
                 <svg
                   viewBox="0 0 360 400"
-                  className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0 filter drop-shadow-[0_12px_22px_rgba(6,182,212,0.18)] dark:drop-shadow-[0_15px_30px_rgba(6,182,212,0.35)]"
+                  className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0"
                   preserveAspectRatio="none"
                 >
                   <path

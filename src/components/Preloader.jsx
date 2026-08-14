@@ -7,6 +7,25 @@ export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Preload all critical image assets during intro animation for instant zero-lag mobile response
+    const imagesToPreload = [
+      '/images/case1.png',
+      '/images/case2.png',
+      '/images/case3.png',
+      '/images/case4.jpg',
+      '/images/global.png',
+      '/images/tech-stack.png',
+      '/images/shrewd-preview.png',
+      '/images/getair1-preview.png',
+      '/images/footer-bg.png',
+      '/images/logo-transparent.png',
+    ];
+
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
     // Hide preloader after intro animation
     const timer = setTimeout(() => {
       setIsLoading(false);

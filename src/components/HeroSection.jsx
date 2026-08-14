@@ -51,8 +51,9 @@ function SciFiCyanTunnelBackground() {
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
-    // Tunnel Rings configuration
-    const NUM_RINGS = 28;
+    // Tunnel Rings configuration - optimized for 60fps performance on mobile
+    const isMobile = window.innerWidth < 768;
+    const NUM_RINGS = isMobile ? 14 : 28;
     const MAX_Z = 1200;
     const MIN_Z = 20;
     const SPEED = 4.5;
