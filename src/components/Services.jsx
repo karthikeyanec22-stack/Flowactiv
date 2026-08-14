@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 
 export default function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeMobileIdx, setActiveMobileIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   const services = [
@@ -56,40 +57,23 @@ export default function ServicesSection() {
 
   const totalCards = services.length;
 
-  const nextService = () => {
-    setActiveIndex((prev) => (prev + 1) % totalCards);
-  };
-
-  const prevService = () => {
-    setActiveIndex((prev) => (prev - 1 + totalCards) % totalCards);
-  };
-
-  // 1.0s show time per card auto-scroll
+  // Auto-scroll interval for desktop & mobile (0.5s move speed, 2s show time, zero blink)
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % totalCards);
-    }, 1000);
+      setActiveMobileIdx((prev) => (prev + 1) % totalCards);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [isPaused, totalCards]);
 
-  const [touchStartX, setTouchStartX] = useState(null);
-
-  const handleTouchStart = (e) => {
-    setTouchStartX(e.touches[0].clientX);
+  const handlePrevMobile = () => {
+    setActiveMobileIdx((prev) => (prev === 0 ? totalCards - 1 : prev - 1));
   };
 
-  const handleTouchEnd = (e) => {
-    if (touchStartX === null) return;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX - touchEndX;
-    if (diff > 40) {
-      nextService();
-    } else if (diff < -40) {
-      prevService();
-    }
-    setTouchStartX(null);
+  const handleNextMobile = () => {
+    setActiveMobileIdx((prev) => (prev + 1) % totalCards);
   };
 
   return (
@@ -136,19 +120,121 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* UNIFIED SMOOTH CONTINUOUS SLIDING CAROUSEL STAGE FOR MOBILE & DESKTOP */}
+        {/* ============================================================== */}
+        {/* MOBILE SLIDER (ULTRA-SMOOTH CONTINUOUS HORIZONTAL TRACK)        */}
+        {/* ============================================================== */}
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          className="relative w-full h-[380px] sm:h-[450px] md:h-[480px] flex items-center justify-center [perspective:1200px] overflow-hidden mb-8"
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          className="w-full md:hidden flex flex-col items-center justify-center py-2 relative z-10"
+        >
+          {/* Horizontal Track Viewport Window */}
+          <div className="relative w-full max-w-[340px] h-[370px] mx-auto overflow-hidden rounded-3xl">
+            <motion.div
+              className="flex w-full h-full"
+              animate={{ x: `-${activeMobileIdx * 100}%` }}
+              transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+            >
+              {services.map((service, idx) => {
+                const Icon = service.icon;
+
+                return (
+                  <div
+                    key={idx}
+                    className="w-full h-full shrink-0 flex items-center justify-center p-1 select-none"
+                  >
+                    <div className="relative w-full h-full bg-white dark:bg-[#0c122c] border-2 border-slate-200 dark:border-cyan-500/40 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between overflow-hidden group">
+                      <div
+                        className={`absolute -top-12 -right-12 w-44 h-44 bg-gradient-to-br ${service.glow} rounded-full blur-2xl opacity-50 pointer-events-none`}
+                      />
+
+                      <div>
+                        <div className="w-12 h-12 rounded-2xl bg-cyan-50/90 dark:bg-cyan-950/60 border-2 border-cyan-200 dark:border-cyan-500/40 flex items-center justify-center mb-4 shadow-sm">
+                          <Icon className="w-6 h-6 text-slate-800 dark:text-cyan-300" />
+                        </div>
+
+                        <h3 className="text-xl font-black text-slate-950 dark:text-white tracking-tight mb-2">
+                          {service.title}
+                        </h3>
+                        <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      <div className="pt-4 border-t border-slate-100 dark:border-white/10 flex justify-between items-center">
+                        <Link
+                          href="#contact"
+                          className="inline-flex items-center gap-2 text-xs font-black tracking-widest uppercase text-slate-900 dark:text-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors"
+                        >
+                          <span>LEARN MORE</span>
+                          <ArrowRight className="w-4 h-4 text-slate-900 dark:text-cyan-400" />
+                        </Link>
+                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">
+                          0{idx + 1} / 0{services.length}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </motion.div>
+          </div>
+
+          {/* CHEVRON NAVIGATION CONTROLS & PAGINATION DOTS BELOW CAROUSEL */}
+          <div className="flex items-center justify-center gap-4 mt-5 z-20">
+            {/* Left Chevron Button */}
+            <button
+              type="button"
+              onClick={handlePrevMobile}
+              aria-label="Previous service"
+              className="w-10 h-10 rounded-full bg-white dark:bg-[#121638] border-2 border-cyan-500/50 text-slate-800 dark:text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"
+            >
+              <ChevronLeft className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+            </button>
+
+            {/* Pagination Dots */}
+            <div className="flex items-center gap-2">
+              {services.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setActiveMobileIdx(idx)}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    idx === activeMobileIdx
+                      ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-blue-600'
+                      : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
+                  }`}
+                  aria-label={`Go to service ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Right Chevron Button */}
+            <button
+              type="button"
+              onClick={handleNextMobile}
+              aria-label="Next service"
+              className="w-10 h-10 rounded-full bg-white dark:bg-[#121638] border-2 border-cyan-500/50 text-slate-800 dark:text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"
+            >
+              <ChevronRight className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+            </button>
+          </div>
+        </div>
+
+        {/* ============================================================== */}
+        {/* DESKTOP 3D FLOATING CAROUSEL STAGE (MD AND LARGER)             */}
+        {/* ============================================================== */}
+        <div
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className="hidden md:flex relative w-full h-[450px] lg:h-[480px] items-center justify-center [perspective:1200px] overflow-hidden mb-8"
         >
           {services.map((service, index) => {
             const Icon = service.icon;
             let offset = index - activeIndex;
 
-            // Handle shortest circular wrapping distance
             if (offset > totalCards / 2) offset -= totalCards;
             if (offset < -totalCards / 2) offset += totalCards;
 
@@ -200,7 +286,7 @@ export default function ServicesSection() {
                   position: 'absolute',
                   transformStyle: 'preserve-3d',
                 }}
-                className={`w-[280px] sm:w-[340px] md:w-[360px] h-[350px] sm:h-[380px] md:h-[400px] group relative overflow-visible transform-gpu ${
+                className={`w-[340px] lg:w-[360px] h-[380px] lg:h-[400px] group relative overflow-visible transform-gpu ${
                   index === activeIndex
                     ? 'pointer-events-auto cursor-default'
                     : 'pointer-events-auto cursor-pointer'
@@ -262,46 +348,6 @@ export default function ServicesSection() {
           })}
         </div>
 
-        {/* Navigation Controls (Chevrons & Dot Indicators) */}
-        <div className="flex items-center justify-between max-w-md mx-auto pt-4 border-t border-slate-200/80 dark:border-white/10 relative z-20 px-4">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={prevService}
-            suppressHydrationWarning
-            className="p-2.5 sm:p-3 rounded-full bg-slate-100 dark:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-800 dark:text-white hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 transition-colors shadow-md cursor-pointer"
-            aria-label="Previous service"
-          >
-            <ChevronLeft className="w-4 sm:w-5 h-4 sm:h-5" />
-          </motion.button>
-
-          <div className="flex items-center gap-2">
-            {services.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => triggerTransitionSequence(idx)}
-                suppressHydrationWarning
-                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  activeIndex === idx
-                    ? 'w-8 bg-gradient-to-r from-cyan-500 to-blue-600 shadow-[0_0_10px_#06b6d4]'
-                    : 'w-2.5 bg-slate-300 dark:bg-white/20 hover:bg-slate-400 dark:hover:bg-white/40'
-                }`}
-                aria-label={`Go to service ${idx + 1}`}
-              />
-            ))}
-          </div>
-
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={nextService}
-            suppressHydrationWarning
-            className="p-2.5 sm:p-3 rounded-full bg-slate-100 dark:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-800 dark:text-white hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 transition-colors shadow-md cursor-pointer"
-            aria-label="Next service"
-          >
-            <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
-          </motion.button>
-        </div>
       </div>
     </section>
   );
