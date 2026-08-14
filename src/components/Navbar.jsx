@@ -30,21 +30,26 @@ export default function Navbar() {
 
   const handleContactClick = (e) => {
     if (e && e.preventDefault) e.preventDefault();
-    if (mobileMenuOpen) setMobileMenuOpen(false);
+    setMobileMenuOpen(false);
 
-    const targetEl = document.getElementById('contact-wrapper') || document.getElementById('contact') || document.getElementById('footer');
-    if (targetEl) {
-      const topPos = targetEl.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: topPos,
-        behavior: 'smooth',
-      });
-    } else {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth',
-      });
-    }
+    setTimeout(() => {
+      const targetEl = document.getElementById('contact-wrapper') || document.getElementById('contact') || document.getElementById('footer');
+      if (targetEl) {
+        const headerOffset = 80;
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        });
+      } else {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth',
+        });
+      }
+    }, 200);
   };
 
   return (
@@ -133,14 +138,15 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
 
-          <Button
-            href="#contact"
-            onClick={handleContactClick}
-            showArrow={true}
-            className="hidden sm:inline-flex"
-          >
-            CONTACT US
-          </Button>
+          <div className="hidden lg:block">
+            <Button
+              href="#contact"
+              onClick={handleContactClick}
+              showArrow={true}
+            >
+              CONTACT US
+            </Button>
+          </div>
 
           {/* Mobile 3-Line Options Hamburger Button */}
           <button
@@ -186,7 +192,7 @@ export default function Navbar() {
                 </Link>
               ))}
 
-              <div className="pt-4 flex justify-center">
+              <div className="pt-3">
                 <Button
                   href="#contact"
                   onClick={handleContactClick}

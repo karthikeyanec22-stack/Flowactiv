@@ -49,7 +49,7 @@ export default function Button({
 
   if (href) {
     return (
-      <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="inline-block">
+      <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className={`inline-block ${className}`}>
         <Link
           href={href}
           onClick={onClick}
@@ -65,7 +65,7 @@ export default function Button({
   }
 
   return (
-    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="inline-block">
+    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className={`inline-block ${className}`}>
       <button
         type={type}
         onClick={onClick}
