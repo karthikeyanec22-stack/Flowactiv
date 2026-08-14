@@ -63,8 +63,150 @@ export default function GlobalRecognition() {
           </h2>
         </motion.div>
 
-        {/* 3D GLOBE ORBIT STAGE WITH FLOATING STAT CARDS */}
-        <div className="relative w-full max-w-4xl h-[380px] sm:h-[460px] lg:h-[500px] flex items-center justify-center my-2">
+        {/* ============================================================== */}
+        {/* MOBILE RESPONSIVE LAYOUT (CARDS FIXED ABOVE & BELOW GLOBE, NO OVERLAP) */}
+        {/* ============================================================== */}
+        <div className="w-full sm:hidden flex flex-col items-center my-4 relative">
+          {/* 1. TOP CARDS ROW (ABOVE GLOBE) */}
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full z-20 mb-3">
+            {/* Card 1: 100+ Projects Delivered */}
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md flex flex-col justify-between overflow-hidden group"
+            >
+              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none" />
+              <div>
+                <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                  100+
+                </div>
+                <h3 className="text-[11px] font-extrabold text-slate-800 dark:text-slate-100 mb-0.5 leading-tight">
+                  Projects Delivered
+                </h3>
+                <p className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight font-medium">
+                  Completed Diverse Digital Solutions For Businesses.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 2: 50+ Happy Clients */}
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md flex flex-col justify-between overflow-hidden group"
+            >
+              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none" />
+              <div>
+                <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                  50+
+                </div>
+                <h3 className="text-[11px] font-extrabold text-slate-800 dark:text-slate-100 mb-0.5 leading-tight">
+                  Happy Clients
+                </h3>
+                <p className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight font-medium">
+                  Trusted By Companies Worldwide For Reliable Services.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* 2. CENTER GLOBE WITH ORBIT RINGS */}
+          <div className="relative w-52 h-52 flex items-center justify-center my-2 z-10">
+            {/* Primary Orbit Ring */}
+            <div
+              className="absolute w-[250px] h-[250px] pointer-events-none z-[5]"
+              style={{
+                transform: 'perspective(1000px) rotateX(74deg) rotateZ(-15deg)',
+              }}
+            >
+              <div className="w-full h-full rounded-full border-2 border-cyan-500/40 dark:border-cyan-400/50 shadow-[0_0_20px_rgba(6,182,212,0.35)] relative flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full border border-cyan-400/30 blur-sm pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Glowing Globe Centerpiece */}
+            <motion.div
+              animate={{
+                y: [-5, 5, -5],
+                scale: [1, 1.02, 1],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="relative w-44 h-44 rounded-full z-10"
+            >
+              <div className="absolute -inset-1 rounded-full border-2 border-cyan-500/60 dark:border-cyan-400/60 shadow-[0_0_35px_rgba(6,182,212,0.4)] z-20 pointer-events-none" />
+              <div className="absolute inset-0 rounded-full bg-cyan-400/20 dark:bg-cyan-400/25 blur-xl pointer-events-none" />
+              <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl flex items-center justify-center bg-slate-900 dark:bg-[#071328]">
+                <Image
+                  src="/images/global.png"
+                  alt="Global Digital Network Globe"
+                  fill
+                  className="object-cover scale-110 relative z-10"
+                  priority
+                />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* 3. BOTTOM CARDS ROW (BELOW GLOBE) */}
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full z-20 mt-3">
+            {/* Card 3: 20+ Industries Served */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md flex flex-col justify-between overflow-hidden group"
+            >
+              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none" />
+              <div>
+                <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                  20+
+                </div>
+                <h3 className="text-[11px] font-extrabold text-slate-800 dark:text-slate-100 mb-0.5 leading-tight">
+                  Industries Served
+                </h3>
+                <p className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight font-medium">
+                  Providing Tailored Solutions Across Multiple Sectors.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 4: 8+ Years Experience */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md flex flex-col justify-between overflow-hidden group"
+            >
+              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none" />
+              <div>
+                <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                  8+
+                </div>
+                <h3 className="text-[11px] font-extrabold text-slate-800 dark:text-slate-100 mb-0.5 leading-tight">
+                  Years Experience
+                </h3>
+                <p className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight font-medium">
+                  Extensive Experience Delivering Digital Products.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* ============================================================== */}
+        {/* DESKTOP 3D GLOBE ORBIT STAGE (FLOATING 4-CORNER CARDS FOR SM AND UP) */}
+        {/* ============================================================== */}
+        <div className="hidden sm:flex relative w-full max-w-4xl h-[380px] sm:h-[460px] lg:h-[500px] items-center justify-center my-2">
 
           {/* Natural 3D Perspective Glowing Orbit Plates around Globe */}
           {/* 1. Primary Orbit Ring Plate */}

@@ -93,8 +93,8 @@ export default function Navbar() {
                     className={`transition-all duration-200 ${isActive
                       ? 'text-cyan-700 dark:text-cyan-400 font-black drop-shadow-sm'
                       : isHovered
-                      ? 'text-cyan-600 dark:text-cyan-300'
-                      : 'text-slate-800 dark:text-slate-400'
+                        ? 'text-cyan-600 dark:text-cyan-300'
+                        : 'text-slate-800 dark:text-slate-400'
                       }`}
                   >
                     {link.name}

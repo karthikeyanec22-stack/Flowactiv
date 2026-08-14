@@ -1,10 +1,14 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
 export default function Testimonial() {
+  const [activeMobileIdx, setActiveMobileIdx] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
   const testimonials = [
     {
       id: 1,
@@ -61,6 +65,16 @@ export default function Testimonial() {
         'Outstanding communication, clean modular code standards, and top-tier execution. I highly recommend them to any enterprise looking to build scalable software solutions fast.',
     },
   ];
+
+  // Auto-scroll 2s timer for mobile view
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActiveMobileIdx((prev) => (prev + 1) % testimonials.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [isPaused, testimonials.length]);
 
   // Grid Stagger Container Variants
   const containerVariants = {
@@ -128,7 +142,7 @@ export default function Testimonial() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '200px 0px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             TESTIMONIALS
@@ -141,14 +155,98 @@ export default function Testimonial() {
         </motion.div>
 
         {/* ============================================================== */}
-        {/* 2x3 TESTIMONIAL GRID                                          */}
+        {/* MOBILE SLIDER (ONE BY ONE AUTO-SCROLL 2S, NO CHEVRONS)         */}
+        {/* ============================================================== */}
+        <div
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          className="w-full md:hidden flex flex-col items-center justify-center relative z-10 mb-4"
+        >
+          {/* Continuous Track Viewport Window */}
+          <div className="relative w-full max-w-sm mx-auto overflow-hidden rounded-3xl">
+            <motion.div
+              className="flex w-full"
+              animate={{ x: `-${activeMobileIdx * 100}%` }}
+              transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+            >
+              {testimonials.map((item) => (
+                <div key={item.id} className="w-full shrink-0 p-1.5 select-none">
+                  <div className="group relative bg-white dark:bg-[#0c102b] border border-slate-200/90 dark:border-indigo-900/30 rounded-3xl p-6 sm:p-7 flex flex-col justify-between overflow-hidden shadow-sm dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-bl-full blur-xl pointer-events-none" />
+
+                    <div>
+                      {/* User Profile Header */}
+                      <div className="flex items-center gap-4 mb-5">
+                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-cyan-400/80 dark:border-cyan-400/60 shadow-md flex-shrink-0">
+                          <Image
+                            src={item.avatar}
+                            alt={item.name}
+                            fill
+                            className="object-cover"
+                            sizes="48px"
+                          />
+                        </div>
+                        <div className="text-left">
+                          <h3 className="text-base font-bold text-[#0b0e1e] dark:text-white">
+                            {item.name}
+                          </h3>
+                          <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                            {item.role}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* 5 Stars */}
+                      <div className="flex items-center gap-1.5 mb-3">
+                        {[...Array(item.rating)].map((_, starIdx) => (
+                          <Star key={starIdx} className="w-4 h-4 fill-amber-400 text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal text-left">
+                        &ldquo;{item.review}&rdquo;
+                      </p>
+                    </div>
+
+                    <div className="mt-4 flex justify-end">
+                      <Quote className="w-5 h-5 text-slate-300 dark:text-white/10" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Pagination Dots (NO CHEVRONS) */}
+          <div className="flex items-center justify-center gap-2 mt-5 z-20">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setActiveMobileIdx(idx)}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
+                  idx === activeMobileIdx
+                    ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-blue-600'
+                    : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
+                }`}
+                aria-label={`Go to testimonial ${idx + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* ============================================================== */}
+        {/* DESKTOP 2x3 TESTIMONIAL GRID (MD AND LARGER)                   */}
         {/* ============================================================== */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           {testimonials.map((item) => (
             <motion.div

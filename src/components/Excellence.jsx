@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Shield, Cpu, Lock, RefreshCw, ArrowRight, ExternalLink, Sparkles, Layers, Check, Monitor } from 'lucide-react';
+import { Zap, Shield, Cpu, Lock, ArrowRight, ExternalLink, Sparkles, Layers, Check, Monitor } from 'lucide-react';
 import Link from 'next/link';
 
 // ==============================================================
@@ -72,18 +72,6 @@ function FallingTechStackJar() {
           </motion.div>
         ))}
       </div>
-
-      {/* Re-trigger refresh button */}
-      <motion.button
-        whileHover={{ scale: 1.1, rotate: 180 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setResetKey((prev) => prev + 1)}
-        suppressHydrationWarning
-        className="absolute top-1.5 right-1.5 p-1 rounded-full bg-white/80 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:text-cyan-500 transition-colors shadow-sm cursor-pointer pointer-events-auto z-30"
-        title="Re-trigger falling icons"
-      >
-        <RefreshCw className="w-3 h-3" />
-      </motion.button>
     </div>
   );
 }
@@ -99,46 +87,34 @@ export default function Excellence() {
 
   // Immediate trigger: First opens cards out of box -> 650ms later folder disappears & cards spread to fixed places
   const triggerOpenSequence = () => {
+    isTriggeredRef.current = true;
     setIsLidOpen(true);
     setTimeout(() => {
       setIsSpread(true);
     }, 650);
   };
 
-  // Core function to start 1s auto-open timer
+  // Core function to start auto-open timer (triggers once)
   const startAutoOpenTimer = () => {
     if (isTriggeredRef.current) return;
     isTriggeredRef.current = true;
 
-    setIsLidOpen(false);
-    setIsSpread(false);
-
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       triggerOpenSequence();
-    }, 1000);
+    }, 400);
   };
 
-  // 1. Mount useEffect: Runs immediately on page reload / refresh inside section
+  // Cleanup timer on unmount
   useEffect(() => {
-    startAutoOpenTimer();
-
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, []);
 
-  // 2. Viewport Enter: Triggers auto-open on scroll / navbar click
+  // Viewport Enter: Triggers auto-open sequence only on first enter
   const handleViewportEnter = () => {
     startAutoOpenTimer();
-  };
-
-  // 3. Viewport Leave: Resets state so box closes when scrolled away
-  const handleViewportLeave = () => {
-    isTriggeredRef.current = false;
-    if (timerRef.current) clearTimeout(timerRef.current);
-    setIsLidOpen(false);
-    setIsSpread(false);
   };
 
   return (
@@ -163,8 +139,7 @@ export default function Excellence() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           onViewportEnter={handleViewportEnter}
-          onViewportLeave={handleViewportLeave}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-center mb-4 sm:mb-6"
         >
