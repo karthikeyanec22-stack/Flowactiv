@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { ExternalLink, Sparkles } from 'lucide-react';
+import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { productsData } from '../data/products';
 import Button from './Button';
 
@@ -21,12 +20,12 @@ export default function ProductsSection() {
     setActiveIndex((prev) => (prev - 1 + totalCards) % totalCards);
   };
 
-  // Auto-rotate every 1 second (1,000ms), paused when user hovers or clicks cards
+  // Auto-rotate every 5 seconds (5,000ms), paused when user hovers or touches cards
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       nextCard();
-    }, 1000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [activeIndex, isPaused]);
@@ -92,15 +91,15 @@ export default function ProductsSection() {
       {/* ============================================================== */}
       {/* 2. MAIN CONTENT CONTAINER                                      */}
       {/* ============================================================== */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Clean Header Title with Sparkles Icon */}
+        {/* Clean Header Title */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '200px 0px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             OUR ECOSYSTEM
@@ -116,7 +115,7 @@ export default function ProductsSection() {
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          className="relative w-full h-[520px] sm:h-[480px] lg:h-[440px] flex items-center justify-center [perspective:1200px] overflow-hidden my-4"
+          className="relative w-full h-[460px] sm:h-[480px] lg:h-[440px] flex items-center justify-center [perspective:1200px] overflow-visible my-2 sm:my-4 px-2 sm:px-4"
         >
           {productsData.map((product, idx) => {
             let offset = (idx - activeIndex + totalCards) % totalCards;
@@ -124,12 +123,12 @@ export default function ProductsSection() {
 
             const isActive = offset === 0;
 
-            // 3D Stacking Geometry: Wide Center Card (80% / max-w-4xl), compact side cards
-            const xPos = isActive ? 0 : offset > 0 ? 420 : -420;
-            const zDepth = isActive ? 0 : -220;
-            const yRotation = isActive ? 0 : offset > 0 ? -16 : 16;
-            const scaleVal = isActive ? 1.0 : 0.74;
-            const opacityVal = isActive ? 1.0 : 0.40;
+            // Smooth 3D Stacking Geometry
+            const xPos = isActive ? 0 : offset > 0 ? 320 : -320;
+            const zDepth = isActive ? 0 : -200;
+            const yRotation = isActive ? 0 : offset > 0 ? -14 : 14;
+            const scaleVal = isActive ? 1.0 : 0.78;
+            const opacityVal = isActive ? 1.0 : 0.35;
             const zIndexVal = isActive ? 30 : 20 - Math.abs(offset) * 5;
 
             return (
@@ -160,20 +159,59 @@ export default function ProductsSection() {
                 }}
                 transition={{
                   type: 'spring',
-                  stiffness: 260,
-                  damping: 26,
+                  stiffness: 180,
+                  damping: 24,
+                  mass: 0.8,
                 }}
                 style={{
                   position: 'absolute',
                   transformStyle: 'preserve-3d',
                 }}
-                className={`w-[98%] sm:w-[92%] lg:w-[85%] max-w-4xl sm:max-w-5xl cursor-grab active:cursor-grabbing ${isActive ? 'pointer-events-auto' : 'pointer-events-auto hover:opacity-75'
-                  }`}
+                className={`w-[96%] sm:w-[92%] lg:w-[85%] max-w-4xl sm:max-w-5xl cursor-grab active:cursor-grabbing ${
+                  isActive ? 'pointer-events-auto' : 'pointer-events-auto hover:opacity-75'
+                }`}
               >
                 <ProductCard product={product} isActive={isActive} />
               </motion.div>
             );
           })}
+        </div>
+
+        {/* CAROUSEL CONTROLS & PAGINATION DOTS */}
+        <div className="flex items-center justify-center gap-4 mt-6 sm:mt-8 relative z-30">
+          <button
+            type="button"
+            onClick={prevCard}
+            aria-label="Previous product"
+            className="w-10 h-10 rounded-full bg-white dark:bg-[#0c102a] border border-slate-300 dark:border-cyan-500/30 text-slate-800 dark:text-cyan-300 flex items-center justify-center shadow-md hover:bg-slate-100 dark:hover:bg-cyan-950/50 hover:scale-105 transition-all"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <div className="flex items-center gap-2">
+            {productsData.map((p, idx) => (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => setActiveIndex(idx)}
+                aria-label={`Go to product ${idx + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  activeIndex === idx
+                    ? 'w-8 bg-[#1e56d8] dark:bg-cyan-400'
+                    : 'w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600'
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={nextCard}
+            aria-label="Next product"
+            className="w-10 h-10 rounded-full bg-white dark:bg-[#0c102a] border border-slate-300 dark:border-cyan-500/30 text-slate-800 dark:text-cyan-300 flex items-center justify-center shadow-md hover:bg-slate-100 dark:hover:bg-cyan-950/50 hover:scale-105 transition-all"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
 
       </div>
@@ -191,11 +229,11 @@ function ProductCard({ product, isActive }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseX = useSpring(x, { stiffness: 250, damping: 25 });
-  const mouseY = useSpring(y, { stiffness: 250, damping: 25 });
+  const mouseX = useSpring(x, { stiffness: 180, damping: 22 });
+  const mouseY = useSpring(y, { stiffness: 180, damping: 22 });
 
-  const rotateX = useTransform(mouseY, [-0.5, 0.5], ['6deg', '-6deg']);
-  const rotateY = useTransform(mouseX, [-0.5, 0.5], ['-6deg', '6deg']);
+  const rotateX = useTransform(mouseY, [-0.5, 0.5], ['5deg', '-5deg']);
+  const rotateY = useTransform(mouseX, [-0.5, 0.5], ['-5deg', '5deg']);
 
   const [cursorPos, setCursorPos] = useState({ x: 50, y: 50 });
 
@@ -233,18 +271,17 @@ function ProductCard({ product, isActive }) {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => isActive && setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className={`relative w-full max-w-3xl ml-4 sm:ml-8 transition-all duration-300 group select-none ${isActive ? 'opacity-100' : 'opacity-80'
-        }`}
+      className={`relative w-full max-w-3xl ml-5 sm:ml-10 lg:ml-14 transition-all duration-300 group select-none ${
+        isActive ? 'opacity-100' : 'opacity-80'
+      }`}
     >
-      {/* 1. LEFT SOLID BLUE ORBIT DIAL SPHERE HOUSING (1:1 Reference Match #16) */}
+      {/* 1. LEFT SOLID BLUE ORBIT DIAL SPHERE HOUSING */}
       <motion.div
         style={{ transform: isActive ? 'translateZ(30px)' : 'none' }}
-        className="absolute -left-12 sm:-left-16 top-1/2 -translate-y-1/2 w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-[#1e56d8] dark:bg-blue-600 border-4 border-white dark:border-slate-900 shadow-2xl flex items-center justify-center z-20 pointer-events-none"
+        className="absolute -left-6 sm:-left-12 lg:-left-16 top-1/2 -translate-y-1/2 w-24 h-24 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-full bg-[#1e56d8] dark:bg-blue-600 border-4 border-white dark:border-slate-900 shadow-2xl flex items-center justify-center z-20 pointer-events-none transition-all duration-300"
       >
-
-
         {/* Central Glossy 3D Blue Sphere Logo Badge */}
-        <div className="relative z-20 w-22 h-22 sm:w-28 sm:h-28 rounded-full bg-gradient-to-tr from-blue-950 via-blue-700 to-cyan-400 border-2 border-white flex items-center justify-center shadow-lg overflow-hidden shrink-0">
+        <div className="relative z-20 w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-gradient-to-tr from-blue-950 via-blue-700 to-cyan-400 border-2 border-white flex items-center justify-center shadow-lg overflow-hidden shrink-0">
           {product.imageSrc ? (
             <Image
               src={product.imageSrc}
@@ -254,7 +291,7 @@ function ProductCard({ product, isActive }) {
               sizes="(max-width: 768px) 100vw, 140px"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-white font-black text-2xl sm:text-3xl">
+            <div className="w-full h-full flex items-center justify-center text-white font-black text-xl sm:text-2xl lg:text-3xl">
               {product.title[0]}
             </div>
           )}
@@ -263,8 +300,9 @@ function ProductCard({ product, isActive }) {
 
       {/* 2. RIGHT INTEGRATED CARD CONTAINER */}
       <div
-        className={`relative bg-white dark:bg-[#0c102a] rounded-[28px] sm:rounded-[36px] pl-26 sm:pl-36 pr-8 sm:pr-12 py-8 sm:py-10 border-4 border-slate-900 dark:border-cyan-500/40 shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between h-full min-h-[280px] sm:min-h-[320px] ${isActive ? 'border-slate-900 dark:border-cyan-400' : 'opacity-90'
-          }`}
+        className={`relative bg-white dark:bg-[#0c102a] rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] pl-20 sm:pl-28 lg:pl-36 pr-6 sm:pr-10 lg:pr-12 py-6 sm:py-8 lg:py-10 border-4 border-slate-900 dark:border-cyan-500/40 shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between h-full min-h-[260px] sm:min-h-[290px] lg:min-h-[320px] ${
+          isActive ? 'border-slate-900 dark:border-cyan-400' : 'opacity-90'
+        }`}
       >
         {/* Dynamic Spotlight Follower for Active Card */}
         {isActive && (
@@ -277,17 +315,17 @@ function ProductCard({ product, isActive }) {
           />
         )}
 
-        {/* FAR RIGHT CURVED BLUE ACCENT SHIELD WING (1:1 Reference Match) */}
-        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-12 bg-[#1e56d8] dark:bg-blue-600 rounded-r-3xl sm:rounded-r-[36px] rounded-l-[50%] pointer-events-none z-10 shadow-md" />
+        {/* FAR RIGHT CURVED BLUE ACCENT SHIELD WING */}
+        <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-10 lg:w-12 bg-[#1e56d8] dark:bg-blue-600 rounded-r-[24px] sm:rounded-r-[32px] lg:rounded-r-[36px] rounded-l-[50%] pointer-events-none z-10 shadow-md" />
 
         {/* Top Right Badge */}
         <div className="flex justify-end mb-2 relative z-20">
           {product.badgeType === 'new' ? (
-            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest px-3.5 py-1 rounded-full text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-500/40 shadow-sm">
+            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest px-3 sm:px-3.5 py-1 rounded-full text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-500/40 shadow-sm">
               {product.badgeText}
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-black uppercase tracking-widest px-3.5 py-1 rounded-full text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-500/40 shadow-sm">
+            <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-black uppercase tracking-widest px-3 sm:px-3.5 py-1 rounded-full text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-500/40 shadow-sm">
               {product.badgeText}
             </span>
           )}
@@ -295,22 +333,22 @@ function ProductCard({ product, isActive }) {
 
         {/* Title & Description */}
         <div className="my-auto relative z-20">
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-950 dark:text-white tracking-tight mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
+          <h3 className="text-lg sm:text-2xl lg:text-3xl font-black text-slate-950 dark:text-white tracking-tight mb-1.5 sm:mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
             {product.title}
           </h3>
-          <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 leading-relaxed mb-5 max-w-md">
+          <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 leading-relaxed mb-4 sm:mb-5 max-w-md">
             {product.description}
           </p>
         </div>
 
-        {/* Blue CTA Pill Button (1:1 Reference Match) */}
+        {/* Blue CTA Pill Button */}
         <div className="relative z-20 w-full sm:w-auto">
           <Button
             href={product.link}
             target="_blank"
             rel="noopener noreferrer"
             icon={ExternalLink}
-            className="bg-[#1e56d8] hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white font-extrabold px-7 py-3 rounded-full border border-blue-400/40 shadow-lg shadow-blue-500/30"
+            className="bg-[#1e56d8] hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white font-extrabold text-xs sm:text-sm px-5 sm:px-7 py-2.5 sm:py-3 rounded-full border border-blue-400/40 shadow-lg shadow-blue-500/30"
           >
             CHECK WEBSITE
           </Button>
@@ -319,4 +357,4 @@ function ProductCard({ product, isActive }) {
       </div>
     </motion.div>
   );
-}
+}
