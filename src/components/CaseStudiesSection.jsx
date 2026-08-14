@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Sparkles, ExternalLink, X } from 'lucide-react';
 import Button from './Button';
 
+
+
 export default function CaseStudiesSection() {
   const [selectedCase, setSelectedCase] = useState(null);
 
