@@ -298,37 +298,56 @@ export default function FaqSection() {
 
                       {/* Date & Time Row */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {/* Preferred Date Field */}
                         <div>
                           <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                             Preferred Date
                           </label>
                           <div className="relative">
-                            <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                            <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
                             <input
                               type="date"
                               name="date"
                               required
+                              min={new Date().toISOString().split('T')[0]}
                               value={formData.date}
                               onChange={handleInputChange}
-                              className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors"
+                              onClick={(e) => e.target.showPicker && e.target.showPicker()}
+                              className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors cursor-pointer font-medium"
                             />
                           </div>
                         </div>
 
+                        {/* Preferred Time Field (12-Hour AM/PM Format) */}
                         <div>
                           <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                            Preferred Time
+                            Preferred Time (AM/PM)
                           </label>
                           <div className="relative">
-                            <Clock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                            <input
-                              type="time"
+                            <Clock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
+                            <select
                               name="time"
                               required
                               value={formData.time}
                               onChange={handleInputChange}
-                              className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors"
-                            />
+                              className="w-full pl-10 pr-8 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors cursor-pointer appearance-none font-medium"
+                            >
+                              <option value="" disabled>Select Time (AM/PM)</option>
+                              <option value="09:00 AM">09:00 AM</option>
+                              <option value="10:00 AM">10:00 AM</option>
+                              <option value="11:00 AM">11:00 AM</option>
+                              <option value="12:00 PM">12:00 PM (Noon)</option>
+                              <option value="01:00 PM">01:00 PM</option>
+                              <option value="02:00 PM">02:00 PM</option>
+                              <option value="03:00 PM">03:00 PM</option>
+                              <option value="04:00 PM">04:00 PM</option>
+                              <option value="05:00 PM">05:00 PM</option>
+                              <option value="06:00 PM">06:00 PM</option>
+                              <option value="07:00 PM">07:00 PM</option>
+                            </select>
+                            <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 text-xs">
+                              ▼
+                            </div>
                           </div>
                         </div>
                       </div>
