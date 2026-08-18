@@ -111,14 +111,14 @@ export default function FooterSection() {
             {/* ============================================================== */}
             {/* TOP SECTION: NAVIGATION + EXPLORE + ADDRESS + FOLLOW US       */}
             {/* ============================================================== */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 items-start mb-6 sm:mb-8 relative z-10">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-start mb-2 sm:mb-2.5 relative z-10">
               
               {/* Column 1: NAVIGATION */}
-              <div>
-                <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-5 block">
+              <div className="col-span-1">
+                <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-4 sm:mb-5 block">
                   NAVIGATION
                 </span>
-                <ul className="space-y-3.5">
+                <ul className="space-y-3 sm:space-y-3.5">
                   {leftLinks.map((link, idx) => (
                     <li key={idx}>
                       <Link
@@ -133,12 +133,12 @@ export default function FooterSection() {
                 </ul>
               </div>
 
-              {/* Column 2: EXPLORE */}
-              <div>
-                <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-5 block">
+              {/* Column 2: EXPLORE (Positioned to the right of NAVIGATION on mobile) */}
+              <div className="col-span-1">
+                <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-4 sm:mb-5 block">
                   EXPLORE
                 </span>
-                <ul className="space-y-3.5">
+                <ul className="space-y-3 sm:space-y-3.5">
                   {rightLinks.map((link, idx) => (
                     <li key={idx}>
                       <Link
@@ -154,8 +154,8 @@ export default function FooterSection() {
               </div>
 
               {/* Column 3: ADDRESS */}
-              <div>
-                <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-5 block">
+              <div className="col-span-2 sm:col-span-1">
+                <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-4 sm:mb-5 block">
                   ADDRESS
                 </span>
                 <h4 className="text-sm font-bold text-white mb-2.5">
@@ -184,12 +184,12 @@ export default function FooterSection() {
               </div>
 
               {/* Column 4: FOLLOW US */}
-              <div>
-                <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-5 block">
+              <div className="col-span-2 sm:col-span-1">
+                <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-4 sm:mb-5 block">
                   FOLLOW US
                 </span>
                 <div className="flex flex-col gap-4">
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-3">
                     {socialPlatforms.map((social, idx) => {
                       const IconComponent = social.icon;
                       return (
@@ -261,17 +261,39 @@ export default function FooterSection() {
 
             </div>
 
-            {/* ============================================================== */}
-            {/* SUBTLE HORIZONTAL DIVIDER                                     */}
-            {/* ============================================================== */}
-            <div className="w-full h-[1px] bg-white/10 my-3 sm:my-4" />
+          </div>
 
-            {/* ============================================================== */}
-            {/* COPYRIGHT & LEGAL LINKS ROW                                    */}
-            {/* ============================================================== */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-indigo-200/60 font-medium mb-0">
+          {/* ============================================================== */}
+          {/* FULL-WIDTH BRAND LOCKUP (CENTERED ABOVE COPYRIGHT BAR)        */}
+          {/* ============================================================== */}
+          <div className="w-full pt-0 pb-0 relative z-10 flex items-center justify-center overflow-hidden">
+            <div className="inline-flex items-center justify-center gap-2.5 sm:gap-6 lg:gap-8 group cursor-default select-none px-4 max-w-full">
+              {/* Pure White Transparent Logo Icon matching text height */}
+              <div className="relative w-9 sm:w-[9.5vw] lg:w-[11vw] h-auto flex items-center justify-center shrink-0">
+                <Image
+                  src="/images/logo-transparent.png"
+                  alt="Flowactiv Brand Logo"
+                  width={300}
+                  height={140}
+                  className="w-full h-auto opacity-100 group-hover:scale-105 transition-transform duration-500 filter drop-shadow-md"
+                  priority
+                />
+              </div>
+              {/* Giant Pure White Brand Typography "flowactiv" */}
+              <h1 className="text-4xl sm:text-[9.5vw] lg:text-[11vw] font-bold tracking-tight text-white leading-none whitespace-nowrap drop-shadow-md">
+                flowactiv
+              </h1>
+            </div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            {/* SUBTLE HORIZONTAL DIVIDER */}
+            <div className="w-full h-[1px] bg-white/10 my-1" />
+
+            {/* COPYRIGHT & LEGAL LINKS ROW (AT VERY BOTTOM) */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs text-indigo-200/60 font-medium pb-6 sm:pb-8 text-center sm:text-left">
               <p>© {new Date().getFullYear()} Flowactiv. All rights reserved.</p>
-              <div className="flex items-center gap-6">
+              <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6">
                 <Link href="#" className="hover:text-white transition-colors">
                   Terms & Conditions
                 </Link>
@@ -282,29 +304,6 @@ export default function FooterSection() {
                   Privacy Policy
                 </Link>
               </div>
-            </div>
-          </div>
-
-          {/* ============================================================== */}
-          {/* FULL-WIDTH CROPPED BRAND LOCKUP (Cloned 1:1 from Yummygum)    */}
-          {/* ============================================================== */}
-          <div className="w-full pt-0 -mt-1 sm:-mt-2 overflow-hidden relative z-10 flex items-end justify-center">
-            <div className="inline-flex items-center justify-center gap-3 sm:gap-6 lg:gap-8 group cursor-default select-none translate-y-2 sm:translate-y-4 lg:translate-y-6 px-2">
-              {/* Pure White Transparent Logo Icon matching text height */}
-              <div className="relative w-9 sm:w-[11vw] lg:w-[13.5vw] h-auto flex items-center justify-center shrink-0">
-                <Image
-                  src="/images/logo-transparent.png"
-                  alt="Flowactiv Brand Logo"
-                  width={300}
-                  height={140}
-                  className="w-full h-auto opacity-100 group-hover:scale-105 transition-transform duration-500"
-                  priority
-                />
-              </div>
-              {/* Giant Pure White Brand Typography "flowactiv" (Lowercase f) */}
-              <h1 className="text-4xl sm:text-[11vw] lg:text-[13.5vw] font-bold tracking-tight text-white leading-none whitespace-nowrap">
-                flowactiv
-              </h1>
             </div>
           </div>
         </footer>

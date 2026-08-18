@@ -14,6 +14,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { name: 'HOME', href: '#hero' },
     { name: 'PRODUCTS', badge: 'NEW', href: '#products' },
     { name: 'SERVICES', href: '#services' },
     { name: 'OUR EXCELLENCE', href: '#excellence' },
@@ -54,10 +55,10 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-[#02050e]/85 backdrop-blur-md border-b border-slate-200/80 dark:border-white/5 transition-colors duration-300 will-change-transform">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
 
         {/* Brand Logo */}
-        <Link href="/" className="flex flex-col items-center leading-none group shrink-0">
+        <Link href="#hero" onClick={() => setActiveIdx(0)} className="flex flex-col items-center leading-none group shrink-0">
           <div className="relative w-16 sm:w-20 h-7 flex items-center justify-center overflow-hidden">
             <Image
               src="/images/logo-transparent.png"
@@ -75,7 +76,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links */}
         <nav
-          className="hidden lg:flex items-center gap-1"
+          className="hidden lg:flex items-center gap-0.5 xl:gap-2 2xl:gap-3"
           onMouseLeave={() => setHoveredIdx(null)}
         >
           {navLinks.map((link, idx) => {
@@ -88,7 +89,7 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setActiveIdx(idx)}
                 onMouseEnter={() => setHoveredIdx(idx)}
-                className="relative px-3.5 py-2.5 text-[11px] font-extrabold tracking-wider transition-colors duration-300 flex items-center gap-1.5 uppercase cursor-pointer"
+                className="relative px-2 xl:px-3.5 py-2 text-[10px] xl:text-[11px] 2xl:text-[12px] font-extrabold tracking-wider transition-colors duration-300 flex items-center gap-1.5 uppercase cursor-pointer whitespace-nowrap"
               >
                 <motion.div
                   whileTap={{ scale: 0.96 }}

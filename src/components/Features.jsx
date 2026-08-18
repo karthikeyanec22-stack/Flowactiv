@@ -47,7 +47,7 @@ export default function Features() {
       {/* 2. MAIN CONTENT TEXT                                          */}
       {/* ============================================================== */}
       <div className="relative z-10 px-6 text-center max-w-5xl mx-auto flex items-center justify-center">
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-950 dark:text-white leading-tight drop-shadow-md">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight drop-shadow-md">
           Creating The Next Generation Of Digital Products
         </h2>
       </div>

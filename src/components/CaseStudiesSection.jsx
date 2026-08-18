@@ -105,7 +105,7 @@ export default function CaseStudiesSection() {
             CASE STUDIES
           </span>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 dark:text-white max-w-4xl mx-auto leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white max-w-4xl mx-auto leading-tight">
             Innovative Digital Solutions <br /> We&apos;ve Designed And Built
           </h2>
         </motion.div>
@@ -226,6 +226,7 @@ export default function CaseStudiesSection() {
                 type="button"
                 onClick={handlePrevMobile}
                 aria-label="Previous case study"
+                suppressHydrationWarning
                 className="w-10 h-10 rounded-full bg-white dark:bg-[#121638] border-2 border-purple-500/50 text-slate-800 dark:text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"
               >
                 <ChevronLeft className="w-5 h-5 text-purple-600 dark:text-cyan-400" />
@@ -238,6 +239,7 @@ export default function CaseStudiesSection() {
                     key={idx}
                     type="button"
                     onClick={() => setActiveMobileIdx(idx)}
+                    suppressHydrationWarning
                     className={`transition-all duration-300 rounded-full cursor-pointer ${
                       idx === activeMobileIdx
                         ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-purple-500'
@@ -253,6 +255,7 @@ export default function CaseStudiesSection() {
                 type="button"
                 onClick={handleNextMobile}
                 aria-label="Next case study"
+                suppressHydrationWarning
                 className="w-10 h-10 rounded-full bg-white dark:bg-[#121638] border-2 border-purple-500/50 text-slate-800 dark:text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"
               >
                 <ChevronRight className="w-5 h-5 text-purple-600 dark:text-cyan-400" />
@@ -345,7 +348,7 @@ export default function CaseStudiesSection() {
       {/* CASE STUDY DETAIL MODAL DIALOG */}
       <AnimatePresence>
         {selectedCase && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
             {/* Backdrop Blur */}
             <motion.div
               initial={{ opacity: 0 }}

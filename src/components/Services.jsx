@@ -81,6 +81,40 @@ export default function ServicesSection() {
       id="services"
       className="scroll-mt-16 sm:scroll-mt-20 pt-4 sm:pt-10 pb-8 sm:pb-20 relative w-full bg-[#f4f6fa] dark:bg-[#02050e] text-slate-900 dark:text-white overflow-hidden transition-colors duration-500"
     >
+      {/* ============================================================== */}
+      {/* THICK CHEVRON BAND INFINITE DOWNWARD MOTION (MATCHES FEATURES) */}
+      {/* ============================================================== */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          animate={{ y: [0, 240] }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+          className="absolute -top-60 left-0 w-full h-[160%] flex flex-col justify-around pointer-events-none"
+        >
+          <svg
+            viewBox="0 0 1200 1200"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full"
+            preserveAspectRatio="none"
+          >
+            {[...Array(12)].map((_, i) => (
+              <path
+                key={i}
+                d={`M -100 ${i * 240 - 100} L 600 ${i * 240 + 100} L 1300 ${i * 240 - 100} L 1300 ${i * 240 + 20} L 600 ${i * 240 + 220} L -100 ${i * 240 + 20} Z`}
+                className="fill-slate-300/40 dark:fill-[#0e1326]"
+              />
+            ))}
+          </svg>
+        </motion.div>
+      </div>
+
+      {/* Central Radial Mask Overlay for Soft Edge Fading */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#f4f6fa_85%)] dark:bg-[radial-gradient(ellipse_at_center,transparent_20%,#02050e_85%)] pointer-events-none z-0" />
+
       {/* AMBIENT BACKGROUND GLOW ORBS */}
       <motion.div
         animate={{
@@ -88,7 +122,7 @@ export default function ServicesSection() {
           opacity: [0.25, 0.55, 0.25],
         }}
         transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/4 -left-32 w-[550px] h-[550px] bg-gradient-to-tr from-cyan-500/20 via-blue-500/15 to-transparent rounded-full blur-[130px] pointer-events-none"
+        className="absolute top-1/4 -left-32 w-[550px] h-[550px] bg-gradient-to-tr from-cyan-500/20 via-blue-500/15 to-transparent rounded-full blur-[130px] pointer-events-none z-0"
       />
       <motion.div
         animate={{
@@ -96,7 +130,7 @@ export default function ServicesSection() {
           opacity: [0.25, 0.55, 0.25],
         }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute bottom-10 -right-32 w-[550px] h-[550px] bg-gradient-to-tl from-purple-500/20 via-indigo-500/15 to-transparent rounded-full blur-[130px] pointer-events-none"
+        className="absolute bottom-10 -right-32 w-[550px] h-[550px] bg-gradient-to-tl from-purple-500/20 via-indigo-500/15 to-transparent rounded-full blur-[130px] pointer-events-none z-0"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -112,7 +146,7 @@ export default function ServicesSection() {
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             OUR SERVICES
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-950 dark:text-white max-w-3xl mx-auto leading-tight mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white max-w-3xl mx-auto leading-tight mb-4">
             Services We Provide To Accelerate Your Business
           </h2>
           <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -131,7 +165,7 @@ export default function ServicesSection() {
           className="w-full md:hidden flex flex-col items-center justify-center py-2 relative z-10"
         >
           {/* Horizontal Track Viewport Window */}
-          <div className="relative w-full max-w-[340px] h-[370px] mx-auto overflow-hidden rounded-3xl">
+          <div className="relative w-full max-w-[340px] h-[315px] mx-auto overflow-hidden">
             <motion.div
               className="flex w-full h-full"
               animate={{ x: `-${activeMobileIdx * 100}%` }}
@@ -143,37 +177,65 @@ export default function ServicesSection() {
                 return (
                   <div
                     key={idx}
-                    className="w-full h-full shrink-0 flex items-center justify-center p-1 select-none"
+                    className="w-full h-full shrink-0 flex items-center justify-center p-2 select-none"
                   >
-                    <div className="relative w-full h-full bg-white dark:bg-[#0c122c] border-2 border-slate-200 dark:border-cyan-500/40 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col justify-between overflow-hidden group">
+                    <div className="relative w-[320px] h-[300px] overflow-visible group">
+                      {/* Speech Bubble SVG Frame & Clip Defs */}
+                      <svg
+                        viewBox="0 0 320 300"
+                        className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0"
+                        preserveAspectRatio="none"
+                      >
+                        <defs>
+                          <clipPath id={`mobileServiceClip-${idx}`}>
+                            <path d="M 24 4 H 296 A 22 22 0 0 1 316 26 V 238 A 22 22 0 0 1 296 260 H 90 L 35 295 L 35 260 H 24 A 22 22 0 0 1 4 238 V 26 A 22 22 0 0 1 24 4 Z" />
+                          </clipPath>
+                        </defs>
+                        <path
+                          d="M 24 4 H 296 A 22 22 0 0 1 316 26 V 238 A 22 22 0 0 1 296 260 H 90 L 35 295 L 35 260 H 24 A 22 22 0 0 1 4 238 V 26 A 22 22 0 0 1 24 4 Z"
+                          className="fill-white dark:fill-[#0c122c] stroke-slate-900 dark:stroke-cyan-400 transition-colors duration-300"
+                          strokeWidth="3.5"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+
+                      {/* Clipped Background Glow Shade */}
                       <div
-                        className={`absolute -top-12 -right-12 w-44 h-44 bg-gradient-to-br ${service.glow} rounded-full blur-2xl opacity-50 pointer-events-none`}
-                      />
-
-                      <div>
-                        <div className="w-12 h-12 rounded-2xl bg-cyan-50/90 dark:bg-cyan-950/60 border-2 border-cyan-200 dark:border-cyan-500/40 flex items-center justify-center mb-4 shadow-sm">
-                          <Icon className="w-6 h-6 text-slate-800 dark:text-cyan-300" />
-                        </div>
-
-                        <h3 className="text-xl font-black text-slate-950 dark:text-white tracking-tight mb-2">
-                          {service.title}
-                        </h3>
-                        <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                          {service.description}
-                        </p>
+                        className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+                        style={{ clipPath: `url(#mobileServiceClip-${idx})` }}
+                      >
+                        <div
+                          className={`absolute -top-12 -right-12 w-44 h-44 bg-gradient-to-br ${service.glow} rounded-full blur-2xl opacity-50 pointer-events-none`}
+                        />
                       </div>
 
-                      <div className="pt-4 border-t border-slate-100 dark:border-white/10 flex justify-between items-center">
-                        <Link
-                          href="#contact"
-                          className="inline-flex items-center gap-2 text-xs font-black tracking-widest uppercase text-slate-900 dark:text-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors"
-                        >
-                          <span>LEARN MORE</span>
-                          <ArrowRight className="w-4 h-4 text-slate-900 dark:text-cyan-400" />
-                        </Link>
-                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">
-                          0{idx + 1} / 0{services.length}
-                        </span>
+                      {/* Card Content Container */}
+                      <div className="relative z-10 w-full h-[260px] p-6 flex flex-col justify-between">
+                        <div>
+                          <div className="w-12 h-12 rounded-2xl bg-cyan-50/90 dark:bg-cyan-950/60 border-2 border-cyan-200 dark:border-cyan-500/40 flex items-center justify-center mb-3 shadow-sm">
+                            <Icon className="w-6 h-6 text-slate-800 dark:text-cyan-300" />
+                          </div>
+
+                          <h3 className="text-lg font-black text-slate-950 dark:text-cyan-400 tracking-tight mb-1.5">
+                            {service.title}
+                          </h3>
+                          <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                            {service.description}
+                          </p>
+                        </div>
+
+                        <div className="pt-3 border-t border-slate-200/80 dark:border-white/10 flex justify-between items-center">
+                          <Link
+                            href="#contact"
+                            className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-[11px] font-extrabold tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_15px_rgba(6,182,212,0.35)] active:scale-95 transition-all duration-300 cursor-pointer group/btn"
+                          >
+                            <span>LEARN MORE</span>
+                            <ArrowRight className="w-3.5 h-3.5 text-white group-hover/btn:translate-x-1 transition-transform" />
+                          </Link>
+                          <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">
+                            0{idx + 1} / 0{services.length}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -189,6 +251,7 @@ export default function ServicesSection() {
               type="button"
               onClick={handlePrevMobile}
               aria-label="Previous service"
+              suppressHydrationWarning
               className="w-10 h-10 rounded-full bg-white dark:bg-[#121638] border-2 border-cyan-500/50 text-slate-800 dark:text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
@@ -201,6 +264,7 @@ export default function ServicesSection() {
                   key={idx}
                   type="button"
                   onClick={() => setActiveMobileIdx(idx)}
+                  suppressHydrationWarning
                   className={`transition-all duration-300 rounded-full cursor-pointer ${
                     idx === activeMobileIdx
                       ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-blue-600'
@@ -216,6 +280,7 @@ export default function ServicesSection() {
               type="button"
               onClick={handleNextMobile}
               aria-label="Next service"
+              suppressHydrationWarning
               className="w-10 h-10 rounded-full bg-white dark:bg-[#121638] border-2 border-cyan-500/50 text-slate-800 dark:text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"
             >
               <ChevronRight className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
@@ -292,12 +357,17 @@ export default function ServicesSection() {
                     : 'pointer-events-auto cursor-pointer'
                 }`}
               >
-                {/* Speech Bubble SVG Frame */}
+                {/* Speech Bubble SVG Frame & Clip Defs */}
                 <svg
                   viewBox="0 0 360 400"
                   className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0"
                   preserveAspectRatio="none"
                 >
+                  <defs>
+                    <clipPath id={`serviceCardClip-${index}`}>
+                      <path d="M 32 4 H 328 A 28 28 0 0 1 356 32 V 328 A 28 28 0 0 1 328 356 H 110 L 45 396 L 45 356 H 32 A 28 28 0 0 1 4 328 V 32 A 28 28 0 0 1 32 4 Z" />
+                    </clipPath>
+                  </defs>
                   <path
                     d="M 32 4 H 328 A 28 28 0 0 1 356 32 V 328 A 28 28 0 0 1 328 356 H 110 L 45 396 L 45 356 H 32 A 28 28 0 0 1 4 328 V 32 A 28 28 0 0 1 32 4 Z"
                     className={`fill-white dark:fill-[#0c122c] transition-colors duration-300 ${
@@ -310,11 +380,18 @@ export default function ServicesSection() {
                   />
                 </svg>
 
+                {/* Clipped Background Glow Shade (Strictly Contained Within Card Border) */}
+                <div
+                  className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+                  style={{ clipPath: `url(#serviceCardClip-${index})` }}
+                >
+                  <div
+                    className={`absolute -top-12 -right-12 w-44 h-44 bg-gradient-to-br ${service.glow} rounded-full blur-2xl opacity-40 group-hover:opacity-100 transition-opacity duration-500`}
+                  />
+                </div>
+
                 {/* Card Content Overlay */}
                 <div className="relative z-10 px-6 sm:px-8 pt-5 sm:pt-7 pb-7 flex flex-col justify-between h-[330px] sm:h-[356px]">
-                  <div
-                    className={`absolute -top-12 -right-12 w-44 h-44 bg-gradient-to-br ${service.glow} rounded-full blur-2xl opacity-40 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
-                  />
 
                   <div>
                     <motion.div
@@ -336,10 +413,10 @@ export default function ServicesSection() {
                   <div className="pb-1">
                     <Link
                       href="#contact"
-                      className="inline-flex items-center gap-2 text-xs font-black tracking-widest uppercase text-slate-900 dark:text-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors cursor-pointer"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_18px_rgba(6,182,212,0.4)] hover:shadow-cyan-500/50 active:scale-95 transition-all duration-300 cursor-pointer group/btn"
                     >
                       <span>LEARN MORE</span>
-                      <ArrowRight className="w-4 h-4 text-slate-900 dark:text-cyan-400 transform group-hover:translate-x-2 transition-transform duration-300 ease-out" />
+                      <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-1.5 transition-transform duration-300" />
                     </Link>
                   </div>
                 </div>

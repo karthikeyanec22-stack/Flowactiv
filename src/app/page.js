@@ -16,7 +16,7 @@ export default function HomePage() {
     <div className="relative min-h-screen bg-[#f4f6fa] dark:bg-[#02050e] text-slate-900 dark:text-white transition-colors duration-500">
       <HashScrollHandler />
       <Preloader />
-      <main className="relative z-10 bg-[#f4f6fa] dark:bg-[#02050e] shadow-[0_30px_70px_rgba(0,0,0,0.5)] transition-colors duration-500 pb-1">
+      <main className="relative bg-[#f4f6fa] dark:bg-[#02050e] shadow-[0_30px_70px_rgba(0,0,0,0.5)] transition-colors duration-500 pb-1">
         <HeroSection />
         <ProductsSection />
         <Services />

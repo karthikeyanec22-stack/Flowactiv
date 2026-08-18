@@ -86,7 +86,7 @@ export default function ProductsSection() {
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             OUR ECOSYSTEM
           </span>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 dark:text-white leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight">
             Products We&apos;ve Built & Are Building
           </h2>
         </motion.div>
@@ -171,6 +171,7 @@ export default function ProductsSection() {
               type="button"
               onClick={prevCard}
               aria-label="Previous product"
+              suppressHydrationWarning
               className="w-10 h-10 rounded-full bg-white dark:bg-[#0c102a] border border-slate-300 dark:border-cyan-500/30 text-slate-800 dark:text-cyan-300 flex items-center justify-center shadow-md hover:bg-slate-100 dark:hover:bg-cyan-950/50 hover:scale-105 transition-all"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -183,6 +184,7 @@ export default function ProductsSection() {
                   type="button"
                   onClick={() => setActiveIndex(idx)}
                   aria-label={`Go to product ${idx + 1}`}
+                  suppressHydrationWarning
                   className={`h-2.5 rounded-full transition-all duration-300 ${
                     activeIndex === idx
                       ? 'w-8 bg-[#1e56d8] dark:bg-cyan-400'
@@ -196,6 +198,7 @@ export default function ProductsSection() {
               type="button"
               onClick={nextCard}
               aria-label="Next product"
+              suppressHydrationWarning
               className="w-10 h-10 rounded-full bg-white dark:bg-[#0c102a] border border-slate-300 dark:border-cyan-500/30 text-slate-800 dark:text-cyan-300 flex items-center justify-center shadow-md hover:bg-slate-100 dark:hover:bg-cyan-950/50 hover:scale-105 transition-all"
             >
               <ChevronRight className="w-5 h-5" />
@@ -349,14 +352,13 @@ function ProductCard({ product, isActive, isMobileLayout = false }) {
           </p>
         </div>
 
-        {/* Black CTA Pill Button */}
+        {/* CTA Pill Button */}
         <div className="relative z-20 w-full sm:w-auto">
           <Button
             href={product.link}
             target="_blank"
             rel="noopener noreferrer"
             icon={ExternalLink}
-            className="bg-black text-white hover:bg-cyan-500 hover:text-slate-950 border border-slate-800 dark:border-white/20 shadow-md"
           >
             CHECK WEBSITE
           </Button>

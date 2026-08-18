@@ -58,7 +58,7 @@ export default function GlobalRecognition() {
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             GLOBAL RECOGNITION
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight">
             Globally Trusted Digital Partner
           </h2>
         </motion.div>
@@ -75,10 +75,12 @@ export default function GlobalRecognition() {
               initial={{ opacity: 0, y: -15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md flex flex-col justify-between overflow-hidden group"
+              whileHover={{ scale: 1.06, zIndex: 30 }}
+              whileTap={{ scale: 1.04, zIndex: 30 }}
+              transition={{ duration: 0.3 }}
+              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md hover:shadow-xl dark:hover:shadow-[0_10px_25px_rgba(6,182,212,0.25)] hover:border-cyan-500 dark:hover:border-cyan-400 flex flex-col justify-between overflow-hidden group cursor-pointer transition-all duration-300"
             >
-              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none" />
+              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
               <div>
                 <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                   100+
@@ -97,10 +99,12 @@ export default function GlobalRecognition() {
               initial={{ opacity: 0, y: -15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md flex flex-col justify-between overflow-hidden group"
+              whileHover={{ scale: 1.06, zIndex: 30 }}
+              whileTap={{ scale: 1.04, zIndex: 30 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md hover:shadow-xl dark:hover:shadow-[0_10px_25px_rgba(6,182,212,0.25)] hover:border-cyan-500 dark:hover:border-cyan-400 flex flex-col justify-between overflow-hidden group cursor-pointer transition-all duration-300"
             >
-              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none" />
+              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
               <div>
                 <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                   50+
@@ -163,10 +167,12 @@ export default function GlobalRecognition() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md flex flex-col justify-between overflow-hidden group"
+              whileHover={{ scale: 1.06, zIndex: 30 }}
+              whileTap={{ scale: 1.04, zIndex: 30 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md hover:shadow-xl dark:hover:shadow-[0_10px_25px_rgba(6,182,212,0.25)] hover:border-cyan-500 dark:hover:border-cyan-400 flex flex-col justify-between overflow-hidden group cursor-pointer transition-all duration-300"
             >
-              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none" />
+              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
               <div>
                 <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                   20+
@@ -185,10 +191,12 @@ export default function GlobalRecognition() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md flex flex-col justify-between overflow-hidden group"
+              whileHover={{ scale: 1.06, zIndex: 30 }}
+              whileTap={{ scale: 1.04, zIndex: 30 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+              className="relative bg-white dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-200/90 dark:border-cyan-500/40 rounded-2xl p-3 shadow-md hover:shadow-xl dark:hover:shadow-[0_10px_25px_rgba(6,182,212,0.25)] hover:border-cyan-500 dark:hover:border-cyan-400 flex flex-col justify-between overflow-hidden group cursor-pointer transition-all duration-300"
             >
-              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none" />
+              <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
               <div>
                 <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                   8+

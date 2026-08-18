@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Testimonial() {
-  const [activeMobileIdx, setActiveMobileIdx] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   const testimonials = [
@@ -66,63 +66,30 @@ export default function Testimonial() {
     },
   ];
 
-  // Auto-scroll 2s timer for mobile view
+  const handleNext = () => {
+    setActiveIdx((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const handlePrev = () => {
+    setActiveIdx((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  // Auto-scroll every 3 seconds
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
-      setActiveMobileIdx((prev) => (prev + 1) % testimonials.length);
-    }, 2000);
+      handleNext();
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [isPaused, testimonials.length]);
-
-  // Grid Stagger Container Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  // Card Reveal Variants
-  const cardVariants = {
-    hidden: { opacity: 0, y: 35, scale: 0.96 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] },
-    },
-  };
-
-  // 5 Stars Move Up Variants
-  const starVariants = {
-    hidden: { opacity: 0, y: 28, scale: 0.4 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 280,
-        damping: 14,
-        delay: 0.2 + i * 0.09,
-      },
-    }),
-  };
 
   return (
     <section
       id="testimonials"
       className="scroll-mt-16 sm:scroll-mt-20 pt-4 sm:pt-10 pb-8 sm:pb-20 relative w-full bg-[#f8fafc] dark:bg-[#02050e] text-slate-950 dark:text-white overflow-hidden transition-colors duration-500"
     >
-      {/* ============================================================== */}
-      {/* AMBIENT BACKGROUND GLOW ORBS                                   */}
-      {/* ============================================================== */}
+      {/* AMBIENT BACKGROUND GLOW ORBS */}
       <motion.div
         animate={{
           scale: [1, 1.25, 1],
@@ -134,182 +101,135 @@ export default function Testimonial() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* ============================================================== */}
-        {/* HEADER SECTION                                                 */}
-        {/* ============================================================== */}
+        {/* HEADER SECTION */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '200px 0px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center mb-6 sm:mb-16"
+          className="text-center mb-8 sm:mb-12"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             TESTIMONIALS
           </span>
 
-          {/* Heading */}
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 dark:text-white leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight">
             What Our Clients Say
           </h2>
         </motion.div>
+      </div>
 
-        {/* ============================================================== */}
-        {/* MOBILE SLIDER (ONE BY ONE AUTO-SCROLL 2S, NO CHEVRONS)         */}
-        {/* ============================================================== */}
-        <div
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setIsPaused(false)}
-          className="w-full md:hidden flex flex-col items-center justify-center relative z-10 mb-4"
-        >
-          {/* Continuous Track Viewport Window */}
-          <div className="relative w-full max-w-sm mx-auto overflow-hidden rounded-3xl">
-            <motion.div
-              className="flex w-full"
-              animate={{ x: `-${activeMobileIdx * 100}%` }}
-              transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-            >
-              {testimonials.map((item) => (
-                <div key={item.id} className="w-full shrink-0 p-1.5 select-none">
-                  <div className="group relative bg-white dark:bg-[#0c102b] border border-slate-200/90 dark:border-indigo-900/30 rounded-3xl p-6 sm:p-7 flex flex-col justify-between overflow-hidden shadow-sm dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-bl-full blur-xl pointer-events-none" />
+      {/* ============================================================== */}
+      {/* AUTO-SCROLL CAROUSEL STAGE                                    */}
+      {/* ============================================================== */}
+      <div
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
+        className="relative w-full max-w-4xl mx-auto px-4 overflow-hidden py-2 z-10 select-none"
+      >
+        <div className="relative w-full overflow-hidden rounded-3xl">
+          <motion.div
+            className="flex w-full"
+            animate={{ x: `-${activeIdx * 100}%` }}
+            transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+          >
+            {testimonials.map((item) => (
+              <div key={item.id} className="w-full shrink-0 p-2">
+                <div className="group relative bg-white dark:bg-[#0c102b] border-2 border-slate-200/90 dark:border-indigo-900/40 rounded-3xl p-6 sm:p-10 flex flex-col justify-between overflow-hidden shadow-md dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:border-cyan-500/50 dark:hover:border-cyan-400/50 transition-all duration-300">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-bl-full blur-2xl pointer-events-none" />
 
-                    <div>
-                      {/* User Profile Header */}
-                      <div className="flex items-center gap-4 mb-5">
-                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-cyan-400/80 dark:border-cyan-400/60 shadow-md flex-shrink-0">
-                          <Image
-                            src={item.avatar}
-                            alt={item.name}
-                            fill
-                            className="object-cover"
-                            sizes="48px"
-                          />
-                        </div>
-                        <div className="text-left">
-                          <h3 className="text-base font-bold text-[#0b0e1e] dark:text-white">
-                            {item.name}
-                          </h3>
-                          <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                            {item.role}
-                          </p>
-                        </div>
+                  <div>
+                    {/* User Profile Header */}
+                    <div className="flex items-center gap-4 sm:gap-5 mb-5 sm:mb-6">
+                      <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-cyan-400/80 dark:border-cyan-400/60 shadow-md shrink-0">
+                        <Image
+                          src={item.avatar}
+                          alt={item.name}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          sizes="64px"
+                        />
                       </div>
 
-                      {/* 5 Stars */}
-                      <div className="flex items-center gap-1.5 mb-3">
-                        {[...Array(item.rating)].map((_, starIdx) => (
-                          <Star key={starIdx} className="w-4 h-4 fill-amber-400 text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
-                        ))}
+                      <div className="text-left">
+                        <h3 className="text-lg sm:text-xl font-bold text-[#0b0e1e] dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                          {item.name}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">
+                          {item.role}
+                        </p>
                       </div>
-
-                      {/* Review Text */}
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal text-left">
-                        &ldquo;{item.review}&rdquo;
-                      </p>
                     </div>
 
-                    <div className="mt-4 flex justify-end">
-                      <Quote className="w-5 h-5 text-slate-300 dark:text-white/10" />
+                    {/* 5 Stars */}
+                    <div className="flex items-center gap-1.5 mb-4 sm:mb-5">
+                      {[...Array(item.rating)].map((_, starIdx) => (
+                        <Star
+                          key={starIdx}
+                          className="w-4 h-4 sm:w-5 sm:h-5 fill-amber-400 text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]"
+                        />
+                      ))}
                     </div>
+
+                    {/* Review Text */}
+                    <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed font-normal text-left max-w-3xl">
+                      &ldquo;{item.review}&rdquo;
+                    </p>
+                  </div>
+
+                  <div className="mt-6 flex justify-end">
+                    <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-slate-300 dark:text-white/10 group-hover:text-cyan-500/30 transition-colors duration-300" />
                   </div>
                 </div>
-              ))}
-            </motion.div>
-          </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
 
-          {/* Pagination Dots (NO CHEVRONS) */}
-          <div className="flex items-center justify-center gap-2 mt-5 z-20">
+        {/* CHEVRON NAVIGATION CONTROLS & PAGINATION DOTS BELOW CAROUSEL */}
+        <div className="flex items-center justify-center gap-4 mt-6 z-20">
+          {/* Left Chevron Button */}
+          <button
+            type="button"
+            onClick={handlePrev}
+            aria-label="Previous testimonial"
+            suppressHydrationWarning
+            className="w-10 h-10 rounded-full bg-white dark:bg-[#121638] border-2 border-cyan-500/50 dark:border-purple-500/60 text-slate-800 dark:text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"
+          >
+            <ChevronLeft className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+          </button>
+
+          {/* Pagination Dots */}
+          <div className="flex items-center gap-2">
             {testimonials.map((_, idx) => (
               <button
                 key={idx}
                 type="button"
-                onClick={() => setActiveMobileIdx(idx)}
+                onClick={() => setActiveIdx(idx)}
+                suppressHydrationWarning
                 className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  idx === activeMobileIdx
-                    ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-blue-600'
+                  idx === activeIdx
+                    ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 shadow-[0_0_8px_#06b6d4]'
                     : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
                 }`}
                 aria-label={`Go to testimonial ${idx + 1}`}
               />
             ))}
           </div>
+
+          {/* Right Chevron Button */}
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label="Next testimonial"
+            suppressHydrationWarning
+            className="w-10 h-10 rounded-full bg-white dark:bg-[#121638] border-2 border-cyan-500/50 dark:border-purple-500/60 text-slate-800 dark:text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform cursor-pointer"
+          >
+            <ChevronRight className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+          </button>
         </div>
-
-        {/* ============================================================== */}
-        {/* DESKTOP 2x3 TESTIMONIAL GRID (MD AND LARGER)                   */}
-        {/* ============================================================== */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-        >
-          {testimonials.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={cardVariants}
-              whileHover={{ y: -8, scale: 1.015 }}
-              className="group relative bg-white dark:bg-[#0c102b] border border-slate-200/90 dark:border-indigo-900/30 rounded-3xl p-7 sm:p-8 flex flex-col justify-between overflow-hidden shadow-sm dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:border-cyan-500/50 dark:hover:border-cyan-400/50 hover:shadow-xl dark:hover:shadow-[0_15px_35px_rgba(6,182,212,0.15)] transition-all duration-300"
-            >
-              {/* Subtle Card Corner Glow */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-bl-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              <div>
-                {/* Top User Profile Header */}
-                <div className="flex items-center gap-4 mb-6">
-                  {/* Avatar Container with Ring Effect */}
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-cyan-400/80 dark:border-cyan-400/60 shadow-md flex-shrink-0">
-                    <Image
-                      src={item.avatar}
-                      alt={item.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="56px"
-                    />
-                  </div>
-
-                  {/* Name and Role */}
-                  <div className="text-left">
-                    <h3 className="text-base font-bold text-[#0b0e1e] dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                      {item.name}
-                    </h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                      {item.role}
-                    </p>
-                  </div>
-                </div>
-
-                {/* 5 Stars: Move Up Staggered Animation */}
-                <div className="flex items-center gap-1.5 mb-4">
-                  {[...Array(item.rating)].map((_, starIdx) => (
-                    <motion.div
-                      key={starIdx}
-                      custom={starIdx}
-                      variants={starVariants}
-                    >
-                      <Star className="w-4 h-4 fill-amber-400 text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Review Text */}
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal text-left relative z-10">
-                  &ldquo;{item.review}&rdquo;
-                </p>
-              </div>
-
-              {/* Decorative Accent Quote Mark */}
-              <div className="mt-6 flex justify-end">
-                <Quote className="w-6 h-6 text-slate-300 dark:text-white/10 group-hover:text-cyan-500/30 transition-colors duration-300" />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
       </div>
     </section>
   );

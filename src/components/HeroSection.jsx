@@ -13,6 +13,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import Button from './Button';
+import Portal from './Portal';
 
 // ============================================================================
 // ANIMATED 3D SCI-FI CYAN TUNNEL CANVAS BACKGROUND
@@ -228,7 +229,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#02050e] text-white flex items-center justify-center pt-24 sm:pt-28 pb-12 sm:pb-16">
+    <section id="hero" className="scroll-mt-28 relative min-h-screen w-full overflow-hidden bg-[#02050e] text-white flex items-center justify-center pt-24 sm:pt-28 pb-12 sm:pb-16">
       {/* 3D MOVING SCI-FI CYAN TUNNEL BACKGROUND */}
       <SciFiCyanTunnelBackground />
 
@@ -237,8 +238,7 @@ export default function HeroSection() {
         <div className="relative z-10 flex flex-col items-center">
 
 
-          {/* Heading H1 */}
-          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-4 sm:mb-6 leading-[1.15] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+          <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-4 sm:mb-6 leading-[1.15] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
             Building Scalable Digital Products for Modern Businesses.
           </h1>
 
@@ -268,179 +268,177 @@ export default function HeroSection() {
       {/* ============================================================== */}
       {/* SCHEDULE DISCOVERY CALL MODAL DIALOG                            */}
       {/* ============================================================== */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-3 sm:p-6 pt-16 sm:pt-6 overflow-y-auto">
-            {/* Backdrop Overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsModalOpen(false)}
-              className="fixed inset-0 bg-slate-950/80 backdrop-blur-md"
-            />
-
-            {/* Modal Card Container */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="relative w-full max-w-lg bg-white text-slate-950 border border-slate-200 rounded-3xl p-5 sm:p-8 shadow-2xl text-left z-10 overflow-y-auto max-h-[85vh] sm:max-h-[90vh]"
-            >
-              {/* Close Button */}
-              <button
-                type="button"
+      <Portal>
+        <AnimatePresence>
+          {isModalOpen && (
+            <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+              {/* Backdrop Overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 onClick={() => setIsModalOpen(false)}
-                suppressHydrationWarning
-                className="absolute top-5 right-5 p-2 rounded-full text-slate-500 hover:text-slate-950 hover:bg-slate-100 transition-colors cursor-pointer"
-                aria-label="Close modal"
+                className="fixed inset-0 bg-slate-950/80 backdrop-blur-md"
+              />
+
+              {/* Modal Card Container */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
+                className="relative w-full max-w-lg bg-white text-slate-950 border border-slate-200 rounded-3xl p-5 sm:p-8 shadow-2xl text-left z-10 overflow-y-auto max-h-[85vh] sm:max-h-[90vh]"
               >
-                <X className="w-5 h-5" />
-              </button>
-
-              {/* Form Content */}
-              {!isSubmitted ? (
-                <>
-                  <div className="mb-6">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-cyan-500/40 bg-cyan-50 text-cyan-700 text-[10px] font-extrabold tracking-widest uppercase mb-3 shadow-sm">
-                      FREE CONSULTATION
-                    </div>
-                    <h3 className="text-2xl font-black text-slate-950 tracking-tight">
-                      Schedule a Discovery Call
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
-                      Pick a time with our technical team to discuss your project requirements.
-                    </p>
-                  </div>
-
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
-                        Your Name
-                      </label>
-                      <div className="relative">
-                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                        <input
-                          type="text"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          placeholder="e.g. Alex Morgan"
-                          suppressHydrationWarning
-                          className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium placeholder:text-slate-400"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
-                        Work Email
-                      </label>
-                      <div className="relative">
-                        <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                        <input
-                          type="email"
-                          name="email"
-                          required
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          placeholder="alex@company.com"
-                          suppressHydrationWarning
-                          className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium placeholder:text-slate-400"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
-                          Preferred Date
-                        </label>
-                        <div className="relative">
-                          <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                          <input
-                            type="date"
-                            name="date"
-                            required
-                            value={formData.date}
-                            onChange={handleInputChange}
-                            suppressHydrationWarning
-                            className="w-full pl-10 pr-3 py-3 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
-                          Preferred Time
-                        </label>
-                        <div className="relative">
-                          <Clock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                          <input
-                            type="time"
-                            name="time"
-                            required
-                            value={formData.time}
-                            onChange={handleInputChange}
-                            suppressHydrationWarning
-                            className="w-full pl-10 pr-3 py-3 text-xs rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">
-                        Project Overview / Topic
-                      </label>
-                      <div className="relative">
-                        <MessageSquare className="absolute left-3.5 top-3.5 w-4 h-4 text-slate-400" />
-                        <textarea
-                          name="topic"
-                          rows={3}
-                          value={formData.topic}
-                          onChange={handleInputChange}
-                          placeholder="Tell us briefly about what you're building..."
-                          suppressHydrationWarning
-                          className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium resize-none placeholder:text-slate-400"
-                        />
-                      </div>
-                    </div>
-
-                    <motion.button
-                      type="submit"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      suppressHydrationWarning
-                      className="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-cyan-500/25 transition-all cursor-pointer mt-2"
-                    >
-                      Confirm Schedule Request
-                    </motion.button>
-                  </form>
-                </>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="py-12 text-center flex flex-col items-center"
+                {/* Close Button */}
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  suppressHydrationWarning
+                  className="absolute top-5 right-5 p-2 rounded-full text-slate-500 hover:text-slate-950 hover:bg-slate-100 transition-colors cursor-pointer"
+                  aria-label="Close modal"
                 >
-                  <div className="w-16 h-16 rounded-full bg-cyan-500/20 border border-cyan-400 flex items-center justify-center mb-4">
-                    <CheckCircle2 className="w-8 h-8 text-cyan-600 animate-bounce" />
-                  </div>
-                  <h3 className="text-xl font-extrabold text-slate-950 mb-2">
-                    Discovery Call Requested!
-                  </h3>
-                  <p className="text-xs text-slate-600 max-w-xs font-medium">
-                    Our engineering team will review your project details and send a calendar invitation to {formData.email}.
-                  </p>
-                </motion.div>
-              )}
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+                  <X className="w-5 h-5" />
+                </button>
+
+                {/* Form Content */}
+                {!isSubmitted ? (
+                  <>
+                    <div className="mb-6">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-cyan-500/40 bg-cyan-50 text-cyan-700 text-[10px] font-bold tracking-widest uppercase mb-3">
+                        Free Consultation
+                      </div>
+                      <h3 className="text-2xl font-black text-slate-950 tracking-tight">
+                        Schedule a Discovery Call
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                        Pick a time with our technical team to discuss your project requirements.
+                      </p>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      {/* Full Name */}
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          Your Name
+                        </label>
+                        <div className="relative">
+                          <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                          <input
+                            type="text"
+                            name="name"
+                            required
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            placeholder="e.g. Alex Morgan"
+                            className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors placeholder:text-slate-400"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Email */}
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          Work Email
+                        </label>
+                        <div className="relative">
+                          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                          <input
+                            type="email"
+                            name="email"
+                            required
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            placeholder="alex@company.com"
+                            className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors placeholder:text-slate-400"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Date & Time Row */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                            Preferred Date
+                          </label>
+                          <div className="relative">
+                            <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                            <input
+                              type="date"
+                              name="date"
+                              required
+                              value={formData.date}
+                              onChange={handleInputChange}
+                              className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                            Preferred Time
+                          </label>
+                          <div className="relative">
+                            <Clock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                            <input
+                              type="time"
+                              name="time"
+                              required
+                              value={formData.time}
+                              onChange={handleInputChange}
+                              className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Topic/Notes */}
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          Project Overview / Topic
+                        </label>
+                        <div className="relative">
+                          <MessageSquare className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+                          <textarea
+                            name="topic"
+                            rows="3"
+                            value={formData.topic}
+                            onChange={handleInputChange}
+                            placeholder="Tell us briefly about what you're building..."
+                            className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors resize-none placeholder:text-slate-400"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Submit Button */}
+                      <button
+                        type="submit"
+                        className="w-full py-4 mt-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 text-white font-black text-xs uppercase tracking-widest shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 cursor-pointer"
+                      >
+                        Confirm Schedule Request
+                      </button>
+                    </form>
+                  </>
+                ) : (
+                  /* Success Confirmation View */
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="py-10 text-center flex flex-col items-center"
+                  >
+                    <CheckCircle2 className="w-16 h-16 text-cyan-600 mb-4 animate-bounce" />
+                    <h3 className="text-xl font-extrabold text-slate-950 mb-2">
+                      Discovery Call Requested!
+                    </h3>
+                    <p className="text-xs text-slate-600 max-w-xs font-medium">
+                      Our engineering team will review your project details and send a calendar invitation to {formData.email}.
+                    </p>
+                  </motion.div>
+                )}
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+      </Portal>
     </section>
   );
 }

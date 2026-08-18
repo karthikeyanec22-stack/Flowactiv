@@ -23,9 +23,9 @@ export default function Button({
 
   const variants = {
     primary:
-      'bg-[#050714] text-white hover:bg-cyan-500 hover:text-slate-950 dark:bg-gradient-to-r dark:from-indigo-600 dark:via-purple-600 dark:to-blue-600 dark:hover:from-indigo-500 dark:hover:to-blue-500 dark:text-white border border-cyan-500/30 hover:border-cyan-400 shadow-indigo-500/20 hover:shadow-[0_0_25px_rgba(6,182,212,0.5)]',
+      'bg-[#050714] text-white hover:bg-cyan-500 hover:text-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 dark:text-white border border-cyan-500/40 hover:border-cyan-400 shadow-lg dark:shadow-[0_0_22px_rgba(6,182,212,0.4)]',
     secondary:
-      'bg-white/90 dark:bg-white/10 text-slate-900 dark:text-white border border-slate-300 dark:border-white/20 hover:bg-white dark:hover:bg-white/20 shadow-sm backdrop-blur-md',
+      'bg-white/90 dark:bg-white/10 text-slate-900 dark:text-white border border-slate-300 dark:border-cyan-500/40 hover:bg-white dark:hover:bg-cyan-500/20 shadow-sm backdrop-blur-md dark:shadow-[0_0_15px_rgba(6,182,212,0.2)]',
     outline:
       'border-2 border-slate-900 dark:border-cyan-400 text-slate-900 dark:text-cyan-300 hover:bg-slate-950 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-slate-950',
   };
