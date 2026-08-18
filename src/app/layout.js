@@ -21,7 +21,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={plusJakarta.variable} suppressHydrationWarning>
+    <html lang="en" className={`${plusJakarta.variable} dark`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col justify-between antialiased bg-[#f4f6fa] dark:bg-[#02050e] text-slate-900 dark:text-white font-sans transition-colors duration-300" suppressHydrationWarning>
         <GlobalErrorHandler />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
