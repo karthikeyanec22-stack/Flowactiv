@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Sparkles, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Button from './Button';
+import { scrollToContact } from '@/utils/scrollToContact';
 
 export default function CaseStudiesSection() {
   const [selectedCase, setSelectedCase] = useState(null);
@@ -336,7 +337,7 @@ export default function CaseStudiesSection() {
 
           {/* BOTTOM CENTER ACTION BUTTON (1:1 REFERENCE MATCH) */}
           <div className="mt-14 relative z-20">
-            <Button href="#contact">
+            <Button href="#contact" onClick={scrollToContact}>
               EXPLORE ALL CASES
             </Button>
           </div>
@@ -400,7 +401,7 @@ export default function CaseStudiesSection() {
                 <Button variant="secondary" onClick={() => setSelectedCase(null)}>
                   Close
                 </Button>
-                <Button href="#contact" icon={ExternalLink}>
+                <Button href="#contact" icon={ExternalLink} onClick={(e) => { setSelectedCase(null); scrollToContact(e); }}>
                   Request Demo
                 </Button>
               </div>

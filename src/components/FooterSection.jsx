@@ -98,10 +98,10 @@ export default function FooterSection() {
   };
 
   return (
-    <div id="contact-wrapper" className="relative w-full h-auto lg:h-[100vh] [clip-path:polygon(0%_0%,100%_0%,100%_100%,0%_100%)]">
-      <div className="relative lg:fixed lg:bottom-0 lg:left-0 w-full h-auto lg:h-[100vh] z-0 flex flex-col justify-between bg-[#030612] border-t border-indigo-500/20 text-white overflow-hidden transition-colors duration-500">
+    <div id="contact" className="relative w-full h-auto lg:h-[100vh] [clip-path:polygon(0%_0%,100%_0%,100%_100%,0%_100%)]">
+      <div id="contact-wrapper" className="relative lg:fixed lg:bottom-0 lg:left-0 w-full h-auto lg:h-[100vh] z-0 flex flex-col justify-between bg-[#030612] border-t border-indigo-500/20 text-white overflow-hidden transition-colors duration-500">
         <footer
-          id="contact"
+          id="contact-footer"
           className="relative w-full h-full pt-10 sm:pt-14 pb-0 flex flex-col justify-between"
         >
           <div id="footer" className="scroll-mt-16 sm:scroll-mt-20" />

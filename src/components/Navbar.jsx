@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import Button from './Button';
+import { scrollToContact } from '@/utils/scrollToContact';
 
 export default function Navbar() {
   const [hoveredIdx, setHoveredIdx] = useState(null);
@@ -34,23 +35,8 @@ export default function Navbar() {
     setMobileMenuOpen(false);
 
     setTimeout(() => {
-      const targetEl = document.getElementById('contact-wrapper') || document.getElementById('contact') || document.getElementById('footer');
-      if (targetEl) {
-        const headerOffset = 80;
-        const elementPosition = targetEl.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: Math.max(0, offsetPosition),
-          behavior: 'smooth',
-        });
-      } else {
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: 'smooth',
-        });
-      }
-    }, 200);
+      scrollToContact(e);
+    }, 100);
   };
 
   return (

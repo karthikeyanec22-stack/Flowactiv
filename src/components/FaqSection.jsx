@@ -17,6 +17,7 @@ import {
 import Link from 'next/link';
 import Button from './Button';
 import Portal from './Portal';
+import { scrollToContact } from '@/utils/scrollToContact';
 
 export default function FaqSection() {
   // Accordion open index
@@ -191,7 +192,7 @@ export default function FaqSection() {
 
           {/* Banner Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-3.5 z-10 w-full md:w-auto">
-            <Button href="#contact">
+            <Button href="#contact" onClick={scrollToContact}>
               START YOUR PROJECT
             </Button>
 

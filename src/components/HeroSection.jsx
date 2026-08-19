@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import Button from './Button';
 import Portal from './Portal';
+import { scrollToContact } from '@/utils/scrollToContact';
 
 // ============================================================================
 // ANIMATED 3D SCI-FI CYAN TUNNEL CANVAS BACKGROUND
@@ -250,7 +251,7 @@ export default function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-5 items-center w-full sm:w-auto">
             {/* Primary Button */}
-            <Button href="#contact">
+            <Button href="#contact" onClick={scrollToContact}>
               START YOUR PROJECT
             </Button>
 

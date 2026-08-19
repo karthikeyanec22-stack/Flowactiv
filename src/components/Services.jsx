@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Code2, Smartphone, Palette, Cloud, Cpu, Sparkles, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { scrollToContact } from '@/utils/scrollToContact';
 
 export default function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -227,6 +228,7 @@ export default function ServicesSection() {
                         <div className="pt-3 border-t border-slate-200/80 dark:border-white/10 flex justify-between items-center">
                           <Link
                             href="#contact"
+                            onClick={scrollToContact}
                             className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-[11px] font-extrabold tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_15px_rgba(6,182,212,0.35)] active:scale-95 transition-all duration-300 cursor-pointer group/btn"
                           >
                             <span>LEARN MORE</span>
@@ -413,6 +415,7 @@ export default function ServicesSection() {
                   <div className="pb-1">
                     <Link
                       href="#contact"
+                      onClick={scrollToContact}
                       className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_18px_rgba(6,182,212,0.4)] hover:shadow-cyan-500/50 active:scale-95 transition-all duration-300 cursor-pointer group/btn"
                     >
                       <span>LEARN MORE</span>
