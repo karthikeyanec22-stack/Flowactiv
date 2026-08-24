@@ -12,57 +12,43 @@ export default function Testimonial() {
   const testimonials = [
     {
       id: 1,
-      name: 'Samantha Nguyen',
-      role: 'Founder of Dane Technologies',
-      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300',
+      name: 'Kavitha R.',
+      role: 'TNPSC Aspirant | GetAir1 Learner',
+      division: 'GETAIR1',
+      avatar: '/images/imaget.png',
       rating: 5,
       review:
-        'They transformed our legacy infrastructure into a high-speed Next.js app in record time. Our platform performance increased drastically, and user engagement shot up by 40% in the first month.',
+        'GetAir1’s AI mock tests and practice questions helped me pinpoint my weak areas in TNPSC preparation. The live test simulations and performance analysis made revision simple, interactive, and structured.',
     },
     {
       id: 2,
-      name: 'David Chen',
-      role: 'Head of Product at CloudScale AI',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300',
-      rating: 5,
-      review:
-        'The attention to detail in UI/UX and cross-platform mobile performance is unmatched. Their engineering team felt like an indispensable extension of our own internal company.',
-    },
-    {
-      id: 3,
-      name: 'Elena Rostova',
-      role: 'Co-Founder of Apex Digital',
-      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300',
-      rating: 5,
-      review:
-        'Delivered a rock-solid enterprise backend with automated CI/CD DevOps pipelines. Scalability and system security concerns are now completely off our plate thanks to their expertise.',
-    },
-    {
-      id: 4,
-      name: 'Marcus Vance',
-      role: 'VP of Engineering at SwiftPay',
+      name: 'Rajesh Kumar',
+      role: 'Operations Director | Business Client',
+      division: 'SHREWD BUSINESS SOLUTIONS',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300',
       rating: 5,
       review:
-        'Working with them was a breeze from day one. The custom workflow automations they developed saved our team hundreds of manual data-processing hours every week.',
+        'Shrewd Business Solutions redesigned our web platform and implemented a custom enterprise CRM. Their technical execution, web development quality, and ongoing digital support have been outstanding.',
     },
     {
-      id: 5,
-      name: 'Priya Patel',
-      role: 'Founder of HealthPulse AI',
-      avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=300',
-      rating: 5,
-      review:
-        'From concept wireframes to production release, they executed flawlessly. Their AI model integrations gave our core software product a huge competitive market advantage.',
-    },
-    {
-      id: 6,
-      name: 'Liam Gallagher',
-      role: 'CTO at Horizon FinTech',
+      id: 3,
+      name: 'Senthil Nathan',
+      role: 'Competitive Exam Aspirant | GetAir1 Learner',
+      division: 'GETAIR1',
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300',
       rating: 5,
       review:
-        'Outstanding communication, clean modular code standards, and top-tier execution. I highly recommend them to any enterprise looking to build scalable software solutions fast.',
+        'The interactive practice environment and instant analytical feedback on GetAir1 gave me the structure needed for exam preparation. A truly modern and effective edtech experience.',
+    },
+    {
+      id: 4,
+      name: 'Ananya Sharma',
+      role: 'Product Lead | Enterprise Solution Client',
+      division: 'SHREWD BUSINESS SOLUTIONS',
+      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300',
+      rating: 5,
+      review:
+        'The team at Shrewd Business Solutions built our cross-platform mobile app with high performance, clean UI, and robust cloud backend integration. They deliver genuine technical value.',
     },
   ];
 
@@ -100,7 +86,7 @@ export default function Testimonial() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* HEADER SECTION */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -110,12 +96,15 @@ export default function Testimonial() {
           className="text-center mb-8 sm:mb-12"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
-            TESTIMONIALS
+            TESTIMONIALS & FEEDBACK
           </span>
 
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight">
-            What Our Clients Say
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight mb-3">
+            Experiences Across Our Ecosystem
           </h2>
+          <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Verified feedback from learners preparing with GetAir1 and organizations growing with Shrewd Business Solutions.
+          </p>
         </motion.div>
       </div>
 
@@ -209,11 +198,10 @@ export default function Testimonial() {
                 type="button"
                 onClick={() => setActiveIdx(idx)}
                 suppressHydrationWarning
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  idx === activeIdx
+                className={`transition-all duration-300 rounded-full cursor-pointer ${idx === activeIdx
                     ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 shadow-[0_0_8px_#06b6d4]'
                     : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
-                }`}
+                  }`}
                 aria-label={`Go to testimonial ${idx + 1}`}
               />
             ))}

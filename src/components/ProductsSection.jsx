@@ -84,11 +84,14 @@ export default function ProductsSection() {
           className="text-center mb-6 sm:mb-16"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
-            OUR ECOSYSTEM
+            OUR BUSINESSES
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight">
-            Products We&apos;ve Built & Are Building
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight mb-4">
+            FlowActiv Ecosystem Businesses
           </h2>
+          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed">
+            FlowActiv brings together specialized businesses with different areas of expertise, united by a common focus on technology, innovation and customer value.
+          </p>
         </motion.div>
 
         {/* ============================================================== */}
@@ -155,9 +158,8 @@ export default function ProductsSection() {
                     position: 'absolute',
                     transformStyle: 'preserve-3d',
                   }}
-                  className={`w-[92%] lg:w-[85%] max-w-4xl sm:max-w-5xl cursor-pointer ${
-                    isActive ? 'pointer-events-auto' : 'pointer-events-auto hover:opacity-75'
-                  }`}
+                  className={`w-[92%] lg:w-[85%] max-w-4xl sm:max-w-5xl cursor-pointer ${isActive ? 'pointer-events-auto' : 'pointer-events-auto hover:opacity-75'
+                    }`}
                 >
                   <ProductCard product={product} isActive={isActive} isMobileLayout={false} />
                 </motion.div>
@@ -185,11 +187,10 @@ export default function ProductsSection() {
                   onClick={() => setActiveIndex(idx)}
                   aria-label={`Go to product ${idx + 1}`}
                   suppressHydrationWarning
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
-                    activeIndex === idx
+                  className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx
                       ? 'w-8 bg-[#1e56d8] dark:bg-cyan-400'
                       : 'w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600'
-                  }`}
+                    }`}
                 />
               ))}
             </div>
@@ -262,28 +263,24 @@ function ProductCard({ product, isActive, isMobileLayout = false }) {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => isActive && setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className={`relative w-full max-w-3xl ${
-        isMobileLayout ? 'ml-3 sm:ml-5' : 'ml-5 sm:ml-10 lg:ml-14'
-      } transition-all duration-300 group select-none ${
-        isActive ? 'opacity-100' : 'opacity-80'
-      }`}
+      className={`relative w-full max-w-3xl ${isMobileLayout ? 'ml-3 sm:ml-5' : 'ml-5 sm:ml-10 lg:ml-14'
+        } transition-all duration-300 group select-none ${isActive ? 'opacity-100' : 'opacity-80'
+        }`}
     >
       {/* 1. LEFT SOLID BLUE ORBIT DIAL SPHERE HOUSING */}
       <motion.div
         style={{ transform: isActive && !isMobileLayout ? 'translateZ(30px)' : 'none' }}
-        className={`absolute ${
-          isMobileLayout
+        className={`absolute ${isMobileLayout
             ? '-left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-20 h-20 sm:w-28 sm:h-28'
             : '-left-6 sm:-left-12 lg:-left-16 top-1/2 -translate-y-1/2 w-24 h-24 sm:w-36 sm:h-36 lg:w-44 lg:h-44'
-        } rounded-full bg-[#1e56d8] dark:bg-blue-600 border-4 border-white dark:border-slate-900 shadow-2xl flex items-center justify-center z-20 pointer-events-none transition-all duration-300`}
+          } rounded-full bg-[#1e56d8] dark:bg-blue-600 border-4 border-white dark:border-slate-900 shadow-2xl flex items-center justify-center z-20 pointer-events-none transition-all duration-300`}
       >
         {/* Central Glossy 3D Blue Sphere Logo Badge */}
         <div
-          className={`relative z-20 ${
-            isMobileLayout
+          className={`relative z-20 ${isMobileLayout
               ? 'w-14 h-14 sm:w-20 sm:h-20'
               : 'w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28'
-          } rounded-full bg-gradient-to-tr from-blue-950 via-blue-700 to-cyan-400 border-2 border-white flex items-center justify-center shadow-lg overflow-hidden shrink-0`}
+            } rounded-full bg-gradient-to-tr from-blue-950 via-blue-700 to-cyan-400 border-2 border-white flex items-center justify-center shadow-lg overflow-hidden shrink-0`}
         >
           {product.imageSrc ? (
             <Image
@@ -303,13 +300,11 @@ function ProductCard({ product, isActive, isMobileLayout = false }) {
 
       {/* 2. RIGHT INTEGRATED CARD CONTAINER */}
       <div
-        className={`relative bg-white dark:bg-[#0c102a] rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] ${
-          isMobileLayout
+        className={`relative bg-white dark:bg-[#0c102a] rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] ${isMobileLayout
             ? 'pl-16 sm:pl-24 pr-5 sm:pr-8 py-5 sm:py-7 min-h-[240px]'
             : 'pl-20 sm:pl-28 lg:pl-36 pr-6 sm:pr-10 lg:pr-12 py-6 sm:py-8 lg:py-10 min-h-[260px] sm:min-h-[290px] lg:min-h-[320px]'
-        } border-4 border-slate-900 dark:border-cyan-500/40 shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between h-full ${
-          isActive ? 'border-slate-900 dark:border-cyan-400' : 'opacity-90'
-        }`}
+          } border-4 border-slate-900 dark:border-cyan-500/40 shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between h-full ${isActive ? 'border-slate-900 dark:border-cyan-400' : 'opacity-90'
+          }`}
       >
         {/* Dynamic Spotlight Follower for Active Card */}
         {isActive && !isMobileLayout && (
@@ -324,9 +319,8 @@ function ProductCard({ product, isActive, isMobileLayout = false }) {
 
         {/* FAR RIGHT CURVED BLUE ACCENT SHIELD WING */}
         <div
-          className={`absolute right-0 top-0 bottom-0 ${
-            isMobileLayout ? 'w-5 sm:w-8' : 'w-6 sm:w-10 lg:w-12'
-          } bg-[#1e56d8] dark:bg-blue-600 rounded-r-[24px] sm:rounded-r-[32px] lg:rounded-r-[36px] rounded-l-[50%] pointer-events-none z-10 shadow-md`}
+          className={`absolute right-0 top-0 bottom-0 ${isMobileLayout ? 'w-5 sm:w-8' : 'w-6 sm:w-10 lg:w-12'
+            } bg-[#1e56d8] dark:bg-blue-600 rounded-r-[24px] sm:rounded-r-[32px] lg:rounded-r-[36px] rounded-l-[50%] pointer-events-none z-10 shadow-md`}
         />
 
         {/* Top Right Badge */}
@@ -360,7 +354,7 @@ function ProductCard({ product, isActive, isMobileLayout = false }) {
             rel="noopener noreferrer"
             icon={ExternalLink}
           >
-            CHECK WEBSITE
+            {product.id === 'getair1' ? 'EXPLORE GETAIR1' : 'EXPLORE SHREWD'}
           </Button>
         </div>
 
@@ -368,4 +362,4 @@ function ProductCard({ product, isActive, isMobileLayout = false }) {
     </motion.div>
   );
 }
-
+

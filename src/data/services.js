@@ -1,69 +1,88 @@
 import {
+  Brain,
+  Target,
+  Gift,
+  CalendarCheck,
   Code2,
   Smartphone,
-  Layout,
   Cpu,
-  Contact2,
   Cloud,
-  FileCode2,
-  PenTool,
 } from 'lucide-react';
 
 export const servicesData = [
+  // --- GETAIR1 CARDS (4 CARDS) ---
   {
-    id: 'web-apps',
+    id: 'getair-ai-learning',
+    icon: Brain,
+    division: 'GetAir1',
+    title: 'AI-Powered Learning',
+    description:
+      'Learn smarter with intelligent recommendations, practice tests, and performance insights.',
+    link: 'https://www.getair1.in/',
+  },
+  {
+    id: 'getair-personalized-guidance',
+    icon: Target,
+    division: 'GetAir1',
+    title: 'Personalized Guidance',
+    description:
+      'Get exam-focused preparation paths tailored to your strengths and improvement areas.',
+    link: 'https://www.getair1.in/',
+  },
+  {
+    id: 'getair-free-trial',
+    icon: Gift,
+    division: 'GetAir1',
+    title: 'Free Trial Available',
+    description:
+      'Explore premium learning features at no cost before subscribing.',
+    link: 'https://www.getair1.in/',
+  },
+  {
+    id: 'getair-daily-live-tests',
+    icon: CalendarCheck,
+    division: 'GetAir1',
+    title: 'Daily Live Tests',
+    description:
+      'Practice fresh exam-style questions every day and track your progress.',
+    link: 'https://www.getair1.in/',
+  },
+
+  // --- SHREWD BUSINESS SOLUTIONS CARDS (4 CARDS) ---
+  {
+    id: 'shrewd-web-dev',
     icon: Code2,
-    title: 'Web Applications',
+    division: 'Shrewd Business Solutions',
+    title: 'Website Development',
     description:
-      'Custom Websites And Web Applications Built For Performance, Scalability, And Growth.',
+      'High-performance, responsive websites built with React, PHP, Laravel, WordPress, Shopify, and WooCommerce.',
+    link: 'https://www.shrewdbs.com/',
   },
   {
-    id: 'mobile-apps',
+    id: 'shrewd-mobile-apps',
     icon: Smartphone,
-    title: 'Mobile Apps',
+    division: 'Shrewd Business Solutions',
+    title: 'Mobile App Development',
     description:
-      'Powerful iOS And Android Apps Designed For Seamless User Experiences.',
+      'Custom iOS and Android mobile solutions engineered for seamless performance and intuitive user experiences.',
+    link: 'https://www.shrewdbs.com/',
   },
   {
-    id: 'ui-ux',
-    icon: Layout,
-    title: 'UI/UX Design',
-    description:
-      'Modern, Intuitive Interfaces That Improve Engagement And Conversions.',
-  },
-  {
-    id: 'erp',
+    id: 'shrewd-erp-crm',
     icon: Cpu,
-    title: 'ERP',
+    division: 'Shrewd Business Solutions',
+    title: 'Enterprise ERP & CRM Software',
     description:
-      'Integrated ERP Platforms That Connect Finance, Inventory, HR, And Operations Into One Unified System.',
+      'Integrated ERP platforms connecting finance, inventory, operations, and sales pipelines into unified systems.',
+    link: 'https://www.shrewdbs.com/',
   },
   {
-    id: 'crm',
-    icon: Contact2,
-    title: 'CRM',
-    description:
-      'Smart CRM Solutions To Manage Customer Relationships, Track Sales Pipelines.',
-  },
-  {
-    id: 'saas',
+    id: 'shrewd-cloud-digital',
     icon: Cloud,
-    title: 'SaaS Products',
+    division: 'Shrewd Business Solutions',
+    title: 'Cloud & Digital Services',
     description:
-      'End-To-End SaaS Product Development From Idea To Launch.',
-  },
-  {
-    id: 'cms',
-    icon: FileCode2,
-    title: 'CMS Products',
-    description:
-      'Flexible CMS Solutions That Make Managing Content Simple And Scalable.',
-  },
-  {
-    id: 'graphic-design',
-    icon: PenTool,
-    title: 'Graphic Design',
-    description:
-      'Creative Visual Designs That Strengthen Your Brand Identity And Communicate Effectively.',
+      'Reliable cloud architecture, quality assurance testing, digital marketing, graphic design, and Wikipedia digital presence.',
+    link: 'https://www.shrewdbs.com/',
   },
 ];

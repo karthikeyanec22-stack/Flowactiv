@@ -58,9 +58,12 @@ export default function GlobalRecognition() {
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             GLOBAL RECOGNITION
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight">
-            Globally Trusted Digital Partner
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight mb-2">
+            Building Businesses Beyond Boundaries
           </h2>
+          <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            FlowActiv aims to build technology-driven businesses capable of serving learners, professionals, and organizations across geographical boundaries.
+          </p>
         </motion.div>
 
         {/* ============================================================== */}
@@ -70,7 +73,7 @@ export default function GlobalRecognition() {
         <div className="w-full sm:hidden flex flex-col items-center my-1 relative">
           {/* 1. TOP CARDS ROW (SLIGHTLY OVERLAPPING / TIGHT TO GLOBE TOP) */}
           <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full z-20 -mb-3">
-            {/* Card 1: 100+ Projects Delivered */}
+            {/* Card 1: Digital Reach */}
             <motion.div
               initial={{ opacity: 0, y: -15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -82,19 +85,19 @@ export default function GlobalRecognition() {
             >
               <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
               <div>
-                <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                  100+
+                <div className="text-sm font-black text-cyan-600 dark:text-cyan-400 tracking-tight leading-none mb-1 group-hover:text-cyan-500 transition-colors">
+                  Digital Reach
                 </div>
                 <h3 className="text-[11px] font-extrabold text-slate-800 dark:text-slate-100 mb-0.5 leading-tight">
-                  Projects Delivered
+                  Borderless Impact
                 </h3>
                 <p className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight font-medium">
-                  Completed Diverse Digital Solutions For Businesses.
+                  Technology enables our businesses to reach learners, professionals and organizations across locations.
                 </p>
               </div>
             </motion.div>
 
-            {/* Card 2: 50+ Happy Clients */}
+            {/* Card 2: Future Growth */}
             <motion.div
               initial={{ opacity: 0, y: -15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -106,14 +109,14 @@ export default function GlobalRecognition() {
             >
               <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
               <div>
-                <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                  50+
+                <div className="text-sm font-black text-cyan-600 dark:text-cyan-400 tracking-tight leading-none mb-1 group-hover:text-cyan-500 transition-colors">
+                  Future Growth
                 </div>
                 <h3 className="text-[11px] font-extrabold text-slate-800 dark:text-slate-100 mb-0.5 leading-tight">
-                  Happy Clients
+                  Ecosystem Expansion
                 </h3>
                 <p className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight font-medium">
-                  Trusted By Companies Worldwide For Reliable Services.
+                  We continue to explore opportunities to expand our products, services and business capabilities.
                 </p>
               </div>
             </motion.div>
@@ -162,7 +165,7 @@ export default function GlobalRecognition() {
 
           {/* 3. BOTTOM CARDS ROW (SLIGHTLY OVERLAPPING / TIGHT TO GLOBE BOTTOM) */}
           <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full z-20 -mt-3">
-            {/* Card 3: 20+ Industries Served */}
+            {/* Card 3: Innovation */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -174,19 +177,19 @@ export default function GlobalRecognition() {
             >
               <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
               <div>
-                <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                  20+
+                <div className="text-sm font-black text-cyan-600 dark:text-cyan-400 tracking-tight leading-none mb-1 group-hover:text-cyan-500 transition-colors">
+                  Innovation
                 </div>
                 <h3 className="text-[11px] font-extrabold text-slate-800 dark:text-slate-100 mb-0.5 leading-tight">
-                  Industries Served
+                  Problem-Solving Focus
                 </h3>
                 <p className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight font-medium">
-                  Providing Tailored Solutions Across Multiple Sectors.
+                  Our focus remains on solving real problems through technology, innovation and entrepreneurial thinking.
                 </p>
               </div>
             </motion.div>
 
-            {/* Card 4: 8+ Years Experience */}
+            {/* Card 4: Commitment */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -198,14 +201,14 @@ export default function GlobalRecognition() {
             >
               <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
               <div>
-                <div className="text-xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                  8+
+                <div className="text-sm font-black text-cyan-600 dark:text-cyan-400 tracking-tight leading-none mb-1 group-hover:text-cyan-500 transition-colors">
+                  Commitment
                 </div>
                 <h3 className="text-[11px] font-extrabold text-slate-800 dark:text-slate-100 mb-0.5 leading-tight">
-                  Years Experience
+                  Quality & Trust
                 </h3>
                 <p className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight font-medium">
-                  Extensive Experience Delivering Digital Products.
+                  FlowActiv brings together specialized teams committed to long-term quality, security, and customer value.
                 </p>
               </div>
             </motion.div>
@@ -294,19 +297,19 @@ export default function GlobalRecognition() {
             <div className="absolute top-0 left-0 w-12 h-12 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
 
             <div>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                100+
+              <div className="text-xl sm:text-2xl lg:text-3xl font-black text-cyan-600 dark:text-cyan-400 tracking-tight leading-none mb-2">
+                Digital Reach
               </div>
               <h3 className="text-sm sm:text-base font-extrabold text-slate-800 dark:text-slate-100 mb-2">
-                Projects Delivered
+                Borderless Impact
               </h3>
               <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                Successfully Completed Diverse Digital Solutions For Modern Businesses.
+                Technology enables our businesses to reach learners, professionals and organizations across locations.
               </p>
             </div>
           </motion.div>
 
-          {/* 2. TOP RIGHT CARD: 50+ Happy Clients */}
+          {/* 2. TOP RIGHT CARD: Future Growth */}
           <motion.div
             initial={{ opacity: 0, x: 50, y: -30 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -326,19 +329,19 @@ export default function GlobalRecognition() {
             <div className="absolute top-0 left-0 w-12 h-12 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
 
             <div>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                50+
+              <div className="text-xl sm:text-2xl lg:text-3xl font-black text-cyan-600 dark:text-cyan-400 tracking-tight leading-none mb-2">
+                Future Growth
               </div>
               <h3 className="text-sm sm:text-base font-extrabold text-slate-800 dark:text-slate-100 mb-2">
-                Happy Clients
+                Ecosystem Expansion
               </h3>
               <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                Trusted By Companies Worldwide For Reliable Development Services.
+                We continue to explore opportunities to expand our products, services and business capabilities.
               </p>
             </div>
           </motion.div>
 
-          {/* 3. BOTTOM LEFT CARD: 20+ Industries Served */}
+          {/* 3. BOTTOM LEFT CARD: Innovation Without Boundaries */}
           <motion.div
             initial={{ opacity: 0, x: -50, y: 30 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -358,19 +361,19 @@ export default function GlobalRecognition() {
             <div className="absolute top-0 left-0 w-12 h-12 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
 
             <div>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                20+
+              <div className="text-xl sm:text-2xl lg:text-3xl font-black text-cyan-600 dark:text-cyan-400 tracking-tight leading-none mb-2">
+                Innovation
               </div>
               <h3 className="text-sm sm:text-base font-extrabold text-slate-800 dark:text-slate-100 mb-2">
-                Industries Served
+                Problem-Solving Focus
               </h3>
               <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                Providing Tailored Solutions Across Multiple Business Sectors.
+                Our focus remains on solving real problems through technology, innovation and entrepreneurial thinking.
               </p>
             </div>
           </motion.div>
 
-          {/* 4. BOTTOM RIGHT CARD: 8+ Years Experience */}
+          {/* 4. BOTTOM RIGHT CARD: Quality & Customer Focus */}
           <motion.div
             initial={{ opacity: 0, x: 50, y: 30 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -390,21 +393,21 @@ export default function GlobalRecognition() {
             <div className="absolute top-0 left-0 w-12 h-12 bg-cyan-400/20 rounded-tl-2xl blur-md pointer-events-none group-hover:scale-150 transition-transform duration-500" />
 
             <div>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 dark:text-white tracking-tight leading-none mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                8+
+              <div className="text-xl sm:text-2xl lg:text-3xl font-black text-cyan-600 dark:text-cyan-400 tracking-tight leading-none mb-2">
+                Commitment
               </div>
               <h3 className="text-sm sm:text-base font-extrabold text-slate-800 dark:text-slate-100 mb-2">
-                Years Experience
+                Quality & Trust
               </h3>
               <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                Extensive Experience Delivering Innovative Digital Products.
+                FlowActiv brings together specialized teams committed to long-term quality, security, and customer value.
               </p>
             </div>
           </motion.div>
 
         </div>
 
-        {/* BOTTOM CONTENT AREA (CLONED 1:1 FROM REFERENCE IMAGE) */}
+        {/* BOTTOM CONTENT AREA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -413,11 +416,11 @@ export default function GlobalRecognition() {
           className="text-center max-w-3xl mx-auto mt-4 sm:mt-6"
         >
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 dark:text-white tracking-tight leading-snug mb-4">
-            Numbers That Reflect <span className="text-slate-950 dark:text-white font-black underline decoration-slate-950 dark:decoration-white decoration-4 underline-offset-4">Our Commitment</span> To Delivering Reliable Digital Solutions Worldwide.
+            Building For The Future With <span className="text-slate-950 dark:text-white font-black underline decoration-cyan-500 dark:decoration-cyan-400 decoration-4 underline-offset-4">Unwavering Commitment</span>
           </h2>
 
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-2xl mx-auto">
-            We Build Scalable Digital Products And Intelligent Systems For Businesses Across The Globe. Our Team Focuses On Delivering High-Performance Applications, Modern User Experiences, And Reliable Technology Solutions That Help Companies Grow Faster And Operate Smarter.
+            Through GetAir1 and Shrewd Business Solutions, FlowActiv Private Limited provides AI-powered learning platforms and enterprise technology solutions that empower users and accelerate digital growth across India and beyond.
           </p>
         </motion.div>
 

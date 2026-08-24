@@ -12,8 +12,8 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: 'Flowactiv — Building Scalable Digital Products',
-  description: 'We design, develop, and launch powerful web and mobile applications.',
+  title: 'FlowActiv Private Limited | Technology, Education & Business Solutions',
+  description: 'FlowActiv Private Limited is a Coimbatore-based technology-driven organization building businesses and digital solutions across education, technology and business services.',
   icons: {
     icon: '/favicon.ico',
   },

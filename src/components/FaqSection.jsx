@@ -36,34 +36,34 @@ export default function FaqSection() {
 
   const faqs = [
     {
-      question: 'What services does FlowActive provide?',
+      question: 'What is FlowActiv Private Limited?',
       answer:
-        'We offer a wide range of digital services including web development, mobile app development, ERP and CRM solutions, UI/UX design, graphic design, and custom software development tailored to business needs.',
+        'FlowActiv Private Limited is a Coimbatore-based organization building technology-driven businesses and digital solutions across areas including education and business technology.',
     },
     {
-      question: 'How long does it take to complete a project?',
+      question: 'What businesses operate under FlowActiv?',
       answer:
-        'Project timelines depend on scope and complexity. Typically, small to medium web applications take 2 to 4 weeks, while complex full-stack enterprise systems or mobile apps take 8 to 12 weeks.',
+        'The current FlowActiv ecosystem includes GetAir1 (an AI-powered learning and competitive-exam preparation platform) and Shrewd Business Solutions (a business and technology solutions company).',
     },
     {
-      question: 'Do you provide custom software solutions?',
+      question: 'How are GetAir1 and Shrewd connected to FlowActiv?',
       answer:
-        'Yes! We specialize in tailored software solutions engineered specifically around your business workflows, security specifications, and long-term scalability targets.',
+        'GetAir1 and Shrewd Business Solutions operate as specialized business divisions within the broader FlowActiv ecosystem, focusing on different customer needs while sharing the organization’s technology and innovation-driven approach.',
     },
     {
-      question: 'Which technologies do you use?',
+      question: 'What is GetAir1 and who is it for?',
       answer:
-        'We leverage modern tech stacks including Next.js, React, Node.js, TypeScript, Python, React Native, Tailwind CSS, Docker, AWS, and PostgreSQL for maximum speed and performance.',
+        'GetAir1 is an AI-powered learning and preparation platform designed to help competitive-exam aspirants learn, practice, and prepare through mock tests, live practice, and analytics. It supports competitive examinations including TNPSC.',
     },
     {
-      question: 'Do you provide ongoing support after project completion?',
+      question: 'What services does Shrewd Business Solutions provide?',
       answer:
-        'Absolutely. We offer dedicated post-launch support and maintenance packages, including performance optimization, system monitoring, security updates, and feature enhancements.',
+        'Shrewd Business Solutions provides high-performance website development (React, PHP, Laravel, WordPress, Shopify, WooCommerce), mobile app development (iOS & Android), ERP & CRM software, cloud services, QA testing, digital marketing, and graphic design.',
     },
     {
-      question: 'How can I start a project with your team?',
+      question: 'Who can work with Shrewd Business Solutions?',
       answer:
-        'Getting started is simple! Click "Start Your Project" or "Schedule Call" to send us your requirements. Our technical lead will reach out within 24 hours to schedule a discovery call.',
+        'Shrewd Business Solutions works with SMEs, enterprises, startups, and organizations across sectors including Healthcare, Real Estate, Retail & FMCG, Education, Hospitality, and Architecture to improve their digital presence and operations.',
     },
   ];
 
@@ -245,15 +245,14 @@ export default function FaqSection() {
                 {/* Form Content */}
                 {!isSubmitted ? (
                   <>
-                    <div className="mb-6">
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-cyan-500/40 bg-cyan-50 text-cyan-700 text-[10px] font-bold tracking-widest uppercase mb-3">
-
-                        Free Consultation
-                      </div>
-                      <h3 className="text-2xl font-black text-slate-950 tracking-tight">
+                    <div className="mb-4">
+                      <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-600 mb-1 block">
+                        FREE CONSULTATION
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
                         Schedule a Discovery Call
                       </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                      <p className="text-xs text-slate-600 mt-0.5 font-medium">
                         Pick a time with our technical team to discuss your project requirements.
                       </p>
                     </div>

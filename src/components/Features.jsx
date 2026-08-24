@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 export default function Features() {
   return (
     <section className="relative w-full min-h-[220px] sm:min-h-[520px] bg-[#f8fafc] dark:bg-[#090b14] flex items-center justify-center overflow-hidden py-8 sm:py-24 transition-colors duration-500">
-      
+
       {/* ============================================================== */}
       {/* 1. THICK CHEVRON BAND INFINITE DOWNWARD MOTION (VIDEO MATCH)   */}
       {/* ============================================================== */}
@@ -46,10 +46,16 @@ export default function Features() {
       {/* ============================================================== */}
       {/* 2. MAIN CONTENT TEXT                                          */}
       {/* ============================================================== */}
-      <div className="relative z-10 px-6 text-center max-w-5xl mx-auto flex items-center justify-center">
-        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight drop-shadow-md">
-          Creating The Next Generation Of Digital Products
+      <div className="relative z-10 px-6 text-center max-w-5xl mx-auto flex flex-col items-center justify-center">
+        <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-cyan-600 dark:text-cyan-400 mb-2">
+          OUR ECOSYSTEM
+        </span>
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-tight drop-shadow-md mb-3">
+          One Organization. Multiple Possibilities.
         </h2>
+        <p className="text-sm sm:text-lg font-bold text-slate-700 dark:text-slate-200">
+          Building Businesses. Creating Digital Experiences. Enabling Growth.
+        </p>
       </div>
 
     </section>

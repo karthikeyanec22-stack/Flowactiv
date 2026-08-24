@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Cpu, ExternalLink, Sparkles, Check, Monitor, TrendingUp } from 'lucide-react';
+import { Shield, Cpu, ExternalLink, Sparkles, Check, Monitor, TrendingUp, FileCheck2, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import Button from './Button';
 
@@ -151,12 +151,15 @@ export default function Excellence() {
           className="text-center mb-4 sm:mb-6"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
-            EXCELLENCE IN DIGITAL ENGINEERING
+            OUR EXCELLENCE
           </span>
 
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white max-w-4xl mx-auto leading-tight">
-            Powering Businesses With Modern Technology, And Scalable Digital Solutions.
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white max-w-4xl mx-auto leading-tight mb-3">
+            Technology, Innovation & Customer-Focused Thinking
           </h2>
+          <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            FlowActiv combines technology, innovation, and practical business thinking to create impactful solutions across education, digital technology, and business services.
+          </p>
         </motion.div>
 
         {/* CENTERPIECE: STABLE OVERLAY STACK CONTAINER (ZERO DOWNWARD LAYOUT SHIFT) */}
@@ -261,7 +264,7 @@ export default function Excellence() {
                         </div>
                       </motion.div>
 
-                      {/* Mini Card 3: Security-First */}
+                      {/* Mini Card 3: GetAir1 AI Mock Tests */}
                       <motion.div
                         animate={{
                           y: isLidOpen ? -160 : 12,
@@ -273,17 +276,17 @@ export default function Excellence() {
                         className="absolute w-44 sm:w-48 h-20 rounded-xl bg-white/95 dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-300 dark:border-cyan-500/50 p-2.5 shadow-xl flex flex-col justify-between z-[5]"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-black tracking-wider text-slate-950 dark:text-white">Security-First</span>
-                          <Check className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 stroke-[3]" />
+                          <span className="text-[10px] font-black tracking-wider text-slate-950 dark:text-white">AI Mock Tests</span>
+                          <FileCheck2 className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 stroke-[2.5]" />
                         </div>
                         <div className="flex justify-end">
-                          <Button href="#services" className="!px-2.5 !py-1 !text-[8px] !shadow-none pointer-events-none" showArrow={true}>
-                            LEARN MORE
+                          <Button href="https://www.getair1.in/" target="_blank" rel="noopener noreferrer" className="!px-2.5 !py-1 !text-[8px] !shadow-none pointer-events-none" icon={ExternalLink}>
+                            EXPLORE GETAIR1
                           </Button>
                         </div>
                       </motion.div>
 
-                      {/* Mini Card 4: Trusted By Growing Businesses */}
+                      {/* Mini Card 4: PYQ & Revision */}
                       <motion.div
                         animate={{
                           y: isLidOpen ? -130 : 20,
@@ -295,12 +298,12 @@ export default function Excellence() {
                         className="absolute w-44 sm:w-48 h-20 rounded-xl bg-white/95 dark:bg-[#0c122d] text-slate-950 dark:text-white border-2 border-slate-300 dark:border-cyan-500/50 p-2.5 shadow-xl flex flex-col justify-between z-[2]"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-black tracking-wider text-slate-950 dark:text-white">Trusted Growth</span>
-                          <Shield className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
+                          <span className="text-[10px] font-black tracking-wider text-slate-950 dark:text-white">PYQ & Revision</span>
+                          <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 stroke-[2.5]" />
                         </div>
                         <div className="flex justify-end">
-                          <Button href="#services" className="!px-2.5 !py-1 !text-[8px] !shadow-none pointer-events-none" icon={ExternalLink}>
-                            CHECK WEBSITE
+                          <Button href="https://www.getair1.in/" target="_blank" rel="noopener noreferrer" className="!px-2.5 !py-1 !text-[8px] !shadow-none pointer-events-none" icon={ExternalLink}>
+                            EXPLORE GETAIR1
                           </Button>
                         </div>
                       </motion.div>
@@ -330,9 +333,8 @@ export default function Excellence() {
                   damping: 20,
                   delay: isSpread ? 0.04 : 0,
                 }}
-                className={`relative bg-white/95 dark:bg-[#0c122d] border-2 border-slate-300 dark:border-cyan-500/40 rounded-tl-3xl rounded-br-3xl rounded-tr-md rounded-bl-md p-6 sm:p-7 shadow-xl flex items-center gap-5 group hover:border-cyan-400 transition-all ${
-                  !isSpread ? 'pointer-events-none' : 'w-full'
-                }`}
+                className={`relative bg-white/95 dark:bg-[#0c122d] border-2 border-slate-300 dark:border-cyan-500/40 rounded-tl-3xl rounded-br-3xl rounded-tr-md rounded-bl-md p-6 sm:p-7 shadow-xl flex items-center gap-5 group hover:border-cyan-400 transition-all ${!isSpread ? 'pointer-events-none' : 'w-full'
+                  }`}
               >
                 {/* 3D Faceted Translucent Blue Hexagonal Gemstone Graphic */}
                 <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 flex items-center justify-center pointer-events-none group-hover:scale-105 transition-transform duration-500">
@@ -370,10 +372,10 @@ export default function Excellence() {
                 <div className="flex flex-col justify-between h-full">
                   <div>
                     <h3 className="text-xl sm:text-2xl font-black text-slate-950 dark:text-white tracking-tight mb-2">
-                      Smarter IT
+                      Innovation & Technology
                     </h3>
                     <p className="text-xs sm:text-xs font-medium text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                      We integrate intelligent automation into your workflows — enabling predictive monitoring, faster issue resolution, and smarter system management.
+                      We continuously explore new ideas, technologies and business opportunities to build practical solutions across education and technology.
                     </p>
                   </div>
                   <Button href="#services" showArrow={true}>
@@ -396,9 +398,8 @@ export default function Excellence() {
                   damping: 20,
                   delay: isSpread ? 0.08 : 0,
                 }}
-                className={`relative bg-white/80 dark:bg-[#0c122d]/80 backdrop-blur-xl border-2 border-cyan-400/60 rounded-3xl p-6 sm:p-7 shadow-xl flex items-center gap-5 group hover:border-cyan-300 transition-all ${
-                  !isSpread ? 'pointer-events-none' : 'w-full'
-                }`}
+                className={`relative bg-white/80 dark:bg-[#0c122d]/80 backdrop-blur-xl border-2 border-cyan-400/60 rounded-3xl p-6 sm:p-7 shadow-xl flex items-center gap-5 group hover:border-cyan-300 transition-all ${!isSpread ? 'pointer-events-none' : 'w-full'
+                  }`}
               >
                 {/* Left Falling Tech Stack Orbs Container */}
                 <div className="w-28 h-28 sm:w-32 sm:h-32 shrink-0 rounded-2xl bg-slate-100/90 dark:bg-[#070a19]/90 border border-cyan-500/40 shadow-inner relative overflow-hidden flex items-center justify-center">
@@ -409,24 +410,24 @@ export default function Excellence() {
                 <div className="flex flex-col justify-between h-full w-full">
                   <div className="flex justify-end mb-1">
                     <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-500/40">
-                      Live Tech Stack
+                      Customer Focus
                     </span>
                   </div>
                   <div>
                     <h3 className="text-xl sm:text-2xl font-black text-slate-950 dark:text-white tracking-tight mb-2">
-                      Modern Tech Stack
+                      Customer-Centered Design
                     </h3>
                     <p className="text-xs sm:text-xs font-medium text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                      A glassmorphic tech suite powered by Next.js, React, Node.js, and cloud-native microservices.
+                      We design our businesses around understanding customer needs and solving real-world problems for learners and businesses.
                     </p>
                   </div>
                   <Button href="#services" icon={ExternalLink}>
-                    CHECK WEBSITE
+                    EXPLORE SERVICES
                   </Button>
                 </div>
               </motion.div>
 
-              {/* CARD 3 (Bottom Left): 3D Shield Emblem Card with White Checkmark */}
+              {/* CARD 3 (Bottom Left): GetAir AI Mock Tests */}
               <motion.div
                 initial={{ y: 0, scale: 0.9, opacity: 0 }}
                 animate={{
@@ -440,16 +441,15 @@ export default function Excellence() {
                   damping: 20,
                   delay: isSpread ? 0.12 : 0,
                 }}
-                className={`relative bg-white/95 dark:bg-[#0c122d] border-2 border-slate-300 dark:border-cyan-500/40 rounded-3xl p-6 sm:p-7 shadow-xl flex items-center gap-5 group hover:border-cyan-400 transition-all ${
-                  !isSpread ? 'pointer-events-none' : 'w-full'
-                }`}
+                className={`relative bg-white/95 dark:bg-[#0c122d] border-2 border-slate-300 dark:border-cyan-500/40 rounded-3xl p-6 sm:p-7 shadow-xl flex items-center gap-5 group hover:border-cyan-400 transition-all ${!isSpread ? 'pointer-events-none' : 'w-full'
+                  }`}
               >
-                {/* 3D Layered White/Blue Security Shield Badge with Checkmark */}
+                {/* 3D Layered White/Blue Badge with FileCheck2 Icon */}
                 <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white via-slate-100 to-slate-200 border-2 border-slate-300 dark:border-cyan-400/40 shadow-[0_12px_25px_rgba(0,0,0,0.15)] dark:shadow-[0_12px_25px_rgba(6,182,212,0.3)] flex items-center justify-center p-2.5">
                     <div className="w-full h-full rounded-xl bg-gradient-to-tr from-blue-900 via-blue-600 to-cyan-400 border border-cyan-200 flex items-center justify-center shadow-inner relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent pointer-events-none" />
-                      <Check className="w-10 h-10 sm:w-11 sm:h-11 text-white stroke-[3.5] filter drop-shadow-md relative z-10" />
+                      <FileCheck2 className="w-10 h-10 sm:w-11 sm:h-11 text-white stroke-[2.5] filter drop-shadow-md relative z-10" />
                     </div>
                   </div>
                 </div>
@@ -458,19 +458,19 @@ export default function Excellence() {
                 <div className="flex flex-col justify-between h-full">
                   <div>
                     <h3 className="text-xl sm:text-2xl font-black text-slate-950 dark:text-white tracking-tight mb-2">
-                      Security-First
+                      GetAir1 AI Mock Tests
                     </h3>
                     <p className="text-xs sm:text-xs font-medium text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                      Security is built into every layer of our development process, ensuring protected and future-ready applications.
+                      Access full-length AI-powered mock tests, live practice exams, and real-time performance analytics tailored for competitive-exam aspirants.
                     </p>
                   </div>
-                  <Button href="#services" showArrow={true}>
-                    LEARN MORE
+                  <Button href="https://www.getair1.in/" target="_blank" rel="noopener noreferrer" icon={ExternalLink}>
+                    EXPLORE GETAIR1
                   </Button>
                 </div>
               </motion.div>
 
-              {/* CARD 4 (Bottom Right): Side-Notched Ticket Card with 3D Growth Chart Emblem */}
+              {/* CARD 4 (Bottom Right): Previous Question Papers & Revision */}
               <motion.div
                 initial={{ y: 0, scale: 0.9, opacity: 0 }}
                 animate={{
@@ -484,20 +484,19 @@ export default function Excellence() {
                   damping: 20,
                   delay: isSpread ? 0.16 : 0,
                 }}
-                className={`relative bg-white/95 dark:bg-[#0c122d] border-2 border-slate-300 dark:border-cyan-500/40 rounded-3xl p-6 sm:p-7 shadow-xl flex items-center gap-5 group hover:border-cyan-400 transition-all overflow-hidden ${
-                  !isSpread ? 'pointer-events-none' : 'w-full'
-                }`}
+                className={`relative bg-white/95 dark:bg-[#0c122d] border-2 border-slate-300 dark:border-cyan-500/40 rounded-3xl p-6 sm:p-7 shadow-xl flex items-center gap-5 group hover:border-cyan-400 transition-all overflow-hidden ${!isSpread ? 'pointer-events-none' : 'w-full'
+                  }`}
               >
                 {/* Semi-circle Side Ticket Notches */}
                 <div className="absolute -left-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#f8fafc] dark:bg-[#02050e] border border-slate-300 dark:border-cyan-500/40" />
                 <div className="absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#f8fafc] dark:bg-[#02050e] border border-slate-300 dark:border-cyan-500/40" />
 
-                {/* 3D Layered Growth Trend Emblem Badge */}
+                {/* 3D Layered Growth Trend Emblem Badge with BookOpen Icon */}
                 <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white via-slate-100 to-slate-200 border-2 border-slate-300 dark:border-cyan-400/40 shadow-[0_12px_25px_rgba(0,0,0,0.15)] dark:shadow-[0_12px_25px_rgba(6,182,212,0.3)] flex items-center justify-center p-2.5">
                     <div className="w-full h-full rounded-xl bg-gradient-to-tr from-indigo-950 via-blue-700 to-cyan-400 border border-cyan-200 flex items-center justify-center shadow-inner relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent pointer-events-none" />
-                      <TrendingUp className="w-10 h-10 sm:w-11 sm:h-11 text-white stroke-[3] filter drop-shadow-md relative z-10" />
+                      <BookOpen className="w-10 h-10 sm:w-11 sm:h-11 text-white stroke-[2.5] filter drop-shadow-md relative z-10" />
                     </div>
                   </div>
                 </div>
@@ -506,14 +505,14 @@ export default function Excellence() {
                 <div className="flex flex-col justify-between h-full w-full">
                   <div>
                     <h3 className="text-xl sm:text-2xl font-black text-slate-950 dark:text-white tracking-tight mb-2">
-                      Trusted By Growing Businesses
+                      Previous Years Questions & Revision
                     </h3>
                     <p className="text-xs sm:text-xs font-medium text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                      Companies trust FlowActive to deliver scalable digital solutions that improve efficiency, enhance user experiences, and accelerate growth.
+                      Practice previous years' written exam question papers, topic-wise question banks, and smart revision modules to maximize exam score readiness.
                     </p>
                   </div>
-                  <Button href="#services" icon={ExternalLink}>
-                    CHECK WEBSITE
+                  <Button href="https://www.getair1.in/" target="_blank" rel="noopener noreferrer" icon={ExternalLink}>
+                    EXPLORE GETAIR1
                   </Button>
                 </div>
               </motion.div>

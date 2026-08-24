@@ -66,15 +66,18 @@ export default function FooterSection() {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
-  const leftLinks = [
-    { name: 'Products', href: '#products' },
-    { name: 'Services', href: '#services' },
-    { name: 'Our Excellence', href: '#recognition' },
+  const businessLinks = [
+    { name: 'GetAir1 (EdTech)', href: 'https://www.getair1.in/', external: true },
+    { name: 'Shrewd Business Solutions', href: 'https://www.shrewdbs.com/', external: true },
   ];
 
-  const rightLinks = [
+  const companyLinks = [
+    { name: 'Home', href: '#hero' },
+    { name: 'Our Businesses', href: '#products' },
+    { name: 'Services', href: '#services' },
+    { name: 'Our Excellence', href: '#excellence' },
     { name: 'Global Recognition', href: '#recognition' },
-    { name: 'Casestudies', href: '#case-studies' },
+    { name: 'Case Studies', href: '#case-studies' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: "FAQ's", href: '#faq' },
   ];
@@ -109,44 +112,46 @@ export default function FooterSection() {
           {/* Full-Width Edge-to-Edge Container */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             {/* ============================================================== */}
-            {/* TOP SECTION: NAVIGATION + EXPLORE + ADDRESS + FOLLOW US       */}
+            {/* TOP SECTION: OUR BUSINESSES + COMPANY + ADDRESS + FOLLOW US   */}
             {/* ============================================================== */}
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-start mb-2 sm:mb-2.5 relative z-10">
-              
-              {/* Column 1: NAVIGATION */}
+
+              {/* Column 1: OUR BUSINESSES */}
               <div className="col-span-1">
                 <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-4 sm:mb-5 block">
-                  NAVIGATION
+                  OUR BUSINESSES
                 </span>
                 <ul className="space-y-3 sm:space-y-3.5">
-                  {leftLinks.map((link, idx) => (
+                  {businessLinks.map((link, idx) => (
                     <li key={idx}>
-                      <Link
+                      <a
                         href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="group inline-flex items-center text-sm sm:text-base font-bold text-white hover:text-cyan-300 transition-colors"
                       >
                         <span>{link.name}</span>
                         <ArrowRight className="w-3.5 h-3.5 ml-2 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-cyan-400" />
-                      </Link>
+                      </a>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Column 2: EXPLORE (Positioned to the right of NAVIGATION on mobile) */}
+              {/* Column 2: COMPANY */}
               <div className="col-span-1">
                 <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-4 sm:mb-5 block">
-                  EXPLORE
+                  COMPANY
                 </span>
-                <ul className="space-y-3 sm:space-y-3.5">
-                  {rightLinks.map((link, idx) => (
+                <ul className="space-y-2.5 sm:space-y-3">
+                  {companyLinks.map((link, idx) => (
                     <li key={idx}>
                       <Link
                         href={link.href}
-                        className="group inline-flex items-center text-sm sm:text-base font-bold text-white hover:text-cyan-300 transition-colors"
+                        className="group inline-flex items-center text-xs sm:text-sm font-bold text-slate-200 hover:text-cyan-300 transition-colors"
                       >
                         <span>{link.name}</span>
-                        <ArrowRight className="w-3.5 h-3.5 ml-2 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-cyan-400" />
+                        <ArrowRight className="w-3 h-3 ml-1.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-cyan-400" />
                       </Link>
                     </li>
                   ))}
@@ -156,7 +161,7 @@ export default function FooterSection() {
               {/* Column 3: ADDRESS */}
               <div className="col-span-2 sm:col-span-1">
                 <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-400 mb-4 sm:mb-5 block">
-                  ADDRESS
+                  HEADQUARTERS
                 </span>
                 <h4 className="text-sm font-bold text-white mb-2.5">
                   FlowActiv Private Limited
@@ -165,13 +170,13 @@ export default function FooterSection() {
                   <div className="flex items-start gap-2.5">
                     <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                     <span className="leading-relaxed">
-                      175, Chandragiri Building, 2nd Floor, Avaram Palayam Road, Coimbatore, Tamil Nadu – 641044, India.
+                      175, Chandragiri Building, 2nd Floor, Avaram Palayam Road, New Sidhapudur, Coimbatore, Tamil Nadu – 641044, India.
                     </span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <Phone className="w-4 h-4 text-cyan-400 shrink-0" />
-                    <a href="tel:9952744699" className="hover:text-cyan-300 transition-colors">
-                      99527 44699
+                    <a href="tel:9952844699" className="hover:text-cyan-300 transition-colors">
+                      +91 99528 44699 / 99527 44699
                     </a>
                   </div>
                   <div className="flex items-center gap-2.5">

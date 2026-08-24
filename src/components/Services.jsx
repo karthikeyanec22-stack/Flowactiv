@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Code2, Smartphone, Palette, Cloud, Cpu, Sparkles, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Brain, Target, Gift, CalendarCheck, Code2, Smartphone, Cpu, Cloud, Sparkles, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { scrollToContact } from '@/utils/scrollToContact';
@@ -12,47 +12,80 @@ export default function ServicesSection() {
   const [isPaused, setIsPaused] = useState(false);
 
   const services = [
+    // --- GETAIR1 CARDS (4 CARDS) ---
+    {
+      icon: Brain,
+      division: 'GETAIR1',
+      title: 'AI-Powered Learning',
+      description: 'Learn smarter with intelligent recommendations, practice tests, and performance insights.',
+      glow: 'from-blue-500/25 to-cyan-500/25',
+      iconColor: 'text-cyan-500 dark:text-cyan-400',
+      link: 'https://www.getair1.in/',
+    },
+    {
+      icon: Target,
+      division: 'GETAIR1',
+      title: 'Personalized Guidance',
+      description: 'Get exam-focused preparation paths tailored to your strengths and improvement areas.',
+      glow: 'from-indigo-500/25 to-blue-500/25',
+      iconColor: 'text-blue-500 dark:text-blue-400',
+      link: 'https://www.getair1.in/',
+    },
+    {
+      icon: Gift,
+      division: 'GETAIR1',
+      title: 'Free Trial Available',
+      description: 'Explore premium learning features at no cost before subscribing.',
+      glow: 'from-emerald-500/25 to-teal-500/25',
+      iconColor: 'text-emerald-500 dark:text-emerald-400',
+      link: 'https://www.getair1.in/',
+    },
+    {
+      icon: CalendarCheck,
+      division: 'GETAIR1',
+      title: 'Daily Live Tests',
+      description: 'Practice fresh exam-style questions every day and track your progress.',
+      glow: 'from-purple-500/25 to-indigo-500/25',
+      iconColor: 'text-purple-500 dark:text-purple-400',
+      link: 'https://www.getair1.in/',
+    },
+
+    // --- SHREWD BUSINESS SOLUTIONS CARDS (4 CARDS) ---
     {
       icon: Code2,
-      title: 'Web Application Development',
-      description: 'High-performance, scalable web applications built using Next.js, React, and modern full-stack architectures.',
-      glow: 'from-blue-500/25 to-indigo-500/25',
+      division: 'SHREWD BUSINESS SOLUTIONS',
+      title: 'Website Development',
+      description: 'High-performance, responsive websites built using React, PHP, Laravel, WordPress, Shopify, and WooCommerce.',
+      glow: 'from-cyan-500/25 to-blue-500/25',
       iconColor: 'text-blue-500 dark:text-blue-400',
+      link: 'https://www.shrewdbs.com/',
     },
     {
       icon: Smartphone,
+      division: 'SHREWD BUSINESS SOLUTIONS',
       title: 'Mobile App Development',
-      description: 'Cross-platform iOS & Android mobile solutions delivering seamless performance, offline capabilities, and native feel.',
-      glow: 'from-cyan-500/25 to-blue-500/25',
-      iconColor: 'text-cyan-500 dark:text-cyan-400',
-    },
-    {
-      icon: Palette,
-      title: 'UI/UX & Product Design',
-      description: 'User-centered digital experiences, wireframing, high-fidelity prototypes, and cohesive design systems.',
-      glow: 'from-purple-500/25 to-pink-500/25',
-      iconColor: 'text-purple-500 dark:text-purple-400',
-    },
-    {
-      icon: Cloud,
-      title: 'Cloud Infrastructure & DevOps',
-      description: 'Reliable cloud deployments, CI/CD pipelines, containerization (Docker/Kubernetes), and serverless architecture.',
-      glow: 'from-emerald-500/25 to-teal-500/25',
-      iconColor: 'text-emerald-500 dark:text-emerald-400',
+      description: 'Custom iOS & Android mobile solutions engineered for seamless performance and intuitive user experiences.',
+      glow: 'from-amber-500/25 to-orange-500/25',
+      iconColor: 'text-amber-500 dark:text-amber-400',
+      link: 'https://www.shrewdbs.com/',
     },
     {
       icon: Cpu,
-      title: 'AI & Workflow Automation',
-      description: 'Integrating intelligent AI models, automated workflows, predictive analytics, and custom API integrations.',
-      glow: 'from-amber-500/25 to-orange-500/25',
-      iconColor: 'text-amber-500 dark:text-amber-400',
+      division: 'SHREWD BUSINESS SOLUTIONS',
+      title: 'Enterprise ERP & CRM Software',
+      description: 'Integrated ERP platforms connecting finance, inventory, operations, and sales pipelines into unified systems.',
+      glow: 'from-purple-500/25 to-pink-500/25',
+      iconColor: 'text-purple-500 dark:text-purple-400',
+      link: 'https://www.shrewdbs.com/',
     },
     {
-      icon: Sparkles,
-      title: 'Custom Enterprise Software',
-      description: 'Tailor-made software systems designed to streamline internal operations, enhance security, and scale rapidly.',
+      icon: Cloud,
+      division: 'SHREWD BUSINESS SOLUTIONS',
+      title: 'Cloud & Digital Services',
+      description: 'Cloud infrastructure, quality assurance testing, digital marketing, graphic design, and Wikipedia digital presence.',
       glow: 'from-indigo-500/25 to-purple-500/25',
       iconColor: 'text-indigo-500 dark:text-indigo-400',
+      link: 'https://www.shrewdbs.com/',
     },
   ];
 
@@ -147,11 +180,11 @@ export default function ServicesSection() {
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             OUR SERVICES
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white max-w-3xl mx-auto leading-tight mb-4">
-            Services We Provide To Accelerate Your Business
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white max-w-4xl mx-auto leading-tight mb-4">
+            Services & Solutions Across FlowActiv Businesses
           </h2>
           <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 max-w-2xl mx-auto font-medium leading-relaxed">
-            From concept to execution, we deliver end-to-end digital engineering services tailored to modern performance standards.
+            FlowActiv delivers technology-enabled products, learning experiences and business solutions through its specialized businesses.
           </p>
         </motion.div>
 
@@ -267,11 +300,10 @@ export default function ServicesSection() {
                   type="button"
                   onClick={() => setActiveMobileIdx(idx)}
                   suppressHydrationWarning
-                  className={`transition-all duration-300 rounded-full cursor-pointer ${
-                    idx === activeMobileIdx
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${idx === activeMobileIdx
                       ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-blue-600'
                       : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
-                  }`}
+                    }`}
                   aria-label={`Go to service ${idx + 1}`}
                 />
               ))}
@@ -291,7 +323,7 @@ export default function ServicesSection() {
         </div>
 
         {/* ============================================================== */}
-        {/* DESKTOP 3D FLOATING CAROUSEL STAGE (MD AND LARGER)             */}
+        {/* DESKTOP VIEW: HYPER-STYLISH PERSPECTIVE CAROUSEL STAGE        */}
         {/* ============================================================== */}
         <div
           onMouseEnter={() => setIsPaused(true)}
@@ -353,77 +385,92 @@ export default function ServicesSection() {
                   position: 'absolute',
                   transformStyle: 'preserve-3d',
                 }}
-                className={`w-[340px] lg:w-[360px] h-[380px] lg:h-[400px] group relative overflow-visible transform-gpu ${
-                  index === activeIndex
+                className={`w-[340px] lg:w-[360px] h-[380px] lg:h-[400px] group relative overflow-visible transform-gpu ${index === activeIndex
                     ? 'pointer-events-auto cursor-default'
                     : 'pointer-events-auto cursor-pointer'
-                }`}
+                  }`}
               >
-                {/* Speech Bubble SVG Frame & Clip Defs */}
-                <svg
-                  viewBox="0 0 360 400"
-                  className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0"
-                  preserveAspectRatio="none"
-                >
-                  <defs>
-                    <clipPath id={`serviceCardClip-${index}`}>
-                      <path d="M 32 4 H 328 A 28 28 0 0 1 356 32 V 328 A 28 28 0 0 1 328 356 H 110 L 45 396 L 45 356 H 32 A 28 28 0 0 1 4 328 V 32 A 28 28 0 0 1 32 4 Z" />
-                    </clipPath>
-                  </defs>
-                  <path
-                    d="M 32 4 H 328 A 28 28 0 0 1 356 32 V 328 A 28 28 0 0 1 328 356 H 110 L 45 396 L 45 356 H 32 A 28 28 0 0 1 4 328 V 32 A 28 28 0 0 1 32 4 Z"
-                    className={`fill-white dark:fill-[#0c122c] transition-colors duration-300 ${
-                      index === activeIndex
-                        ? 'stroke-slate-900 dark:stroke-cyan-400'
-                        : 'stroke-slate-300 dark:stroke-cyan-500/30 group-hover:stroke-slate-900 dark:group-hover:stroke-cyan-400'
-                    }`}
-                    strokeWidth="3.5"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                  {/* Speech Bubble SVG Frame & Clip Defs */}
+                  <svg
+                    viewBox="0 0 360 400"
+                    className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0"
+                    preserveAspectRatio="none"
+                  >
+                    <defs>
+                      <clipPath id={`serviceCardClip-${index}`}>
+                        <path d="M 32 4 H 328 A 28 28 0 0 1 356 32 V 328 A 28 28 0 0 1 328 356 H 110 L 45 396 L 45 356 H 32 A 28 28 0 0 1 4 328 V 32 A 28 28 0 0 1 32 4 Z" />
+                      </clipPath>
+                    </defs>
+                    <path
+                      d="M 32 4 H 328 A 28 28 0 0 1 356 32 V 328 A 28 28 0 0 1 328 356 H 110 L 45 396 L 45 356 H 32 A 28 28 0 0 1 4 328 V 32 A 28 28 0 0 1 32 4 Z"
+                      className={`fill-white dark:fill-[#0c122c] transition-colors duration-300 ${index === activeIndex
+                          ? 'stroke-slate-900 dark:stroke-cyan-400'
+                          : 'stroke-slate-300 dark:stroke-cyan-500/30 group-hover:stroke-slate-900 dark:group-hover:stroke-cyan-400'
+                        }`}
+                      strokeWidth="3.5"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
 
-                {/* Clipped Background Glow Shade (Strictly Contained Within Card Border) */}
-                <div
-                  className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
-                  style={{ clipPath: `url(#serviceCardClip-${index})` }}
-                >
+                  {/* Clipped Background Glow Shade */}
                   <div
-                    className={`absolute -top-12 -right-12 w-44 h-44 bg-gradient-to-br ${service.glow} rounded-full blur-2xl opacity-40 group-hover:opacity-100 transition-opacity duration-500`}
-                  />
-                </div>
-
-                {/* Card Content Overlay */}
-                <div className="relative z-10 px-6 sm:px-8 pt-5 sm:pt-7 pb-7 flex flex-col justify-between h-[330px] sm:h-[356px]">
-
-                  <div>
-                    <motion.div
-                      whileHover={{ scale: 1.15, rotate: 6 }}
-                      transition={{ type: 'spring', stiffness: 350, damping: 15 }}
-                      className="w-11 sm:w-13 h-11 sm:h-13 rounded-2xl bg-cyan-50/90 dark:bg-cyan-950/60 border-2 border-cyan-200 dark:border-cyan-500/40 flex items-center justify-center mb-3 sm:mb-4 shadow-sm group-hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all duration-300"
-                    >
-                      <Icon className="w-5.5 sm:w-6.5 h-5.5 sm:h-6.5 text-slate-800 dark:text-cyan-300 transition-transform duration-300" />
-                    </motion.div>
-
-                    <h3 className="text-lg sm:text-2xl font-black text-slate-950 dark:text-white tracking-tight mb-1.5 sm:mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium mb-3 sm:mb-4">
-                      {service.description}
-                    </p>
+                    className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+                    style={{ clipPath: `url(#serviceCardClip-${index})` }}
+                  >
+                    <div
+                      className={`absolute -top-12 -right-12 w-44 h-44 bg-gradient-to-br ${service.glow} rounded-full blur-2xl opacity-40 group-hover:opacity-100 transition-opacity duration-500`}
+                    />
                   </div>
 
-                  <div className="pb-1">
-                    <Link
-                      href="#contact"
-                      onClick={scrollToContact}
-                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_18px_rgba(6,182,212,0.4)] hover:shadow-cyan-500/50 active:scale-95 transition-all duration-300 cursor-pointer group/btn"
-                    >
-                      <span>LEARN MORE</span>
-                      <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-1.5 transition-transform duration-300" />
-                    </Link>
+                  {/* Card Content Overlay */}
+                  <div className="relative z-10 px-6 sm:px-8 pt-5 sm:pt-7 pb-7 flex flex-col justify-between h-[330px] sm:h-[356px]">
+
+                    <div>
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
+                        <motion.div
+                          whileHover={{ scale: 1.15, rotate: 6 }}
+                          transition={{ type: 'spring', stiffness: 350, damping: 15 }}
+                          className="w-11 sm:w-13 h-11 sm:h-13 rounded-2xl bg-cyan-50/90 dark:bg-cyan-950/60 border-2 border-cyan-200 dark:border-cyan-500/40 flex items-center justify-center shadow-sm group-hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all duration-300"
+                        >
+                          <Icon className="w-5.5 sm:w-6.5 h-5.5 sm:h-6.5 text-slate-800 dark:text-cyan-300 transition-transform duration-300" />
+                        </motion.div>
+                        <span className="text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30">
+                          {service.division}
+                        </span>
+                      </div>
+
+                      <h3 className="text-lg sm:text-2xl font-black text-slate-950 dark:text-white tracking-tight mb-1.5 sm:mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium mb-3 sm:mb-4">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    <div className="pb-1">
+                      {service.link?.startsWith('http') ? (
+                        <a
+                          href={service.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_18px_rgba(6,182,212,0.4)] hover:shadow-cyan-500/50 active:scale-95 transition-all duration-300 cursor-pointer group/btn"
+                        >
+                          <span>{service.division.startsWith('GETAIR') ? 'EXPLORE GETAIR' : 'EXPLORE SHREWD'}</span>
+                          <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-1.5 transition-transform duration-300" />
+                        </a>
+                      ) : (
+                        <Link
+                          href="#contact"
+                          onClick={scrollToContact}
+                          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_18px_rgba(6,182,212,0.4)] hover:shadow-cyan-500/50 active:scale-95 transition-all duration-300 cursor-pointer group/btn"
+                        >
+                          <span>LEARN MORE</span>
+                          <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-1.5 transition-transform duration-300" />
+                        </Link>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
             );
           })}
         </div>

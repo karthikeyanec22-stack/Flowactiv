@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -16,7 +16,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'HOME', href: '#hero' },
-    { name: 'PRODUCTS', badge: 'NEW', href: '#products' },
+    { name: 'OUR BUSINESSES', href: '#products' },
     { name: 'SERVICES', href: '#services' },
     { name: 'OUR EXCELLENCE', href: '#excellence' },
     { name: 'GLOBAL RECOGNITION', href: '#recognition' },
@@ -24,6 +24,34 @@ export default function Navbar() {
     { name: 'TESTIMONIALS', href: '#testimonials' },
     { name: "FAQ'S", href: '#faq' },
   ];
+
+  // Automatically update active section underline as user scrolls
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 220; // Offset for sticky navbar height
+
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const link = navLinks[i];
+        const targetId = link.href.replace('#', '');
+        const element = document.getElementById(targetId);
+
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveIdx(i);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleMobileNavClick = (idx) => {
     setActiveIdx(idx);

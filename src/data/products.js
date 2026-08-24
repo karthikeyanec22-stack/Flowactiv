@@ -1,24 +1,24 @@
 export const productsData = [
   {
     id: 'getair1',
-    badgeText: 'NEW LAUNCH',
+    badgeText: 'EDTECH DIVISION',
     badgeType: 'new',
-    title: 'Getair1',
-    category: 'EDTECH PRODUCT',
+    title: 'GetAir1',
+    category: 'EdTech | AI-Powered Learning',
     description:
-      'An all-in-one business intelligence and operations platform helping SMEs and enterprises manage, track, and grow — smarter.',
+      'GetAir1 is an AI-powered learning and preparation platform designed to help competitive-exam aspirants learn, practice and prepare through a smarter digital experience.',
     link: 'https://www.getair1.in/',
     imageSrc: '/images/getair1-preview.png',
     logoSrc: '/images/getair1-logo.png',
   },
   {
     id: 'shrewd',
-    badgeText: 'LIVE',
+    badgeText: 'BUSINESS & TECH',
     badgeType: 'live',
     title: 'Shrewd Business Solutions',
-    category: 'IT SERVICES',
+    category: 'Business & Technology Solutions',
     description:
-      'An all-in-one business intelligence and operations platform helping SMEs and enterprises manage, track, and grow — smarter.',
+      'Shrewd Business Solutions provides technology-driven and business-focused solutions designed to help organizations improve their digital presence, operations and customer experiences.',
     link: 'https://www.shrewdbs.com/',
     imageSrc: '/images/shrewd-preview.png',
     logoSrc: '/images/shrewd-logo.png',

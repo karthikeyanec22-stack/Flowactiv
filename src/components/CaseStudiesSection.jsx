@@ -15,47 +15,47 @@ export default function CaseStudiesSection() {
   const caseStudies = [
     {
       id: 1,
-      badgeText: 'MOBILE CREATIVITY APP',
-      title: 'AI Mobile Creativity App',
-      subtitle: 'Unleash Your Creativity',
-      category: 'iOS & Android App',
-      metric: '4.9 ★ (120k Downloads)',
-      imageSrc: '/images/case1.png',
-      link: '#',
-      description: 'An AI-powered mobile creative suite designed to generate high-resolution artistic assets and 3D visual content on-the-go.',
+      badgeText: 'GETAIR1 PLATFORM',
+      title: 'AI-Powered Exam Preparation Platform',
+      subtitle: 'TNPSC & Competitive Exams',
+      category: 'EdTech | AI Learning',
+      metric: 'AI Practice & Mock Tests',
+      imageSrc: '/images/imaget.png',
+      link: 'https://www.getair1.in/',
+      description: 'GetAir1 is an AI-powered learning platform designed to help competitive-exam aspirants learn, practice and prepare through personalized digital mock tests and live performance tracking.',
     },
     {
       id: 2,
-      badgeText: 'SMART AI PLATFORM',
-      title: 'Smart AI Everyday Needs',
-      subtitle: 'Growth: +340%',
-      category: 'SaaS AI Platform',
-      metric: '+340% User Growth',
+      badgeText: 'GETAIR1 ECOSYSTEM',
+      title: 'Interactive Digital Practice Engine',
+      subtitle: 'Personalized Learning Analytics',
+      category: 'Digital Education',
+      metric: 'Instant Performance Insights',
       imageSrc: '/images/case2.png',
-      link: '#',
-      description: 'A comprehensive conversational AI ecosystem helping users automate routine tasks, calendar scheduling, and daily workflow management.',
+      link: 'https://www.getair1.in/',
+      description: 'An interactive digital examination engine engineered to simulate competitive testing environments, providing subject-level feedback and practice questions for aspirants.',
     },
     {
       id: 3,
-      badgeText: 'MOBILE APP',
-      title: 'Personal Fitness & Health Engine',
-      subtitle: 'Accuracy: 99.8%',
-      category: 'Mobile App',
-      metric: '99.8% Accuracy',
+      badgeText: 'SHREWD BUSINESS SOLUTIONS',
+      title: 'Custom Web & Mobile Platforms',
+      subtitle: 'React, PHP & Cloud Solutions',
+      category: 'Technology & Web Solutions',
+      metric: 'High Performance & Scale',
       imageSrc: '/images/case3.png',
-      link: '#',
-      description: 'Real-time biometric analytics platform connecting wearable sensors to provide tailored workout recovery and nutrition recommendations.',
+      link: 'https://www.shrewdbs.com/',
+      description: 'Shrewd Business Solutions develops responsive, high-performance web platforms and mobile applications designed to improve digital presence and operational efficiency for client organizations.',
     },
     {
       id: 4,
-      badgeText: 'AI RESEARCH & AI ENGINE',
-      title: 'AI Research & Business Analysis Tool',
-      subtitle: 'Insights: 10x Faster',
-      category: 'Enterprise AI Engine',
-      metric: '10x Faster Insights',
+      badgeText: 'SHREWD BUSINESS SOLUTIONS',
+      title: 'Enterprise ERP & Operations Systems',
+      subtitle: 'CRM & Software Automation',
+      category: 'Business & Software Solutions',
+      metric: 'Streamlined Workflows',
       imageSrc: '/images/case4.jpg',
-      link: '#',
-      description: 'Advanced NLP research engine that aggregates market intelligence data, financial filings, and competitor metrics into actionable reports.',
+      link: 'https://www.shrewdbs.com/',
+      description: 'Custom-tailored ERP and CRM platforms built to connect sales pipelines, inventory, and internal business workflows into one unified digital infrastructure.',
     },
   ];
 
@@ -103,12 +103,15 @@ export default function CaseStudiesSection() {
           className="text-center mb-6 sm:mb-16"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
-            CASE STUDIES
+            CASE STUDIES & PORTFOLIO
           </span>
 
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white max-w-4xl mx-auto leading-tight">
-            Innovative Digital Solutions <br /> We&apos;ve Designed And Built
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 dark:text-white max-w-4xl mx-auto leading-tight mb-3">
+            Our Work & Platform Case Studies
           </h2>
+          <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            FlowActiv is building a growing portfolio of products, platforms and business solutions through its specialized companies. Verified case studies and customer stories are highlighted below.
+          </p>
         </motion.div>
 
         {/* HUB & CIRCULATION STAGE */}
@@ -241,11 +244,10 @@ export default function CaseStudiesSection() {
                     type="button"
                     onClick={() => setActiveMobileIdx(idx)}
                     suppressHydrationWarning
-                    className={`transition-all duration-300 rounded-full cursor-pointer ${
-                      idx === activeMobileIdx
+                    className={`transition-all duration-300 rounded-full cursor-pointer ${idx === activeMobileIdx
                         ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-purple-500'
                         : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
-                    }`}
+                      }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}

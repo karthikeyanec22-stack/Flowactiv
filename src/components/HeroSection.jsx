@@ -239,20 +239,24 @@ export default function HeroSection() {
         <div className="relative z-10 flex flex-col items-center">
 
 
+          <span className="text-[12px] sm:text-sm font-black tracking-widest uppercase text-cyan-400 mb-3 block px-4 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30">
+            FLOWACTIV PRIVATE LIMITED
+          </span>
+
           <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-4 sm:mb-6 leading-[1.15] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-            Building Scalable Digital Products for Modern Businesses.
+            Building Ideas Into Digital Businesses
           </h1>
 
           {/* Subtitle */}
-          <p className="text-sm sm:text-lg text-slate-200 font-medium max-w-2xl mb-6 sm:mb-10 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-            We design, develop, and launch powerful web and mobile applications that help startups and enterprises grow faster.
+          <p className="text-sm sm:text-base lg:text-lg text-slate-200 font-medium max-w-3xl mb-6 sm:mb-8 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+            FlowActiv Private Limited is a technology-driven organization building businesses and digital solutions across education, technology and professional services. Through businesses such as <strong className="text-cyan-300">GetAir1</strong> and <strong className="text-cyan-300">Shrewd Business Solutions</strong>, FlowActiv combines technology, innovation and customer-focused thinking to create practical solutions.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-5 items-center w-full sm:w-auto">
             {/* Primary Button */}
-            <Button href="#contact" onClick={scrollToContact}>
-              START YOUR PROJECT
+            <Button href="#products">
+              OUR BUSINESSES
             </Button>
 
             {/* Secondary Schedule Call Modal Trigger Button */}
@@ -279,7 +283,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsModalOpen(false)}
-                className="fixed inset-0 bg-slate-950/80 backdrop-blur-md"
+                className="fixed inset-0 bg-slate-950/70 backdrop-blur-md"
               />
 
               {/* Modal Card Container */}
@@ -287,15 +291,15 @@ export default function HeroSection() {
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
-                className="relative w-full max-w-lg bg-white text-slate-950 border border-slate-200 rounded-3xl p-5 sm:p-8 shadow-2xl text-left z-10 overflow-y-auto max-h-[85vh] sm:max-h-[90vh]"
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="relative w-full max-w-lg bg-white text-slate-950 border border-slate-200 rounded-3xl p-5 sm:p-8 shadow-2xl text-left z-10"
               >
                 {/* Close Button */}
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
                   suppressHydrationWarning
-                  className="absolute top-5 right-5 p-2 rounded-full text-slate-500 hover:text-slate-950 hover:bg-slate-100 transition-colors cursor-pointer"
+                  className="absolute top-5 right-5 p-2 rounded-full text-slate-500 hover:text-slate-950 hover:bg-slate-100 transition-colors cursor-pointer z-20"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5" />
@@ -304,22 +308,22 @@ export default function HeroSection() {
                 {/* Form Content */}
                 {!isSubmitted ? (
                   <>
-                    <div className="mb-6">
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-cyan-500/40 bg-cyan-50 text-cyan-700 text-[10px] font-bold tracking-widest uppercase mb-3">
-                        Free Consultation
-                      </div>
-                      <h3 className="text-2xl font-black text-slate-950 tracking-tight">
+                    <div className="mb-4">
+                      <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-600 mb-1 block">
+                        FREE CONSULTATION
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
                         Schedule a Discovery Call
                       </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                      <p className="text-xs text-slate-600 mt-0.5 font-medium">
                         Pick a time with our technical team to discuss your project requirements.
                       </p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-3">
                       {/* Full Name */}
                       <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
                           Your Name
                         </label>
                         <div className="relative">
@@ -330,15 +334,15 @@ export default function HeroSection() {
                             required
                             value={formData.name}
                             onChange={handleInputChange}
-                            placeholder="e.g. Alex Morgan"
-                            className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium placeholder:text-slate-400"
+                            placeholder="e.g. Karthikeyan M"
+                            className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium placeholder:text-slate-400"
                           />
                         </div>
                       </div>
 
                       {/* Email */}
                       <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
                           Work Email
                         </label>
                         <div className="relative">
@@ -349,17 +353,17 @@ export default function HeroSection() {
                             required
                             value={formData.email}
                             onChange={handleInputChange}
-                            placeholder="alex@company.com"
-                            className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium placeholder:text-slate-400"
+                            placeholder="karthikeyan@flowactiv.com"
+                            className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors font-medium placeholder:text-slate-400"
                           />
                         </div>
                       </div>
 
                       {/* Date & Time Row */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {/* Preferred Date Field */}
                         <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
                             Preferred Date
                           </label>
                           <div className="relative">
@@ -372,14 +376,14 @@ export default function HeroSection() {
                               value={formData.date}
                               onChange={handleInputChange}
                               onClick={(e) => e.target.showPicker && e.target.showPicker()}
-                              className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors cursor-pointer font-medium"
+                              className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors cursor-pointer font-medium"
                             />
                           </div>
                         </div>
 
                         {/* Preferred Time Field (12-Hour AM/PM Format) */}
                         <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
                             Preferred Time (AM/PM)
                           </label>
                           <div className="relative">
@@ -389,7 +393,7 @@ export default function HeroSection() {
                               required
                               value={formData.time}
                               onChange={handleInputChange}
-                              className="w-full pl-10 pr-8 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors cursor-pointer appearance-none font-medium"
+                              className="w-full pl-10 pr-8 py-2.5 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors cursor-pointer appearance-none font-medium"
                             >
                               <option value="" disabled>Select Time (AM/PM)</option>
                               <option value="09:00 AM">09:00 AM</option>
@@ -413,18 +417,18 @@ export default function HeroSection() {
 
                       {/* Topic/Notes */}
                       <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">
                           Project Overview / Topic
                         </label>
                         <div className="relative">
                           <MessageSquare className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
                           <textarea
                             name="topic"
-                            rows="3"
+                            rows="2"
                             value={formData.topic}
                             onChange={handleInputChange}
                             placeholder="Tell us briefly about what you're building..."
-                            className="w-full pl-10 pr-4 py-3 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors resize-none placeholder:text-slate-400 font-medium"
+                            className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl bg-slate-50 border border-slate-300 text-slate-900 focus:outline-none focus:border-cyan-600 transition-colors resize-none placeholder:text-slate-400 font-medium"
                           />
                         </div>
                       </div>
@@ -432,7 +436,7 @@ export default function HeroSection() {
                       {/* Submit Button */}
                       <button
                         type="submit"
-                        className="w-full py-4 mt-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 text-white font-black text-xs uppercase tracking-widest shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 cursor-pointer"
+                        className="w-full py-3.5 mt-1 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 text-white font-black text-xs uppercase tracking-widest shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 cursor-pointer"
                       >
                         Confirm Schedule Request
                       </button>
