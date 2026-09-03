@@ -301,8 +301,8 @@ export default function ServicesSection() {
                   onClick={() => setActiveMobileIdx(idx)}
                   suppressHydrationWarning
                   className={`transition-all duration-300 rounded-full cursor-pointer ${idx === activeMobileIdx
-                      ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-blue-600'
-                      : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
+                    ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-blue-600'
+                    : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
                     }`}
                   aria-label={`Go to service ${idx + 1}`}
                 />
@@ -386,91 +386,91 @@ export default function ServicesSection() {
                   transformStyle: 'preserve-3d',
                 }}
                 className={`w-[340px] lg:w-[360px] h-[380px] lg:h-[400px] group relative overflow-visible transform-gpu ${index === activeIndex
-                    ? 'pointer-events-auto cursor-default'
-                    : 'pointer-events-auto cursor-pointer'
+                  ? 'pointer-events-auto cursor-default'
+                  : 'pointer-events-auto cursor-pointer'
                   }`}
               >
-                  {/* Speech Bubble SVG Frame & Clip Defs */}
-                  <svg
-                    viewBox="0 0 360 400"
-                    className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0"
-                    preserveAspectRatio="none"
-                  >
-                    <defs>
-                      <clipPath id={`serviceCardClip-${index}`}>
-                        <path d="M 32 4 H 328 A 28 28 0 0 1 356 32 V 328 A 28 28 0 0 1 328 356 H 110 L 45 396 L 45 356 H 32 A 28 28 0 0 1 4 328 V 32 A 28 28 0 0 1 32 4 Z" />
-                      </clipPath>
-                    </defs>
-                    <path
-                      d="M 32 4 H 328 A 28 28 0 0 1 356 32 V 328 A 28 28 0 0 1 328 356 H 110 L 45 396 L 45 356 H 32 A 28 28 0 0 1 4 328 V 32 A 28 28 0 0 1 32 4 Z"
-                      className={`fill-white dark:fill-[#0c122c] transition-colors duration-300 ${index === activeIndex
-                          ? 'stroke-slate-900 dark:stroke-cyan-400'
-                          : 'stroke-slate-300 dark:stroke-cyan-500/30 group-hover:stroke-slate-900 dark:group-hover:stroke-cyan-400'
-                        }`}
-                      strokeWidth="3.5"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                {/* Speech Bubble SVG Frame & Clip Defs */}
+                <svg
+                  viewBox="0 0 360 400"
+                  className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0"
+                  preserveAspectRatio="none"
+                >
+                  <defs>
+                    <clipPath id={`serviceCardClip-${index}`}>
+                      <path d="M 32 4 H 328 A 28 28 0 0 1 356 32 V 328 A 28 28 0 0 1 328 356 H 110 L 45 396 L 45 356 H 32 A 28 28 0 0 1 4 328 V 32 A 28 28 0 0 1 32 4 Z" />
+                    </clipPath>
+                  </defs>
+                  <path
+                    d="M 32 4 H 328 A 28 28 0 0 1 356 32 V 328 A 28 28 0 0 1 328 356 H 110 L 45 396 L 45 356 H 32 A 28 28 0 0 1 4 328 V 32 A 28 28 0 0 1 32 4 Z"
+                    className={`fill-white dark:fill-[#0c122c] transition-colors duration-300 ${index === activeIndex
+                      ? 'stroke-slate-900 dark:stroke-cyan-400'
+                      : 'stroke-slate-300 dark:stroke-cyan-500/30 group-hover:stroke-slate-900 dark:group-hover:stroke-cyan-400'
+                      }`}
+                    strokeWidth="3.5"
+                    strokeLinejoin="round"
+                  />
+                </svg>
 
-                  {/* Clipped Background Glow Shade */}
+                {/* Clipped Background Glow Shade */}
+                <div
+                  className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+                  style={{ clipPath: `url(#serviceCardClip-${index})` }}
+                >
                   <div
-                    className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
-                    style={{ clipPath: `url(#serviceCardClip-${index})` }}
-                  >
-                    <div
-                      className={`absolute -top-12 -right-12 w-44 h-44 bg-gradient-to-br ${service.glow} rounded-full blur-2xl opacity-40 group-hover:opacity-100 transition-opacity duration-500`}
-                    />
-                  </div>
+                    className={`absolute -top-12 -right-12 w-44 h-44 bg-gradient-to-br ${service.glow} rounded-full blur-2xl opacity-40 group-hover:opacity-100 transition-opacity duration-500`}
+                  />
+                </div>
 
-                  {/* Card Content Overlay */}
-                  <div className="relative z-10 px-6 sm:px-8 pt-5 sm:pt-7 pb-7 flex flex-col justify-between h-[330px] sm:h-[356px]">
+                {/* Card Content Overlay */}
+                <div className="relative z-10 px-6 sm:px-8 pt-5 sm:pt-7 pb-7 flex flex-col justify-between h-[330px] sm:h-[356px]">
 
-                    <div>
-                      <div className="flex items-center justify-between mb-3 sm:mb-4">
-                        <motion.div
-                          whileHover={{ scale: 1.15, rotate: 6 }}
-                          transition={{ type: 'spring', stiffness: 350, damping: 15 }}
-                          className="w-11 sm:w-13 h-11 sm:h-13 rounded-2xl bg-cyan-50/90 dark:bg-cyan-950/60 border-2 border-cyan-200 dark:border-cyan-500/40 flex items-center justify-center shadow-sm group-hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all duration-300"
-                        >
-                          <Icon className="w-5.5 sm:w-6.5 h-5.5 sm:h-6.5 text-slate-800 dark:text-cyan-300 transition-transform duration-300" />
-                        </motion.div>
-                        <span className="text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30">
-                          {service.division}
-                        </span>
-                      </div>
-
-                      <h3 className="text-lg sm:text-2xl font-black text-slate-950 dark:text-white tracking-tight mb-1.5 sm:mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors duration-300">
-                        {service.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium mb-3 sm:mb-4">
-                        {service.description}
-                      </p>
+                  <div>
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <motion.div
+                        whileHover={{ scale: 1.15, rotate: 6 }}
+                        transition={{ type: 'spring', stiffness: 350, damping: 15 }}
+                        className="w-11 sm:w-13 h-11 sm:h-13 rounded-2xl bg-cyan-50/90 dark:bg-cyan-950/60 border-2 border-cyan-200 dark:border-cyan-500/40 flex items-center justify-center shadow-sm group-hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all duration-300"
+                      >
+                        <Icon className="w-5.5 sm:w-6.5 h-5.5 sm:h-6.5 text-slate-800 dark:text-cyan-300 transition-transform duration-300" />
+                      </motion.div>
+                      <span className="text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30">
+                        {service.division}
+                      </span>
                     </div>
 
-                    <div className="pb-1">
-                      {service.link?.startsWith('http') ? (
-                        <a
-                          href={service.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_18px_rgba(6,182,212,0.4)] hover:shadow-cyan-500/50 active:scale-95 transition-all duration-300 cursor-pointer group/btn"
-                        >
-                          <span>{service.division.startsWith('GETAIR') ? 'EXPLORE GETAIR' : 'EXPLORE SHREWD'}</span>
-                          <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-1.5 transition-transform duration-300" />
-                        </a>
-                      ) : (
-                        <Link
-                          href="#contact"
-                          onClick={scrollToContact}
-                          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_18px_rgba(6,182,212,0.4)] hover:shadow-cyan-500/50 active:scale-95 transition-all duration-300 cursor-pointer group/btn"
-                        >
-                          <span>LEARN MORE</span>
-                          <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-1.5 transition-transform duration-300" />
-                        </Link>
-                      )}
-                    </div>
+                    <h3 className="text-lg sm:text-2xl font-black text-slate-950 dark:text-white tracking-tight mb-1.5 sm:mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium mb-3 sm:mb-4">
+                      {service.description}
+                    </p>
                   </div>
-                </motion.div>
+
+                  <div className="pb-1">
+                    {service.link?.startsWith('http') ? (
+                      <a
+                        href={service.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_18px_rgba(6,182,212,0.4)] hover:shadow-cyan-500/50 active:scale-95 transition-all duration-300 cursor-pointer group/btn"
+                      >
+                        <span>{service.division.startsWith('GETAIR') ? 'EXPLORE GETAIR' : 'EXPLORE SHREWD'}</span>
+                        <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-1.5 transition-transform duration-300" />
+                      </a>
+                    ) : (
+                      <Link
+                        href="#contact"
+                        onClick={scrollToContact}
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase text-white bg-slate-950 dark:bg-gradient-to-r dark:from-cyan-500 dark:via-blue-600 dark:to-indigo-600 dark:hover:from-cyan-400 dark:hover:to-indigo-500 border border-cyan-500/40 shadow-md dark:shadow-[0_0_18px_rgba(6,182,212,0.4)] hover:shadow-cyan-500/50 active:scale-95 transition-all duration-300 cursor-pointer group/btn"
+                      >
+                        <span>LEARN MORE</span>
+                        <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-1.5 transition-transform duration-300" />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
             );
           })}
         </div>

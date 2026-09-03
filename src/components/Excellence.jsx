@@ -236,8 +236,8 @@ export default function Excellence() {
                           <Cpu className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
                         </div>
                         <div className="flex justify-end">
-                          <Button href="#services" className="!px-2.5 !py-1 !text-[8px] !shadow-none pointer-events-none" showArrow={true}>
-                            LEARN MORE
+                          <Button href="https://www.shrewdbs.com/" target="_blank" rel="noopener noreferrer" className="!px-2.5 !py-1 !text-[8px] !shadow-none pointer-events-none" icon={ExternalLink}>
+                            EXPLORE SERVICES
                           </Button>
                         </div>
                       </motion.div>
@@ -258,8 +258,8 @@ export default function Excellence() {
                           <Sparkles className="w-3.5 h-3.5 text-cyan-500" />
                         </div>
                         <div className="flex justify-end">
-                          <Button href="#services" className="!px-2.5 !py-1 !text-[8px] !shadow-none pointer-events-none" icon={ExternalLink}>
-                            CHECK WEBSITE
+                          <Button href="https://www.shrewdbs.com/" target="_blank" rel="noopener noreferrer" className="!px-2.5 !py-1 !text-[8px] !shadow-none pointer-events-none" icon={ExternalLink}>
+                            EXPLORE SERVICES
                           </Button>
                         </div>
                       </motion.div>
@@ -378,8 +378,8 @@ export default function Excellence() {
                       We continuously explore new ideas, technologies and business opportunities to build practical solutions across education and technology.
                     </p>
                   </div>
-                  <Button href="#services" showArrow={true}>
-                    LEARN MORE
+                  <Button href="https://www.shrewdbs.com/" target="_blank" rel="noopener noreferrer" icon={ExternalLink}>
+                    EXPLORE SERVICES
                   </Button>
                 </div>
               </motion.div>
@@ -421,7 +421,7 @@ export default function Excellence() {
                       We design our businesses around understanding customer needs and solving real-world problems for learners and businesses.
                     </p>
                   </div>
-                  <Button href="#services" icon={ExternalLink}>
+                  <Button href="https://www.shrewdbs.com/" target="_blank" rel="noopener noreferrer" icon={ExternalLink}>
                     EXPLORE SERVICES
                   </Button>
                 </div>

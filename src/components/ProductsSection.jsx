@@ -33,7 +33,7 @@ export default function ProductsSection() {
   return (
     <section
       id="products"
-      className="scroll-mt-16 sm:scroll-mt-20 pt-4 sm:pt-10 pb-8 sm:pb-20 relative w-full bg-[#f8fafc] dark:bg-[#02050e] overflow-hidden transition-colors duration-500"
+      className="scroll-mt-20 pt-4 sm:pt-6 pb-6 sm:pb-10 relative w-full bg-[#f8fafc] dark:bg-[#02050e] overflow-hidden transition-colors duration-500"
     >
       {/* ============================================================== */}
       {/* 1. ANIMATED AMBIENT BACKGROUND ORBS & GLOW CURVES              */}
@@ -81,7 +81,7 @@ export default function ProductsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '200px 0px' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center mb-6 sm:mb-16"
+          className="text-center mb-4 sm:mb-6"
         >
           <span className="text-[13px] sm:text-sm font-black tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3 block">
             OUR BUSINESSES
@@ -119,7 +119,7 @@ export default function ProductsSection() {
           <div
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className="relative w-full h-[480px] lg:h-[440px] flex items-center justify-center [perspective:1200px] overflow-visible my-4 px-4"
+            className="relative w-full h-[320px] sm:h-[340px] lg:h-[350px] flex items-center justify-center [perspective:1200px] overflow-visible my-1 px-4"
           >
             {productsData.map((product, idx) => {
               let offset = (idx - activeIndex + totalCards) % totalCards;
@@ -168,7 +168,7 @@ export default function ProductsSection() {
           </div>
 
           {/* DESKTOP CAROUSEL CONTROLS & PAGINATION DOTS */}
-          <div className="flex items-center justify-center gap-4 mt-8 relative z-30">
+          <div className="flex items-center justify-center gap-4 mt-4 sm:mt-6 relative z-30">
             <button
               type="button"
               onClick={prevCard}
@@ -188,8 +188,8 @@ export default function ProductsSection() {
                   aria-label={`Go to product ${idx + 1}`}
                   suppressHydrationWarning
                   className={`h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx
-                      ? 'w-8 bg-[#1e56d8] dark:bg-cyan-400'
-                      : 'w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600'
+                    ? 'w-8 bg-[#1e56d8] dark:bg-cyan-400'
+                    : 'w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600'
                     }`}
                 />
               ))}
@@ -271,15 +271,15 @@ function ProductCard({ product, isActive, isMobileLayout = false }) {
       <motion.div
         style={{ transform: isActive && !isMobileLayout ? 'translateZ(30px)' : 'none' }}
         className={`absolute ${isMobileLayout
-            ? '-left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-20 h-20 sm:w-28 sm:h-28'
-            : '-left-6 sm:-left-12 lg:-left-16 top-1/2 -translate-y-1/2 w-24 h-24 sm:w-36 sm:h-36 lg:w-44 lg:h-44'
+          ? '-left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-20 h-20 sm:w-28 sm:h-28'
+          : '-left-6 sm:-left-12 lg:-left-16 top-1/2 -translate-y-1/2 w-24 h-24 sm:w-36 sm:h-36 lg:w-44 lg:h-44'
           } rounded-full bg-[#1e56d8] dark:bg-blue-600 border-4 border-white dark:border-slate-900 shadow-2xl flex items-center justify-center z-20 pointer-events-none transition-all duration-300`}
       >
         {/* Central Glossy 3D Blue Sphere Logo Badge */}
         <div
           className={`relative z-20 ${isMobileLayout
-              ? 'w-14 h-14 sm:w-20 sm:h-20'
-              : 'w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28'
+            ? 'w-14 h-14 sm:w-20 sm:h-20'
+            : 'w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28'
             } rounded-full bg-gradient-to-tr from-blue-950 via-blue-700 to-cyan-400 border-2 border-white flex items-center justify-center shadow-lg overflow-hidden shrink-0`}
         >
           {product.imageSrc ? (
@@ -301,8 +301,8 @@ function ProductCard({ product, isActive, isMobileLayout = false }) {
       {/* 2. RIGHT INTEGRATED CARD CONTAINER */}
       <div
         className={`relative bg-white dark:bg-[#0c102a] rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] ${isMobileLayout
-            ? 'pl-16 sm:pl-24 pr-5 sm:pr-8 py-5 sm:py-7 min-h-[240px]'
-            : 'pl-20 sm:pl-28 lg:pl-36 pr-6 sm:pr-10 lg:pr-12 py-6 sm:py-8 lg:py-10 min-h-[260px] sm:min-h-[290px] lg:min-h-[320px]'
+          ? 'pl-16 sm:pl-24 pr-5 sm:pr-8 py-5 sm:py-7 min-h-[240px]'
+          : 'pl-20 sm:pl-28 lg:pl-36 pr-6 sm:pr-10 lg:pr-12 py-6 sm:py-8 lg:py-10 min-h-[260px] sm:min-h-[290px] lg:min-h-[320px]'
           } border-4 border-slate-900 dark:border-cyan-500/40 shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between h-full ${isActive ? 'border-slate-900 dark:border-cyan-400' : 'opacity-90'
           }`}
       >

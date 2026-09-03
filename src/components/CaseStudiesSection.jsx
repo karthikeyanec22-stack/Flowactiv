@@ -245,8 +245,8 @@ export default function CaseStudiesSection() {
                     onClick={() => setActiveMobileIdx(idx)}
                     suppressHydrationWarning
                     className={`transition-all duration-300 rounded-full cursor-pointer ${idx === activeMobileIdx
-                        ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-purple-500'
-                        : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
+                      ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 to-purple-500'
+                      : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
                       }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />

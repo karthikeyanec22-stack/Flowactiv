@@ -199,8 +199,8 @@ export default function Testimonial() {
                 onClick={() => setActiveIdx(idx)}
                 suppressHydrationWarning
                 className={`transition-all duration-300 rounded-full cursor-pointer ${idx === activeIdx
-                    ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 shadow-[0_0_8px_#06b6d4]'
-                    : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
+                  ? 'w-6 h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 shadow-[0_0_8px_#06b6d4]'
+                  : 'w-2 h-2 bg-slate-300 dark:bg-slate-700'
                   }`}
                 aria-label={`Go to testimonial ${idx + 1}`}
               />

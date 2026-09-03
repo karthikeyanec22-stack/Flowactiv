@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function Features() {
   return (
-    <section className="relative w-full min-h-[220px] sm:min-h-[520px] bg-[#f8fafc] dark:bg-[#090b14] flex items-center justify-center overflow-hidden py-8 sm:py-24 transition-colors duration-500">
+    <section className="scroll-mt-20 relative w-full min-h-[200px] sm:min-h-[420px] bg-[#f8fafc] dark:bg-[#090b14] flex items-center justify-center overflow-hidden py-6 sm:py-10 transition-colors duration-500">
 
       {/* ============================================================== */}
       {/* 1. THICK CHEVRON BAND INFINITE DOWNWARD MOTION (VIDEO MATCH)   */}
