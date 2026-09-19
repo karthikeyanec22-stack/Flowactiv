@@ -20,7 +20,7 @@ export default function CaseStudiesSection() {
       subtitle: 'TNPSC & Competitive Exams',
       category: 'EdTech | AI Learning',
       metric: 'AI Practice & Mock Tests',
-      imageSrc: '/images/imaget.png',
+      imageSrc: '/images/image1.png',
       link: 'https://www.getair1.in/',
       description: 'GetAir1 is an AI-powered learning platform designed to help competitive-exam aspirants learn, practice and prepare through personalized digital mock tests and live performance tracking.',
     },
