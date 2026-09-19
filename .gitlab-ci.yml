@@ -1,8 +1,23 @@
 stages:
   - test
+  - deploy
 
 test_project:
   stage: test
   script:
     - echo "FlowActiv CI/CD is working!"
     - echo "GitLab received the project successfully."
+
+deploy_to_aws:
+  stage: deploy
+  script:
+    - echo "Starting AWS deployment..."
+    - apt-get update -y
+    - apt-get install -y openssh-client
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - cp "$SSH_PRIVATE_KEY" ~/.ssh/aws_deploy_key
+    - chmod 600 ~/.ssh/aws_deploy_key
+    - ssh-keyscan -H 13.234.16.110 >> ~/.ssh/known_hosts
+    - ssh -i ~/.ssh/aws_deploy_key ubuntu@13.234.16.110 "cd /home/ubuntu/Flowactiv && git pull origin main && npm install && npm run build && pm2 restart flowactiv"
+    - echo "AWS deployment completed!"
