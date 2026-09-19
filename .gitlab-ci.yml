@@ -1,0 +1,8 @@
+stages:
+  - test
+
+test_project:
+  stage: test
+  script:
+    - echo "FlowActiv CI/CD is working!"
+    - echo "GitLab received the project successfully."
