@@ -10,13 +10,67 @@ test_project:
 
 deploy_to_aws:
   stage: deploy
+
+  image:
+    name: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+
+  id_tokens:
+    GITLAB_OIDC_TOKEN:
+      aud: sts.amazonaws.com
+
   script:
-    - echo "Starting AWS deployment..."
-    - apt-get update -y
-    - apt-get install -y openssh-client
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/aws_deploy_key
-    - chmod 600 ~/.ssh/aws_deploy_key
-    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/aws_deploy_key ubuntu@13.234.16.110 "cd /home/ubuntu/Flowactiv && git pull origin main && npm install && npm run build && pm2 restart flowactiv"
-    - echo "AWS deployment completed!"
+    - echo "Starting AWS authentication..."
+
+    - >
+      aws sts assume-role-with-web-identity
+      --role-arn "arn:aws:iam::635541644033:role/Flowactiv-GitLab-SSM-Role"
+      --role-session-name "GitLabRunner-${CI_PROJECT_ID}-${CI_PIPELINE_ID}"
+      --web-identity-token "$GITLAB_OIDC_TOKEN"
+      --duration-seconds 3600
+      --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]'
+      --output text > /tmp/aws_credentials
+
+    - read AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN < /tmp/aws_credentials
+
+    - export AWS_ACCESS_KEY_ID
+    - export AWS_SECRET_ACCESS_KEY
+    - export AWS_SESSION_TOKEN
+
+    - echo "AWS authentication successful."
+
+    - aws sts get-caller-identity
+
+    - echo "Sending deployment command to EC2 through SSM..."
+
+    - |
+      cat > /tmp/ssm-parameters.json <<'EOF'
+      {
+        "commands": [
+          "sudo -u ubuntu bash -lc 'cd /home/ubuntu/Flowactiv && git pull origin main && npm install && npm run build && pm2 restart flowactiv'"
+        ]
+      }
+      EOF
+
+    - |
+      COMMAND_ID=$(aws ssm send-command \
+        --instance-ids "i-03c91471890acad8f" \
+        --document-name "AWS-RunShellScript" \
+        --parameters file:///tmp/ssm-parameters.json \
+        --comment "FlowActiv deployment from GitLab CI" \
+        --query "Command.CommandId" \
+        --output text)
+
+      echo "SSM Command ID: $COMMAND_ID"
+
+      echo "Waiting for deployment..."
+
+      aws ssm wait command-executed \
+        --command-id "$COMMAND_ID" \
+        --instance-id "i-03c91471890acad8f"
+
+      echo "Deployment command completed."
+
+    - |
+      aws ssm get-command-invocation \
+        --command-id "$COMMAND_ID" \
+        --instance-id "i-03c91471890acad8f"

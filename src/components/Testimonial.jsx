@@ -15,7 +15,7 @@ export default function Testimonial() {
       name: 'Kavitha R.',
       role: 'TNPSC Aspirant | GetAir1 Learner',
       division: 'GETAIR1',
-      avatar: '/images/image1.png',
+      avatar: '/images/image.png',
       rating: 5,
       review:
         'GetAir1’s AI mock tests and practice questions helped me pinpoint my weak areas in TNPSC preparation. The live test simulations and performance analysis made revision simple, interactive, and structured.',
