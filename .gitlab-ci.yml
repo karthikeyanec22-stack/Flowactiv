@@ -16,7 +16,7 @@ deploy_to_aws:
     - apt-get install -y openssh-client
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - cp "$SSH_PRIVATE_KEY" ~/.ssh/aws_deploy_key
+    - printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/aws_deploy_key
     - chmod 600 ~/.ssh/aws_deploy_key
     - ssh-keyscan -H 13.234.16.110 >> ~/.ssh/known_hosts
     - ssh -i ~/.ssh/aws_deploy_key ubuntu@13.234.16.110 "cd /home/ubuntu/Flowactiv && git pull origin main && npm install && npm run build && pm2 restart flowactiv"
